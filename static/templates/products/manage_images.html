@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>{{ product.title }} images</h1>
+<form method='POST' action='' enctype="multipart/form-data"> {% csrf_token %}   <!-- enctype shd be used when sending media to form !-->
+	{{ formset.management_form }}
+	<table>
+		<thead>
+			<th>image</th><th>change image</th><th>Featured Image?</th><th style='text-align:right; width=200px;'>Delete image</th>
+		</thead>
+		{% for form in formset %}
+			<tr>
+				if form.instance.image:
+					<td><h2>{{ form.instance.title }} </h2><img src="{{ MEDIA_URL }}{{ form.instance.image }}" width='200'/></td> 
+					{% for field in form %}
+						<td>{{ field }} </td>
+					{% endfor %}
+			</tr>
+		{% endfor %}
+		<tfoot><td><input type='submit' value='Save edit' /></td></tfoot>
+	</table>
+</form>
+{% endblock %}

@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block content %}
+	{% if in_cart %}
+		Already added to cart<a href='{% url "cart" %}'>View cart</a>
+	{% else %}
+		<a href='{% url "add_to_cart" product.id %}'>Add to cart</a>
+	{% endif %}
+	{% load staticfiles %}
+	<h1>{{ product }}</h1>
+	{% for img in images %}
+		{{ img.image }}
+		
+		<img src="{{ MEDIA_URL }}{{ img.image }}" width='300' />  
+	{% endfor %}
+	<ul>
+		{% for category in categories %}
+			<li>{{ category }}</li>
+		{% endfor %}
+	</ul>
+	{% if related %}
+		<h1>Related Product{% if realted|length > 1 %}s{% endif %} </h1>
+		<ul>
+		{% for item in related %}
+			<li>
+				<a href="{{ item.get_absolute_url }}">{{ item }}</a>
+			</li>
+		{% endfor %}
+		</ul>
+		{% endif %}
+
+	{% if edit %}
+		<a href="{% url "edit_product" product.slug %}">edit this product</a>
+	{% endif %}
+{% endblock %}

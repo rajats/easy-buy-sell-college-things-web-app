@@ -1,0 +1,72 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+{% block jumbotron %}
+
+      <div class="jumbotron">
+        <h1>Navbar example</h1>
+        <p>This example is a quick exercise to illustrate how the default, static and fixed to top navbar work. It includes the responsive CSS and HTML, so it also adapts to your viewport and device.</p>
+        <p>To see the difference between static and fixed top navbars, just scroll.</p>
+        <p>
+          <a class="btn btn-lg btn-primary" href="http://getbootstrap.com/components/#navbar" role="button">View navbar docs &raquo;</a>
+        </p>
+      </div>
+
+{% endblock %}
+
+
+<div class="row">
+  {% for product in products %}
+    <div class="col-sm-4" style='text-align: center;'>
+      {% for image in product.productimage_set.all %}
+        {% if image.featured_image %}
+          <a href="{% url "single_product" product.slug %}">
+            <img class="img-responsive" src='{{ MEDIA_URL }}{{ image.image }}' style='max-height:170px; margin: 0 auto;' />
+          </a>
+        {% endif %}
+      {% endfor %}
+      <a href="{% url "single_product" product.slug %}">{{ product }}</a>
+         <!-- single_product needs parameter !-->
+    </div>
+  {% cycle '' '' '</div><hr/><div class="row">' %}
+  {% endfor %}
+</div>
+
+<div class="row">
+  <div class="col-sm-6 col-md-4">
+    <div class="thumbnail">
+      <img src="..." alt="...">
+      <div class="caption">
+        <h3>Thumbnail label</h3>
+        <p>...</p>
+        <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-6 col-md-4">
+    <div class="thumbnail">
+      <img src="..." alt="...">
+      <div class="caption">
+        <h3>Thumbnail label</h3>
+        <p>...</p>
+        <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-6 col-md-4">
+    <div class="thumbnail">
+      <img src="..." alt="...">
+      <div class="caption">
+        <h3>Thumbnail label</h3>
+        <p>...</p>
+        <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+{% endblock %}
+
+

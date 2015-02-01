@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+
+{% block content %}
+	{% load staticfiles %}
+	<div class='row'>
+		<div class='col-sm-4 pull-left'>
+			<h1>{{ product }}
+
+				{% if edit %}
+					<h2><a href="{% url "edit_product" product.slug %}">edit this product</a></h2>
+				{% endif %}
+			</h1>
+			{% for img in images %}
+				<img src="{{ MEDIA_URL }}{{ img.image }}" width='300' />  
+			{% endfor %}
+			<ul>
+				{% for category in categories %}
+					<li>{{ category }}</li>
+				{% endfor %}
+			</ul>
+			{% if related %}
+				<h1>Related Product{% if realted|length > 1 %}s{% endif %} </h1>
+				<ul>
+				{% for item in related %}
+					<li>
+						<a href="{{ item.get_absolute_url }}">{{ item }}</a>
+					</li>
+				{% endfor %}
+				</ul>
+			{% endif %}
+		</div>
+		<div class='col-sm-4 pull-right'>
+
+			<div class="panel panel-default">
+			  <div class="panel-heading">
+			    <h3 class="panel-title">Product :{{ product }}</h3>
+			  </div>
+			  <div class="panel-body">
+			    {{ product.description }}
+			   </br>
+			    {% if product.sale_price > 0 %}
+			    	Price : Rs{{ product.sale_price }}
+			    {% else %}
+			    	Price : Rs{{ product.price }}
+			    {% endif %}
+			    </br>
+			    </br>
+			    {% if not edit %}
+				    {% if in_cart %}
+						in cart<a class='btn btn-success' href='{% url "cart" %}'>View cart</a>
+					{% else %}
+						<a class='btn btn-primary' href='{% url "add_to_cart" product.id %}'>Add to cart</a>
+					{% endif %}
+				{% endif %}
+
+			  </div>
+			</div>
+			{% if edit %}
+				<div class="panel panel-default">
+				  <div class="panel-heading">
+				    <h3 class="panel-title">Actions</h3>
+				  </div>
+				  <div class="panel-body">
+				    {% if edit %}
+						<a class='btn btn-info' href="{% url "edit_product" product.slug %}">edit this product</a>
+						<a class='btn btn-info' href="{% url "manage_product_image" product.slug %}">{{ product }} images</a>
+					{% endif %}
+				  </div>
+				</div>
+			{% endif %}
+		</div>
+	</div>
+{% endblock %}

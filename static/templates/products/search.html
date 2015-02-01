@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block content %}
+	<form action='{% url "search" %}'>
+		<input type='text' name='q'>
+		<input type='submit'>
+	</form>
+	</br>
+	<h3>searched results{{ query }}</h3>
+	<ol>
+		{% for product in products %}
+			<li>
+				{% for image in product.productimage_set.all %}
+					{% if image.featured_image %}
+						<img src='{{ MEDIA_URL }}{{ image.image }}' width='300' />
+					{% endif %}
+				{% endfor %}
+				<a href="{{ product.get_absolute_url }}">{{ product }}</a>
+			</li>     <!-- single_product needs parameter !-->
+		{% endfor %}
+	</ol>
+{% endblock %}
