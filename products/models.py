@@ -25,7 +25,7 @@ class Product(models.Model):
 	order = models.IntegerField(default=0)
 	active = models.BooleanField(default=True)
 	ownercollege = models.CharField(max_length=50)
-	ownerphone = models.IntegerField(default=0)
+	ownerphone = models.IntegerField(default=9)
 
 	def __unicode__(self):
 		return str(self.title)
@@ -67,7 +67,12 @@ class Category(models.Model):
 		verbose_name = "category"
 		verbose_name_plural = "categories"
 
-
+class ProductReview(models.Model):
+	product = models.ForeignKey(Product)
+	title = models.CharField(max_length=200, null=True, blank=True) 
+	review = models.CharField(max_length=1000, null=True, blank=True)
+	stars = models.IntegerField(default=1)
+	upvote = models.IntegerField(default = 0)
 
 
 
