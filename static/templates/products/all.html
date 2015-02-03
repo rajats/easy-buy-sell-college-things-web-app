@@ -25,15 +25,21 @@
 <div class="row">
 	{% for product in products %}
 		<div class="col-sm-4" style='text-align: center;'>
-			{% for image in product.productimage_set.all %}
-				{% if image.featured_image %}
-					<a href="{% url "single_product" product.slug %}">
-						<img class="img-responsive" src='{{ MEDIA_URL }}{{ image.image }}' style='max-height:170px; margin: 0 auto;' />
-					</a>
-				{% endif %}
-			{% endfor %}
-			<a href="{% url "single_product" product.slug %}">{{ product }}</a>
-		     <!-- single_product needs parameter !-->
+			<div class="thumbnail">
+				{% for image in product.productimage_set.all %}
+					{% if image.featured_image %}
+							<a href="{% url "single_product" product.slug %}">
+								<img class="img-responsive" src='{{ MEDIA_URL }}{{ image.image }}' style='max-height:170px; margin: 0 auto;' />
+							</a>
+					{% endif %}
+				{% endfor %}
+		     	<!-- single_product needs parameter !-->
+		     	<div class="caption">
+			        <h3>{{ product }}</h3>
+			        <p><a href="{% url "single_product" product.slug %}" class="btn btn-primary" role="button">View Product</a> 
+			        </p>
+		      	</div>
+			</div>
 		</div>
 	{% cycle '' '' '</div><hr/><div class="row">' %}
 	{% endfor %}
