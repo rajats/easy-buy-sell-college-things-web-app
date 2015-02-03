@@ -19,13 +19,13 @@ class Product(models.Model):
 														  #but if seller student is adding it can be null
 	title = models.CharField(max_length=200)
 	description = models.CharField(max_length=500)
-	price = models.DecimalField(max_digits=5, decimal_places=2)
-	sale_price = models.DecimalField(max_digits=5, decimal_places=2, null=True, blank=False)
+	price = models.DecimalField(max_digits=10, decimal_places=2)
+	sale_price = models.DecimalField(max_digits=10, decimal_places=2, null=True, blank=False)
 	slug = models.SlugField()
 	order = models.IntegerField(default=0)
 	active = models.BooleanField(default=True)
 	ownercollege = models.CharField(max_length=50)
-	ownerphone = models.IntegerField(default=9)
+	ownerphone = models.CharField(max_length=10)
 
 	def __unicode__(self):
 		return str(self.title)
