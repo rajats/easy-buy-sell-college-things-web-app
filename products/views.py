@@ -131,7 +131,9 @@ def search(request):
 	'''
 	return render_to_response("products/search.html", locals(), context_instance=RequestContext(request))
 
-
+def user_products(request):
+	products = Product.objects.filter(user = request.user)
+	return render_to_response("products/all.html", locals(), context_instance=RequestContext(request))
 
 
 

@@ -5,11 +5,11 @@
 {% block jumbotron %}
 
       <div class="jumbotron">
-        <h1>Navbar example</h1>
-        <p>This example is a quick exercise to illustrate how the default, static and fixed to top navbar work. It includes the responsive CSS and HTML, so it also adapts to your viewport and device.</p>
-        <p>To see the difference between static and fixed top navbars, just scroll.</p>
-        <p>
-          <a class="btn btn-lg btn-primary" href="http://getbootstrap.com/components/#navbar" role="button">View navbar docs &raquo;</a>
+        <h1>Easy Buy or Sell anything</h1>
+        <p>This site is for collge students to buy/sell their college related things(it can be anything from study related things such as books to non academic things like laptops, camera etc)</p>
+        <p>Finding Buyers can never have been so easy...!!</p>
+        <p>Just one click login to sell your products</p>
+          <a class="btn btn-lg btn-primary" href='{% url "login" %}' role="button">Login now &raquo;</a>
         </p>
       </div>
 
@@ -32,7 +32,9 @@
   {% cycle '' '' '</div><hr/><div class="row">' %}
   {% endfor %}
 </div>
-
+<p><h1>Top seller goes here</h1></p>
+</br>
+<p><h1>Most Bought products goes here</h1></p>
 
 
 

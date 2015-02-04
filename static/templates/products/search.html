@@ -1,11 +1,7 @@
 {% extends "base.html" %}
 {% block content %}
-	<form action='{% url "search" %}'>
-		<input type='text' name='q'>
-		<input type='submit'>
-	</form>
 	</br>
-	<h3>searched results{{ query }}</h3>
+	<h3><p>searched results for</p> {{ query }}</h3>
 	<ol>
 		{% for product in products %}
 			<li>
@@ -14,7 +10,9 @@
 						<img src='{{ MEDIA_URL }}{{ image.image }}' width='300' />
 					{% endif %}
 				{% endfor %}
-				<a href="{{ product.get_absolute_url }}">{{ product }}</a>
+			</br>
+				<h3>{{ product }}</h3>
+				<p><a href="{{ product.get_absolute_url }}" class="btn btn-primary" role="button">View Product</a> 
 			</li>     <!-- single_product needs parameter !-->
 		{% endfor %}
 	</ol>
