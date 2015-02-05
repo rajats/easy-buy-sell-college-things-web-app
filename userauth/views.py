@@ -16,7 +16,7 @@ def signin(request):
 		user = authenticate(username = username, password = password)
 		if user is not None:
 			login(request, user)
-			#return HttpResponseRedirect('after login')
+			return HttpResponseRedirect('/products/')
 		else:
 			return HttpResponseRedirect('/userauth/register/')
 	context = {'form': form}
@@ -37,5 +37,6 @@ def register(request):
 
 def signout(request):
 	logout(request)
+	messages.success(request,"You have logged out")
 	return HttpResponseRedirect('/userauth/login/')
 
