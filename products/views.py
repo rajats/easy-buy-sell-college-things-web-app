@@ -19,6 +19,9 @@ def check_product(user, product):
 
 def list_all(request):
 	products = Product.objects.filter(active=True)
+	if request.user.is_authenticated():
+		products = Product.objects.filter(active=True).filter(~Q(user = request.user))
+
 	context={
 		"products":products,                
 	}
