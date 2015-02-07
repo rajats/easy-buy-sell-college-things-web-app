@@ -6,18 +6,19 @@
 	{{ formset.management_form }}
 	<table>
 		<thead>
-			<th>image</th><th>change image</th><th>Featured Image?</th><th style='text-align:right; width=200px;'>Delete image</th>
+			<th>image</th><th>change image</th><th>Featured Image?</th><th> </th><th> </th><th>Image Title</th>
 		</thead>
 		{% for form in formset %}
 			<tr>
-				if form.instance.image:
 					<td><h2>{{ form.instance.title }} </h2><img src="{{ MEDIA_URL }}{{ form.instance.image }}" width='200'/></td> 
 					{% for field in form %}
-						<td>{{ field }} </td>
+						<td>{{ field }} <td>  </td></td>
 					{% endfor %}
 			</tr>
 		{% endfor %}
-		<tfoot><td><input type='submit' value='Save edit' /></td></tfoot>
+		<hr>
+		<tfoot><td><input type='submit' value='Save' /></td></tfoot>
+		<a class='btn btn-info' href="{% url "manage_product_image" product.slug %}">Add more images</a>
 	</table>
 </form>
 {% endblock %}

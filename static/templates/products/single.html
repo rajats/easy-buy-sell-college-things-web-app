@@ -11,7 +11,10 @@
 				{% endif %}
 			</h1>
 			{% for img in images %}
-				<img src="{{ MEDIA_URL }}{{ img.image }}" width='300' />  
+				{% if img.title %}
+					<img src="{{ MEDIA_URL }}{{ img.image }}" width='300' />  
+					<hr>
+				{% endif %}
 			{% endfor %}
 			<ul>
 				{% for category in categories %}

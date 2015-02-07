@@ -70,12 +70,12 @@ def add_product(request):
 	if request.user.is_authenticated():
 		form = ProductForm(request.POST or None)
 		if form.is_valid():
-			product_edit = form.save(commit=False)
+			product = form.save(commit=False)
 			product.user = request.user
-			product.active = False
+			product.active = True
 			product.slug = slugify(form.cleaned_data['title'])   #automatically creates slug using title
-			product_edit.save()
-			return HttpResponseRedirect('/products/%s' %(product.slug))
+			product.save()
+			return HttpResponseRedirect('/products/%s/images/' %(product.slug))
 		return render_to_response("products/edit.html", locals(), context_instance=RequestContext(request))
 	else:
 		raise Http404
@@ -87,14 +87,14 @@ def manage_product_image(request, slug):
 		product = False
 	if request.user == product.user:
 		queryset = ProductImage.objects.filter(product__slug=slug)
-		ProductImageFormset = modelformset_factory(ProductImage, form = ProductImageForm, can_delete = True)
+		ProductImageFormset = modelformset_factory(ProductImage, form = ProductImageForm,)  # can_delete = True
 		formset = ProductImageFormset(request.POST or None, request.FILES or None,queryset = queryset)   #depending on foreignkey
 		form = ProductImageForm(request.POST or None)
 		if formset.is_valid():
 			for form in formset:
 				instance = form.save(commit = False)
+				instance.product = product
 				instance.save();
-				#instance.product = product
 			if formset.deleted_forms:
 				formset.save()
 		return render_to_response("products/manage_images.html", locals(), context_instance=RequestContext(request))

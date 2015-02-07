@@ -64,6 +64,8 @@
       </li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
+            <li><a href='{% url "add_product" %}'>Sell Product</a></li>
+            <li><a href='{% url "user_products" %}'>My Products</a></li>
             <li><a href='{% url "cart" %}'><img src="{{ STATIC_URL }}images/cart.png" width="20" height="20">View Cart</a></li>
             {% if user.is_authenticated %}
 			       <li class="dropdown">

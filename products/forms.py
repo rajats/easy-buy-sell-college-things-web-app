@@ -9,5 +9,5 @@ class ProductForm(ModelForm):
 class ProductImageForm(ModelForm):
 	class Meta:
 		model = ProductImage
-		fields = ('image', 'featured_image')
+		fields = ('image', 'featured_image', 'title')
 
