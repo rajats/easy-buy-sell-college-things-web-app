@@ -3,16 +3,19 @@ from django.contrib import admin
 admin.autodiscover()
 
 # Register your models here.
-from .models import Product, Category, ProductImage
+from .models import Product, Category, ProductImage, ProductComment
 
 
 class ProductImageInline(admin.TabularInline):    #so that u can add evrything related to product at one place
 	model = ProductImage
 
+class ProductCommentInline(admin.TabularInline):    #so that u can add evrything related to product at one place
+	model = ProductComment
+
 
 class ProductAdmin(admin.ModelAdmin):
 	list_display = ('__unicode__','description','current_price','order', 'categories', 'live_link')
-	inlines = [ProductImageInline]      #so that u can add evrything related to product at one place
+	inlines = [ProductImageInline, ProductCommentInline]      #so that u can add evrything related to product at one place
 	search_fields = ['title', 'description','price', 'category__title']    #you can search product by their these fileds
 	list_filter = ['price', 'sale_price']        #these will appear as box in right
 

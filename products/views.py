@@ -6,8 +6,10 @@ from django.template.defaultfilters import slugify
 from django.forms.models import modelformset_factory
 from django.core.urlresolvers import reverse
 from django.db.models import Q
-from .models import Product, Category, ProductImage
-from .forms import ProductForm, ProductImageForm
+from django.utils import timezone
+from django.contrib import messages    
+from .models import Product, Category, ProductImage, ProductComment
+from .forms import ProductForm, ProductImageForm, ProductCommentForm, UnRegUserProductCommentForm
 from cart.models import Cart
 # Create your views here.
 
@@ -138,5 +140,22 @@ def user_products(request):
 	products = Product.objects.filter(user = request.user)
 	return render_to_response("products/all.html", locals(), context_instance=RequestContext(request))
 
-
+def add_comment(request, slug):
+    prod=Product.objects.get(slug=slug)    
+    if request.method=='POST':
+        cform=ProductCommentForm(request.POST)         #create commentform using POST
+        if cform.is_valid():
+            c=cform.save(commit=False)          #save form but dont push it to database,this returns instance of comment in c
+            c.pub_date=timezone.now()       #setting pub_date for comment using current time of server
+            c.product=prod   
+            c.commenter = request.user                 
+            c.save()
+            messages.success(request, "your comment was added")     
+            return HttpResponseRedirect('/products/%s/' %(prod.slug)) 
+    else:
+    	if request.user.is_authenticated():
+        	cform=ProductCommentForm()
+        else:
+        	cform=UnRegUserProductCommentForm()                
+    return render_to_response("products/add_comment.html", locals(), context_instance=RequestContext(request))
 

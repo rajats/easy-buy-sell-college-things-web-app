@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 from django.conf import settings
 from django.core.urlresolvers import reverse
 from django.core.files.storage import FileSystemStorage
+from django.core.validators import MinValueValidator, MaxValueValidator
 from PIL import Image
 
 
@@ -67,12 +68,11 @@ class Category(models.Model):
 		verbose_name = "category"
 		verbose_name_plural = "categories"
 
-class ProductReview(models.Model):
+class ProductComment(models.Model):
 	product = models.ForeignKey(Product)
-	title = models.CharField(max_length=200, null=True, blank=True) 
-	review = models.CharField(max_length=1000, null=True, blank=True)
-	stars = models.IntegerField(default=1)
-	upvote = models.IntegerField(default = 0)
+	commenter = models.CharField(max_length=50, default='')
+	comment = models.TextField(max_length=1000, null=True, blank=True)
+	pub_date = models.DateTimeField('date published')
 
 
 

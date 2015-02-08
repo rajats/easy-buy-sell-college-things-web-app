@@ -73,4 +73,12 @@
 			{% endif %}
 		</div>
 	</div>
+	<div class="row">
+		<h2>Comments</h2>
+        {% for comment in product.productcomment_set.all %}    <!--article.comment_set.all returnslist of comment associated with article, artcile.comment is used since there is artile comment relationship!-->
+            <p>{{ comment.commenter }} : {{ comment.comment }}</p>  
+            <hr>   
+        {% endfor %}
+        <p><a href="/products/{{ product.slug }}/addcomment" class="btn btn-primary">Add comment</a></p>
+	</div>
 {% endblock %}
