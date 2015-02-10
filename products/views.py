@@ -34,7 +34,7 @@ def single(request, slug):
 	product = Product.objects.get(slug=slug)
 	images = ProductImage.objects.filter(product=product)
 	categories = product.category_set.all()
-	page_view.send(request.user, page_path = request.get_full_path(),primary_obj = product, secondary_obj=None)
+	page_view.send(request.user, page_path = request.get_full_path(),primary_obj = product)
 	#print request.user.userpurchase.products.all()
 	categories = product.category_set.all()
 	if request.user == product.user:

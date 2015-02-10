@@ -5,7 +5,21 @@ from django.core.urlresolvers import reverse
 from django.db import models
 from django.utils import timezone
 
+from products.models import Product
 from .signals import page_view
+
+
+class PageViewQuerySet(models.query.QuerySet):
+	def products(self):
+		content_type = ContentType.objects.get_for_model(Product)
+		return self.filter(primary_content_type=content_type)
+
+class PageViewManager(models.Manager):
+	def get_queryset(self):
+		return PageViewQuerySet(self.model, using=self._db)
+
+	def get_products(self):
+		return self.get_queryset().products()
 
 class PageView(models.Model):
 	path = models.CharField(max_length=350)
@@ -15,23 +29,21 @@ class PageView(models.Model):
 	primary_object_id = models.PositiveIntegerField(null=True, blank=True)
 	primary_object = generic.GenericForeignKey("primary_content_type", "primary_object_id")
 
-	secondary_content_type = models.ForeignKey(ContentType, related_name='secondary_obj',\
-								null=True, blank=True)
-	secondary_object_id = models.PositiveIntegerField(null=True, blank=True)
-	secondary_object = generic.GenericForeignKey("secondary_content_type", "secondary_object_id")
-
 	timestamp = models.DateTimeField(default=timezone.now())
+
+	objects = PageViewManager()
 
 	def __unicode__(self):
 		return self.path
+
+	class Meta:
+		ordering = ['-timestamp']
 
 
 def page_view_received(sender, **kwargs):
 	kwargs.pop('signal', None)
 	page_path = kwargs.pop('page_path')
 	primary_obj = kwargs.pop('primary_obj', None)
-	secondary_obj = kwargs.pop('secondary_obj', None)
-	print secondary_obj
 	user = sender
 	if not user.is_authenticated():
 		new_page_view = PageView.objects.create(path=page_path, timestamp=timezone.now())
@@ -41,11 +53,5 @@ def page_view_received(sender, **kwargs):
 		new_page_view.primary_object_id = primary_obj.id
 		new_page_view.primary_content_type = ContentType.objects.get_for_model(primary_obj)
 		new_page_view.save()
-	if secondary_obj:
-		new_page_view.secondary_object_id = secondary_obj.id
-		new_page_view.secondary_content_type = ContentType.objects.get_for_model(secondary_obj)
-		new_page_view.save()
-
-
 
 page_view.connect(page_view_received)
