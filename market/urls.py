@@ -11,6 +11,7 @@ urlpatterns = patterns('',
     # url(r'^blog/', include('blog.urls')),
     #without regular expression you cant use css,javascript..
     url(r'^$','market.views.home', name="home"),           #this home page url
+    url(r'^recent/','market.views.morerecents', name="morerecents"),
     url(r'^lib/','profiles.views.library', name="library"),
     (r'^products/', include('products.urls')),
     (r'^cart/', include('cart.urls')),
