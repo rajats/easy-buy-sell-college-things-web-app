@@ -18,7 +18,7 @@ class ProductAdmin(admin.ModelAdmin):
 	inlines = [ProductImageInline, ProductCommentInline]      #so that u can add evrything related to product at one place
 	search_fields = ['title', 'description','price', 'category__title']    #you can search product by their these fileds
 	list_filter = ['price', 'sale_price']        #these will appear as box in right
-
+	
 	prepopulated_fields = {"slug":('title',)}          #it will prepopulate slug with text given in title
 	readonly_fields=['categories', 'live_link']
 	class Meta:

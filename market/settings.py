@@ -41,6 +41,7 @@ INSTALLED_APPS = (
     'products',
     'profiles',
     'cart',
+    'analysis',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -63,7 +64,7 @@ WSGI_APPLICATION = 'market.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',                                                                                                                                                                       
-        'NAME': 'easybuydb',
+        'NAME': 'ebuydb',
         'USER': 'rajat',                      # Not used with sqlite3.
         'PASSWORD': 'rajat711',                  # Not used with sqlite3.
         'HOST': '',                      # Set to empty string for localhost. Not used with sqlite3.

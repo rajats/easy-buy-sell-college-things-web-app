@@ -11,6 +11,7 @@ from django.contrib import messages
 from .models import Product, Category, ProductImage, ProductComment
 from .forms import ProductForm, ProductImageForm, ProductCommentForm, UnRegUserProductCommentForm
 from cart.models import Cart
+from analysis.signals import page_view
 # Create your views here.
 
 def check_product(user, product):
@@ -32,7 +33,8 @@ def list_all(request):
 def single(request, slug):
 	product = Product.objects.get(slug=slug)
 	images = ProductImage.objects.filter(product=product)
-
+	categories = product.category_set.all()
+	page_view.send(request.user, page_path = request.get_full_path(),primary_obj = product, secondary_obj=None)
 	#print request.user.userpurchase.products.all()
 	categories = product.category_set.all()
 	if request.user == product.user:
