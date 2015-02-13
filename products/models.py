@@ -72,7 +72,7 @@ class ProductComment(models.Model):
 	product = models.ForeignKey(Product)
 	commenter = models.CharField(max_length=50, default='')
 	comment = models.TextField(max_length=1000, null=True, blank=True)
-	pub_date = models.DateTimeField('date published')
+	pub_date = models.DateTimeField('published date')
 
 
 
