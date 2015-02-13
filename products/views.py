@@ -2,16 +2,20 @@ from itertools import chain
 
 from django.shortcuts import render_to_response, RequestContext, Http404,HttpResponseRedirect
 from django.contrib.auth.models import User
+from django.contrib.contenttypes.models import ContentType
 from django.template.defaultfilters import slugify
 from django.forms.models import modelformset_factory
 from django.core.urlresolvers import reverse
-from django.db.models import Q
+from django.db.models import Q 
 from django.utils import timezone
 from django.contrib import messages    
 from .models import Product, Category, ProductImage, ProductComment
 from .forms import ProductForm, ProductImageForm, ProductCommentForm, UnRegUserProductCommentForm
 from cart.models import Cart
 from analysis.signals import page_view
+from analysis.models import PageView
+from notifications.signals import notify
+
 # Create your views here.
 
 def check_product(user, product):
@@ -152,7 +156,11 @@ def add_comment(request, slug):
             c.product=prod   
             c.commenter = request.user                 
             c.save()
-            messages.success(request, "your comment was added")     
+            messages.success(request, "your comment was added")
+            if request.user:  
+            	notify.send(request.user, receiver_user=prod.user, action='responded to user')  
+            else: 
+            	notify.send('Anonymous User', receiver_user=prod.user, action='responded to user') 
             return HttpResponseRedirect('/products/%s/' %(prod.slug)) 
     else:
     	if request.user.is_authenticated():
