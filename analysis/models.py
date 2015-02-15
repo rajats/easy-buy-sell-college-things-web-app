@@ -1,6 +1,7 @@
 from django.conf import settings
 from django.contrib.contenttypes import generic
 from django.contrib.contenttypes.models import ContentType
+from django.contrib.auth.models import User
 from django.core.urlresolvers import reverse
 from django.db import models
 from django.utils import timezone
@@ -23,7 +24,8 @@ class PageViewManager(models.Manager):
 
 class PageView(models.Model):
 	path = models.CharField(max_length=350)
-	user = models.ForeignKey(settings.AUTH_USER_MODEL, null=True, blank=True)
+	#user = models.ForeignKey(settings.AUTH_USER_MODEL, null=True, blank=True)
+	user = models.ForeignKey(User, null=True, blank=True)
 	primary_content_type = models.ForeignKey(ContentType, related_name='primary_obj',\
 											null=True, blank=True)
 	primary_object_id = models.PositiveIntegerField(null=True, blank=True)

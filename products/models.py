@@ -74,6 +74,10 @@ class ProductComment(models.Model):
 	comment = models.TextField(max_length=1000, null=True, blank=True)
 	pub_date = models.DateTimeField('published date')
 
+	def __unicode__(self):
+		return str(self.comment)
+
+
 
 
 

@@ -9,8 +9,13 @@
         <p>This site is for collge students to buy/sell their college related things(it can be anything from study related things such as books to non academic things like laptops, camera etc)</p>
         <p>Finding Buyers can never have been so easy...!!</p>
         <p>Just one click login to sell your products</p>
-          <a class="btn btn-lg btn-primary" href='{% url "login" %}' role="button">Login now &raquo;</a>
         </p>
+        {% if not user.is_authenticated %}
+          <p>
+              <a class="btn btn-lg btn-primary" href='{% url "login" %}' role="button">Login now &raquo;</a>
+          
+          </p>
+        {% endif %}
       </div>
 
 {% endblock %}
@@ -32,6 +37,36 @@
   {% cycle '' '' '</div><hr/><div class="row">' %}
   {% endfor %}
 </div>
+
+
+<p><h1>Top Popular Products</h1></p>
+
+<div class="row">
+  {% if popular_products %}
+  {% for product in popular_products %}
+    <div class="col-sm-4" style='text-align: center;'>
+      <div class="thumbnail">
+        {% for image in product.productimage_set.all %}
+          {% if image.featured_image %}
+              <a href="{% url "single_product" product.slug %}">
+                <img class="img-responsive" src='{{ MEDIA_URL }}{{ image.image }}' style='max-height:170px; margin: 0 auto;' />
+              </a>
+          {% endif %}
+        {% endfor %}
+          <!-- single_product needs parameter !-->
+          <div class="caption">
+              <h3>{{ product }}</h3>
+              <p><a href="{% url "single_product" product.slug %}" class="btn btn-primary" role="button">View Product</a> 
+              </p>
+            </div>
+      </div>
+    </div>
+  {% cycle '' '' '</div><hr/><div class="row">' %}
+  {% endfor %}
+  {% endif %}
+</div>
+
+<br>
 <p><h1>Recently Viewed Products</h1></p>
 
 <div class="row">

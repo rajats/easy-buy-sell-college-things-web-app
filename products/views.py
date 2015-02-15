@@ -126,20 +126,6 @@ def search(request):
     )
     products = list(chain(products_set, category_set))
 
-    '''
-    if q:
-        query = "seached for %s we got :" %(q)
-        k = q.split()
-        if len(k) >= 2:
-            products = []
-            for item in k:
-                all_products = Product.objects.filter(title__icontains = item)
-                for product in all_products:
-                    if product not in products:
-                        products.append(product)
-        else:
-            products = Product.objects.filter(title__icontains = q)
-    '''
     return render_to_response("products/search.html", locals(), context_instance=RequestContext(request))
 
 def user_products(request):
@@ -159,7 +145,10 @@ def add_comment(request, slug):
             #c.save()
             new_comment = ProductComment.objects.create(product=prod,commenter=request.user,comment=comment_text,pub_date=timezone.now())
             messages.success(request, "your comment was added")
-            notify.send(request.user, action=new_comment, target = prod, receiver_user=prod.user, msg='commented on your product')
+            #if request.user == prod.user:
+            #    notify.send('You', action=new_comment, target = prod, receiver_user=prod.user, msg='commented on')
+            #else:
+            notify.send(request.user, action=new_comment, target = prod, receiver_user=prod.user, msg='commented on')
 
 
 

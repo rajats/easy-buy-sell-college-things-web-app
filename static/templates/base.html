@@ -7,6 +7,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="icon" href="{{ STATIC_URL }}images/favicon.ico">
+    <script src="{{ STATIC_URL }}js/jquery-1.11.1.min.js"></script>
 
     <title>Hassle free buying and selling</title>
 
@@ -38,6 +39,7 @@
     <!-- Static navbar -->
     <nav class="navbar navbar-default navbar-static-top">
       <div class="container">
+
         <div class="navbar-header">
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
             <span class="sr-only">Toggle navigation</span>
@@ -68,6 +70,7 @@
             {% if user.is_authenticated %}
               <li><a href='{% url "add_product" %}'>Sell Product</a></li>
               <li><a href='{% url "user_products" %}'>My Products</a></li>
+              <li><a class='notification-toggle' href="#">Notifications</a></li>
 			       <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Account <span class="caret"></span></a>
               <ul class="dropdown-menu" role="menu">
@@ -106,6 +109,9 @@
     </div> 
 
     <div class="container">
+        <div id='notificationsLoader'>
+
+        </div>
 		    {% block content %}
 
 			{% endblock %}
@@ -118,5 +124,41 @@
     <script src="{{ STATIC_URL }}js/bootstrap.min.js"></script>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src="http://getbootstrap.com/assets/js/ie10-viewport-bug-workaround.js"></script>
+
+
+
+
+    <script>
+    $(document).ready(function(){
+      $(".notification-toggle").click(function(e){
+        e.preventDefault();
+        $.ajax({                                         //this is how ajax call is done
+          type: "POST",                                  //method that we want to use
+          url: "{% url 'get_notifications_using_ajax' %}",
+          data: {                                         //additional data
+            csrfmiddlewaretoken: "{{ csrf_token }}",       
+          },
+          success: function(data){
+            $("#notificationsLoader").html('<h3>Notifications</h3>');
+            var count = data.count                           //data.count refers to count from view (get_notification_ajax)
+            console.log(count)
+            $(data.notifications).each(function(){                 //this is same as for each loop for data.notifications elements 
+              $("#notificationsLoader").append(this + "<br/>")    
+            })
+            console.log(data.notifications);                  //data.notifications refers to notification from view (get_notification_ajax)
+          },
+          error: function(rs, e) {                            //response and event
+            console.log(rs);
+            console.log(e);
+          }
+        })
+      })
+    })
+    </script>
+
+
+
+
+
   </body>
 </html>
