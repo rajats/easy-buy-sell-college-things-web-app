@@ -24,7 +24,6 @@ class PageViewManager(models.Manager):
 
 class PageView(models.Model):
 	path = models.CharField(max_length=350)
-	#user = models.ForeignKey(settings.AUTH_USER_MODEL, null=True, blank=True)
 	user = models.ForeignKey(User, null=True, blank=True)
 	primary_content_type = models.ForeignKey(ContentType, related_name='primary_obj',\
 											null=True, blank=True)

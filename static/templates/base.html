@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" href="{{ STATIC_URL }}images/favicon.ico">
+    <link rel="icon" href="{{ STATIC_URL }}images/sitelogo.png">
     <script src="{{ STATIC_URL }}js/jquery-1.11.1.min.js"></script>
 
     <title>Hassle free buying and selling</title>
@@ -47,7 +47,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" >College Students' E-commerce</a>
+          <!--<a class="navbar-brand" >College Students' E-commerce</a> -->
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
@@ -70,7 +70,7 @@
             {% if user.is_authenticated %}
               <li><a href='{% url "add_product" %}'>Sell Product</a></li>
               <li><a href='{% url "user_products" %}'>My Products</a></li>
-              <li><a class='notification-toggle' href="#">Notifications</a></li>
+              <li><a class='notification-toggle' href="#"><img src="{{ STATIC_URL }}images/notify.png" width="20" height="20">Notifications</a></li>
 			       <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Account <span class="caret"></span></a>
               <ul class="dropdown-menu" role="menu">

@@ -67,33 +67,62 @@
 </div>
 
 <br>
-<p><h1>Recently Viewed Products</h1></p>
+{% if user.is_authenticated %}
+  <p><h1>You Recently Viewed</h1></p>
 
-<div class="row">
-  {% if unique_recent_products_obj %}
-  {% for product in unique_recent_products_obj %}
-    <div class="col-sm-4" style='text-align: center;'>
-      <div class="thumbnail">
-        {% for image in product.productimage_set.all %}
-          {% if image.featured_image %}
-              <a href="{% url "single_product" product.slug %}">
-                <img class="img-responsive" src='{{ MEDIA_URL }}{{ image.image }}' style='max-height:170px; margin: 0 auto;' />
-              </a>
-          {% endif %}
-        {% endfor %}
-          <!-- single_product needs parameter !-->
-          <div class="caption">
-              <h3>{{ product }}</h3>
-              <p><a href="{% url "single_product" product.slug %}" class="btn btn-primary" role="button">View Product</a> 
-              </p>
-            </div>
+  <div class="row">
+    {% if unique_recent_products_obj %}
+    {% for product in unique_recent_products_obj %}
+      <div class="col-sm-4" style='text-align: center;'>
+        <div class="thumbnail">
+          {% for image in product.productimage_set.all %}
+            {% if image.featured_image %}
+                <a href="{% url "single_product" product.slug %}">
+                  <img class="img-responsive" src='{{ MEDIA_URL }}{{ image.image }}' style='max-height:170px; margin: 0 auto;' />
+                </a>
+            {% endif %}
+          {% endfor %}
+            <!-- single_product needs parameter !-->
+            <div class="caption">
+                <h3>{{ product }}</h3>
+                <p><a href="{% url "single_product" product.slug %}" class="btn btn-primary" role="button">View Product</a> 
+                </p>
+              </div>
+        </div>
       </div>
-    </div>
-  {% cycle '' '' '</div><hr/><div class="row">' %}
-  {% endfor %}
-  {% endif %}
-</div>
-<a class="btn btn-primary pull-right" href='{% url "morerecents" %}'>View more</a>
+    {% cycle '' '' '</div><hr/><div class="row">' %}
+    {% endfor %}
+    {% endif %}
+  </div>
+  <a class="btn btn-primary pull-right" href='{% url "morerecents" %}'>View more</a>
+{% else %}
+  <p><h1>Recently searched products</h1></p>
 
+  <div class="row">
+    {% if unique_recent_products_obj %}
+    {% for product in unique_recent_products_obj %}
+      <div class="col-sm-4" style='text-align: center;'>
+        <div class="thumbnail">
+          {% for image in product.productimage_set.all %}
+            {% if image.featured_image %}
+                <a href="{% url "single_product" product.slug %}">
+                  <img class="img-responsive" src='{{ MEDIA_URL }}{{ image.image }}' style='max-height:170px; margin: 0 auto;' />
+                </a>
+            {% endif %}
+          {% endfor %}
+            <!-- single_product needs parameter !-->
+            <div class="caption">
+                <h3>{{ product }}</h3>
+                <p><a href="{% url "single_product" product.slug %}" class="btn btn-primary" role="button">View Product</a> 
+                </p>
+              </div>
+        </div>
+      </div>
+    {% cycle '' '' '</div><hr/><div class="row">' %}
+    {% endfor %}
+    {% endif %}
+  </div>
+  <a class="btn btn-primary pull-right" href='{% url "morerecents" %}'>View more</a>
+{% endif %}
 {% endblock %}
 

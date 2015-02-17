@@ -15,6 +15,13 @@ def home(request):
 		for obj in all_recent_product_obj:
 			if not obj.primary_object in unique_recent_products_obj:
 				unique_recent_products_obj.append(obj.primary_object)
+	else:
+		all_recent_product_obj = PageView.objects.get_products()[:3]
+		unique_recent_products_obj = []
+		for obj in all_recent_product_obj:
+			if not obj.primary_object in unique_recent_products_obj:
+				unique_recent_products_obj.append(obj.primary_object)
+
 
 	product_type = ContentType.objects.get_for_model(Product)
 	popular_products_list = PageView.objects.filter(primary_content_type=product_type)\
@@ -30,9 +37,16 @@ def home(request):
 	return render_to_response("home.html", locals(), context_instance=RequestContext(request))
 
 def morerecents(request):
-	all_recent_product_obj = request.user.pageview_set.get_products()[:10]
-	unique_recent_products_obj = []
-	for obj in all_recent_product_obj:
-		if not obj.primary_object in unique_recent_products_obj:
-			unique_recent_products_obj.append(obj.primary_object)
+	if request.user.is_authenticated():
+		all_recent_product_obj = request.user.pageview_set.get_products()[:10]
+		unique_recent_products_obj = []
+		for obj in all_recent_product_obj:
+			if not obj.primary_object in unique_recent_products_obj:
+				unique_recent_products_obj.append(obj.primary_object)
+	else:
+		all_recent_product_obj = PageView.objects.get_products()[:10]
+		unique_recent_products_obj = []
+		for obj in all_recent_product_obj:
+			if not obj.primary_object in unique_recent_products_obj:
+				unique_recent_products_obj.append(obj.primary_object)
 	return render_to_response("allrecents.html", locals(), context_instance=RequestContext(request))
