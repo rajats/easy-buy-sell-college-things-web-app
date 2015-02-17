@@ -80,8 +80,6 @@
             </li>
 
 
-
-
 			       <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Account <span class="caret"></span></a>
               <ul class="dropdown-menu" role="menu">
@@ -150,13 +148,34 @@
             csrfmiddlewaretoken: "{{ csrf_token }}",       
           },
           success: function(data){
-            $("#notification_dropdown").html('');
-            var count = data.count                           //data.count refers to count from view (get_notification_ajax)
-            console.log(count)
-            $(data.notifications).each(function(){                 //this is same as for each loop for data.notifications elements 
-              $("#notification_dropdown").append("<li>"+this+"<hr/>"+"</li>")    
-            })
-            console.log(data.notifications);                  //data.notifications refers to notification from view (get_notification_ajax)
+            console.log(data.count)
+            if(data.count==0)
+              $("#notification_dropdown").html('<div><a href="{% url 'notifications_all' %}">View all notifications</a></div>');
+            else
+              $("#notification_dropdown").html('<div id="mark-all"><a href="#">Mark all as read</a></div>');
+
+            $("#mark-all").click(function(e){
+              e.preventDefault();
+              $.ajax({                                         //this is how ajax call is done
+                  type: "POST",                                  //method that we want to use
+                  url: "{% url 'mark_all_as_read' %}",
+                  data: {                                         //additional data
+                    csrfmiddlewaretoken: "{{ csrf_token }}",       
+                  },
+                  success: function(data){
+                  
+                  },
+                  error: function(rs, e) {                            //response and event
+                    console.log(rs);
+                    console.log(e);
+                  }
+                }) 
+              })
+                                        //data.count refers to count from view (get_notification_ajax)
+              $(data.notifications).each(function(){                 //this is same as for each loop for data.notifications elements 
+                $("#notification_dropdown").append("<li>"+this+"<hr/>"+"</li>")    
+              })
+              console.log(data.notifications);                  //data.notifications refers to notification from view (get_notification_ajax)
           },
           error: function(rs, e) {                            //response and event
             console.log(rs);
@@ -166,10 +185,6 @@
       })
     })
     </script>
-
-
-
-
 
   </body>
 </html>
