@@ -41,11 +41,12 @@
 			  <div class="panel-body">
 			    {{ product.description }}
 			   </br>
-			    {% if product.sale_price > 0 %}
-			    	Price : Rs{{ product.sale_price }}
-			    {% else %}
-			    	Price : Rs{{ product.price }}
-			    {% endif %}
+			   <p>Year of purchase:{{ product.yearofpurchase }}</p>
+			   </br>
+			   	ActualPrice: Rs{{ product.price }}
+			   	</br>
+			    SalePrice : Rs{{ product.sale_price }}
+
 			    </br>
 			    </br>
 			    {% if not edit %}
