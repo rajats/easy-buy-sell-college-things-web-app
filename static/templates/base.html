@@ -70,7 +70,18 @@
             {% if user.is_authenticated %}
               <li><a href='{% url "add_product" %}'>Sell Product</a></li>
               <li><a href='{% url "user_products" %}'>My Products</a></li>
-              <li><a class='notification-toggle' href="#"><img src="{{ STATIC_URL }}images/notify.png" width="20" height="20">Notifications</a></li>
+              <li class="dropdown">
+              <a href="#" class="dropdown-toggle notification-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+              <img src="{{ STATIC_URL }}images/notify.png" width="20" height="20">
+              Notifications <span class="caret"></span></a>
+              <ul class="dropdown-menu" role="menu" id='notification_dropdown'>
+                
+              </ul>
+            </li>
+
+
+
+
 			       <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Account <span class="caret"></span></a>
               <ul class="dropdown-menu" role="menu">
@@ -139,11 +150,11 @@
             csrfmiddlewaretoken: "{{ csrf_token }}",       
           },
           success: function(data){
-            $("#notificationsLoader").html('<h3>Notifications</h3>');
+            $("#notification_dropdown").html('');
             var count = data.count                           //data.count refers to count from view (get_notification_ajax)
             console.log(count)
             $(data.notifications).each(function(){                 //this is same as for each loop for data.notifications elements 
-              $("#notificationsLoader").append(this + "<br/>")    
+              $("#notification_dropdown").append("<li>"+this+"<hr/>"+"</li>")    
             })
             console.log(data.notifications);                  //data.notifications refers to notification from view (get_notification_ajax)
           },

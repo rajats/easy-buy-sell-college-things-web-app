@@ -95,8 +95,26 @@ class Notification(models.Model):
 				return "%(sender)s %(msg)s %(target)s with %(action)s" %context
 			return "%(sender)s %(msg)s %(target)s" %context
 		return "%(sender)s %(msg)s" %context
-		
 
+
+	def get_link(self):
+		
+		try:
+			target_url = self.target_object.get_absolute_url()
+		except:
+			target_url = reverse("notifications_all")
+
+		context = {
+			"sender": self.sender_object,
+			"msg": self.msg,
+			"action": self.action_object,
+			"target": self.target_object,
+			"target_url": target_url,
+		}
+		if self.target_object:
+			return "<a href='%(target_url)s'>%(sender)s %(msg)s %(target)s with %(action)s </a>" %context
+		else:
+			return "<a href='%(target_url)s'>%(sender)s %(msg)s </a>" %context
 
 
 #this is the receiver function for notify signal
