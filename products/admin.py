@@ -19,7 +19,7 @@ class ProductAdmin(admin.ModelAdmin):
 	search_fields = ['title', 'description','price', 'category__title']    #you can search product by their these fileds
 	list_filter = ['price', 'sale_price']        #these will appear as box in right
 	
-	prepopulated_fields = {"slug":('title',)}          #it will prepopulate slug with text given in title
+	prepopulated_fields = {"slug":('title','user')}          #it will prepopulate slug with text given in title
 	readonly_fields=['categories', 'live_link']
 	class Meta:
 		model = Product

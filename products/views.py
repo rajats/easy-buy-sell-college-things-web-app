@@ -1,4 +1,5 @@
 from itertools import chain
+import itertools
 
 from django.shortcuts import render_to_response, RequestContext, Http404,HttpResponseRedirect
 from django.contrib.auth.models import User
@@ -81,7 +82,15 @@ def add_product(request):
             product = form.save(commit=False)
             product.user = request.user
             product.active = True
-            product.slug = slugify(form.cleaned_data['title'])   #automatically creates slug using title
+            product.slug = temp = slugify(form.cleaned_data['title'])   #automatically creates slug using title
+
+
+            for x in itertools.count(1):
+                if not Product.objects.filter(slug=product.slug).exists():
+                    break
+                product.slug = '%s-%d' % (temp, x)
+
+
             product.save()
             return HttpResponseRedirect('/products/%s/images/' %(product.slug))
         return render_to_response("products/edit.html", locals(), context_instance=RequestContext(request))
