@@ -3,48 +3,11 @@ from django.core.urlresolvers import reverse
 from django.contrib.auth.models import User
 from django.contrib.contenttypes import generic
 from django.contrib.contenttypes.models import ContentType
+from products.models import Product
 
 from .signals import notify
 
 # Create your models here.
-
-
-class NotificationQuerySet(models.query.QuerySet):
-	def get_user(self, receiver_user):
-		return self.filter(receiver_user=receiver_user)
-
-	def unread(self):
-		return self.filter(read=False)
-
-	def read(self):
-		return self.filter(read=True)
-
-	def mark_all_read(self, receiver_user):
-		qs = self.unread().get_user(receiver_user)
-		qs.update(read=True)
-
-	def mark_all_unread(self, receiver_user):
-		qs = self.read().get_user(receiver_user)
-		qs.update(read=False)
-
-
-class NotificationManager(models.Manager):
-	def get_queryset(self):
-		return NotificationQuerySet(self.model, using=self._db)
-
-	def all_unread(self, user):
-		return self.get_queryset().get_user(user).unread()
-
-	def all_read(self, user):
-		return self.get_queryset().get_user(user).read()
-
-	def all_for_user(self, user):
-		return self.get_queryset().get_user(user)
-
-
-
-
-
 
 class Notification(models.Model):
 	#sender = models.ForeignKey()
@@ -71,8 +34,6 @@ class Notification(models.Model):
 	read = models.BooleanField(default=False)
 
 	timestamp = models.DateTimeField(auto_now=False, auto_now_add=True)
-
-	objects = NotificationManager()
 
 	def __unicode__(self):
 		
@@ -117,6 +78,14 @@ class Notification(models.Model):
 			return "<a href='%(target_url)s'>%(sender)s %(msg)s </a>" %context
 
 
+class NotifyUsers(models.Model):
+	sender = models.ForeignKey(User, null=True, blank=True,  related_name='sender')
+	user = models.ForeignKey(User, null=True, blank=True,  related_name = 'receiver')
+	notifications = models.ForeignKey(Notification)
+	product = models.ForeignKey(Product, null=True, blank=True)
+	read = models.BooleanField(default=False)
+
+
 #this is the receiver function for notify signal
 def new_notification(sender, **kwargs):                
 	kwargs.pop('signal', None)
@@ -146,7 +115,9 @@ def new_notification(sender, **kwargs):
 
 
 	new_note.save()
-	print new_note
+	product = Product.objects.get(id = target.id)
+	sender = User.objects.get(id = sender.id)
+	NotifyUsers.objects.create(sender = sender, user = receiver_user, notifications = new_note, product = product)
 
 
 notify.connect(new_notification)

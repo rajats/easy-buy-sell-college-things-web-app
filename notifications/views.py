@@ -4,12 +4,15 @@ from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
 from django.shortcuts import render_to_response, RequestContext, Http404,HttpResponseRedirect
 
-from .models import Notification
+from .models import Notification, NotifyUsers
 # Create your views here.
 
 @login_required
 def all(request):
-	notifications = Notification.objects.all_for_user(request.user)
+	all_notify_obj = NotifyUsers.objects.filter(user = request.user)
+	notifications=[]
+	for obj in all_notify_obj:
+		notifications.append(obj.notifications)
 	
 	return render_to_response("notifications/all.html", locals(), context_instance=RequestContext(request))
 
@@ -18,7 +21,10 @@ def all(request):
 @login_required
 def get_notifications_using_ajax(request):                                       #return HttpResponse with ajax data
 	if request.is_ajax() and request.method == "POST":
-		notifications = Notification.objects.all_for_user(request.user)
+		all_notify_obj = NotifyUsers.objects.filter(user = request.user)
+		notifications=[]
+		for obj in all_notify_obj:
+			notifications.append(obj.notifications)
 		count = 0
 		notes = []
 		for note in notifications:
@@ -37,7 +43,10 @@ def get_notifications_using_ajax(request):                                      
 @login_required
 def mark_all_as_read(request):                                       #return HttpResponse with ajax data
 	if request.is_ajax() and request.method == "POST":
-		notifications = Notification.objects.all_for_user(request.user)
+		all_notify_obj = NotifyUsers.objects.filter(user = request.user)
+		notifications=[]
+		for obj in all_notify_obj:
+			notifications.append(obj.notifications)
 		notes = []
 		test=2
 		for note in notifications:

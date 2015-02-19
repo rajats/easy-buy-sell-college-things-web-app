@@ -16,6 +16,7 @@ from cart.models import Cart
 from analysis.signals import page_view
 from analysis.models import PageView
 from notifications.signals import notify
+from notifications.models import NotifyUsers, Notification
 
 # Create your views here.
 
@@ -154,10 +155,15 @@ def add_comment(request, slug):
             #c.save()
             new_comment = ProductComment.objects.create(product=prod,commenter=request.user,comment=comment_text,pub_date=timezone.now())
             messages.success(request, "your comment was added")
-            #if request.user == prod.user:
-            #    notify.send('You', action=new_comment, target = prod, receiver_user=prod.user, msg='commented on')
-            #else:
-            notify.send(request.user, action=new_comment, target = prod, receiver_user=prod.user, msg='commented on')
+            sent_senders=[]
+            if NotifyUsers.objects.filter(product = prod).exists():
+                for obj in NotifyUsers.objects.filter(product = prod):
+                    if request.user != obj.sender:
+                        if obj.sender not in sent_senders:
+                            notify.send(request.user, action=new_comment, target = prod, receiver_user=obj.sender, msg='commented on') 
+                    sent_senders.append(obj.sender)
+            else:
+                notify.send(request.user, action=new_comment, target = prod, receiver_user=prod.user, msg='commented on')
 
 
 
