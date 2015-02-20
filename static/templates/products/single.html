@@ -66,7 +66,8 @@
 
 				    	<div class="btn-group" role="group" aria-label="...">
 				    		{% if active %}
-						  		<a type="button" class="btn btn-default" href="{% url "mark_product_as_sold" product.slug %}">Mark as sold</a>
+						  		<!--<a type="button" class="btn btn-default" href="{% url "mark_product_as_sold" product.slug %}">Mark as sold</a>  -->
+						  		<button type="button" class="btn btn-default" data-toggle="modal" data-target="#confirmsold">Mark as sold</button>
 							{% else %}	
 								<a type="button" class="btn btn-default" >sold</a>	
 							{% endif %}				  
@@ -98,6 +99,28 @@
         {% endfor %}
         <p><a href="/products/{{ product.slug }}/addcomment" class="btn btn-primary">Add comment</a></p>
 	</div>
+
+
+
+	<div class="modal fade" id="confirmsold" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+        	<h4 class="modal-title" id="myModalLabel">Confirm Product as sold</h4>
+        </div>
+        <div class="modal-body">
+          <p>Marking this product as sold will make this product unavailable for buying.If you have sold this product to a buyer
+            then mark this as sold.Once marked as sold,cannot be changed back.
+          </p>
+        </div>
+        <div class="modal-footer">
+        <a type="button" class="btn btn-default" href="{% url "mark_product_as_sold" product.slug %}">OK</a>
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+        </div>
+      </div>
+      </div>
+    </div>
+
 
 
 {% endblock %}
