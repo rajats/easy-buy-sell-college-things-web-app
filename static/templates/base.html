@@ -13,6 +13,7 @@
 
     <!-- Bootstrap core CSS -->
     <link href="{{ STATIC_URL }}css/bootstrap.min.css" rel="stylesheet">
+    <link href="{{ STATIC_URL }}css/navbar-fixed-top.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
  	<style>
@@ -36,8 +37,7 @@
 
   <body>
 
-    <!-- Static navbar -->
-    <nav class="navbar navbar-default navbar-static-top">
+    <nav class="navbar navbar-default navbar-fixed-top navbar-inverse">
       <div class="container">
 
         <div class="navbar-header">
@@ -52,24 +52,19 @@
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
 
-			<li><a href='{% url "home" %}'>Home</a></li>
-      <li><a href='{% url "all_products" %}'>Products</a></li>
+            <li><a href='{% url "home" %}'>Home</a></li>
+            <li><a href='{% url "all_products" %}'>Products</a></li>
 
-			<li>
-          <form class="navbar-form navbar-left" role="search" action='{% url "search" %}'>
-            <div class="form-group">
-              <input type="text" class="form-control" name='q' placeholder="Search">
-            </div>
-            <button type="submit" class="btn btn-default">Submit</button>
-          </form>
+            <li>
+                <form class="navbar-form navbar-left" role="search" action='{% url "search" %}'>
+                  <div class="form-group">
+                    <input type="text" class="form-control" name='q' placeholder="Search">
+                  </div>
+                  <button type="submit" class="btn btn-default">Submit</button>
+                </form>
 
-      </li>
-
-
+            </li>
           </ul>
-
-
-          
           <ul class="nav navbar-nav navbar-right">
             <li><a href='{% url "cart" %}'><img src="{{ STATIC_URL }}images/cart.png" width="20" height="20">View Cart</a></li>
             {% if user.is_authenticated %}
@@ -85,14 +80,12 @@
             </li>
 
 
-			       <li class="dropdown">
+             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Account <span class="caret"></span></a>
               <ul class="dropdown-menu" role="menu">
                 <li><a href=''>Account Info</a></li>
-                <li><a href='{% url "library" %}'>My Library</a></li>
                 <li class="divider"></li>
                 <li><a href='{% url "user_products" %}'>My products</a></li>
-                <li><a href="#">My sales</a></li>
 
                 <li class="divider"></li>
                 <li><a href='{% url "logout" %}'>Logout</a></li>
@@ -106,6 +99,27 @@
         </div><!--/.nav-collapse -->
       </div>
     </nav>
+
+
+    <div class="modal fade" id="confirmsold" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+        </div>
+        <div class="modal-body">
+          <p>Marking this product as sold will make this product not available for buying.If you sold this product to a buyer
+            then mark this as sold.Once marked as it cannot be changed back.
+          </p>
+        </div>
+        <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">OK</button>
+        </div>
+      </div>
+      </div>
+    </div>
+
+
+
 
 
     <div class="container">
@@ -200,6 +214,7 @@
       })
     })
     </script>
+
 
   </body>
 </html>

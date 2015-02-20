@@ -42,6 +42,9 @@ def list_all(request):
 def single(request, slug):
     #send_mail('test', 'new message test.', 'rajat11ukawa@gmail.com', ['rajatk@outlook.in'], fail_silently=False)
     product = Product.objects.get(slug=slug)
+    active = product.active
+    if not active:
+        messages.warning(request, 'This product is currently sold out')
     images = ProductImage.objects.filter(product=product)
     categories = product.category_set.all()
     page_view.send(request.user, page_path = request.get_full_path(),primary_obj = product)
@@ -79,6 +82,14 @@ def edit_product(request, slug):
         return render_to_response("products/edit.html", locals(), context_instance=RequestContext(request))
     else:
         raise Http404
+
+def mark_product_as_sold(request, slug):
+    instance = Product.objects.get(slug=slug)
+    if request.user == instance.user:
+        instance.active = False
+        instance.save()
+    return HttpResponseRedirect('/products/')
+
 
 def add_product(request):
     if request.user.is_authenticated():

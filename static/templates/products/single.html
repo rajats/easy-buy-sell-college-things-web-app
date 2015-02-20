@@ -5,10 +5,6 @@
 	<div class='row'>
 		<div class='col-sm-4 pull-left'>
 			<h1>{{ product }}
-
-				{% if edit %}
-					<h2><a href="{% url "edit_product" product.slug %}">edit this product</a></h2>
-				{% endif %}
 			</h1>
 			{% for img in images %}
 				{% if img.title %}
@@ -18,7 +14,7 @@
 			{% endfor %}
 			<ul>
 				{% for category in categories %}
-					<li>{{ category }}</li>
+					<li>Category :{{ category }}</li>
 				{% endfor %}
 			</ul>
 			{% if related %}
@@ -49,14 +45,15 @@
 
 			    </br>
 			    </br>
-			    {% if not edit %}
-				    {% if in_cart %}
-						in cart<a class='btn btn-success' href='{% url "cart" %}'>View cart</a>
-					{% else %}
-						<a class='btn btn-primary' href='{% url "add_to_cart" product.id %}'>Add to cart</a>
+			    {% if active %}
+				    {% if not edit %}
+					    {% if in_cart %}
+							in cart<a class='btn btn-success' href='{% url "cart" %}'>View cart</a>
+						{% else %}
+							<a class='btn btn-primary' href='{% url "add_to_cart" product.id %}'>Add to cart</a>
+						{% endif %}
 					{% endif %}
 				{% endif %}
-
 			  </div>
 			</div>
 			{% if edit %}
@@ -66,8 +63,27 @@
 				  </div>
 				  <div class="panel-body">
 				    {% if edit %}
-						<a class='btn btn-info' href="{% url "edit_product" product.slug %}">edit this product</a>
-						<a class='btn btn-info' href="{% url "manage_product_image" product.slug %}">{{ product }} images</a>
+
+				    	<div class="btn-group" role="group" aria-label="...">
+				    		{% if active %}
+						  		<a type="button" class="btn btn-default" href="{% url "mark_product_as_sold" product.slug %}">Mark as sold</a>
+							{% else %}	
+								<a type="button" class="btn btn-default" >sold</a>	
+							{% endif %}				  
+
+						  	<div class="btn-group">
+							  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+							    Action <span class="caret"></span>
+							  </button>
+							  <ul class="dropdown-menu" role="menu">
+							    <li><a href="{% url "edit_product" product.slug %}">Edit</a></li>
+							    <li class="divider"></li>
+							    <li><a href="{% url "manage_product_image" product.slug %}">Manage images</a></li>
+							  </ul>
+							</div>
+
+						</div>
+
 					{% endif %}
 				  </div>
 				</div>
@@ -82,4 +98,6 @@
         {% endfor %}
         <p><a href="/products/{{ product.slug }}/addcomment" class="btn btn-primary">Add comment</a></p>
 	</div>
+
+
 {% endblock %}
