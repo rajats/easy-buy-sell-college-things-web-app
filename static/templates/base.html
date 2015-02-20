@@ -64,7 +64,12 @@
           </form>
 
       </li>
+
+
           </ul>
+
+
+          
           <ul class="nav navbar-nav navbar-right">
             <li><a href='{% url "cart" %}'><img src="{{ STATIC_URL }}images/cart.png" width="20" height="20">View Cart</a></li>
             {% if user.is_authenticated %}
@@ -121,9 +126,19 @@
         <div id='notificationsLoader'>
 
         </div>
+
+        {% if messages %}
+          {% for message in messages %}
+            <div class="alert {% if 'error' in message.tags %}alert-danger{% elif 'warning' in message.tags %}alert-warning
+            {%else %}alert-success{% endif %}" role="alert">{% if 'safe' in message.tags %}{{ message|safe }}{% else %} {{ message }}{% endif %}
+            </div>
+        
+          {% endfor %}
+        {% endif %}
+
 		    {% block content %}
 
-			{% endblock %}
+			  {% endblock %}
     </div>
 
     <!-- Bootstrap core JavaScript

@@ -65,7 +65,7 @@ def delete_from_cart(request, id):
 	if product:
 		new_item, created = CartItem.objects.get_or_create(cart = cart, product = product)
 		new_item.delete()
-		messages.success(request, 'removed from cart')
+		messages.warning(request, 'removed from cart')
 	return HttpResponseRedirect('/cart/')
 
 

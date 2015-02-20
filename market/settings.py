@@ -54,6 +54,19 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
 
+
+TEMPLATE_CONTEXT_PROCESSORS =(
+    "django.contrib.auth.context_processors.auth",
+    "django.core.context_processors.debug",
+    "django.core.context_processors.i18n",
+    "django.core.context_processors.media",
+    "django.core.context_processors.request",
+    "django.core.context_processors.static",
+    "django.core.context_processors.tz",
+    "django.contrib.messages.context_processors.messages"
+)
+
+
 ROOT_URLCONF = 'market.urls'
 
 WSGI_APPLICATION = 'market.wsgi.application'
@@ -130,3 +143,10 @@ TEMPLATE_DIRS = (
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
 )
+
+
+EMAIL_HOST = 'smtp.sendgrid.net'
+EMAIL_HOST_USER = 'rajat711'
+EMAIL_HOST_PASSWORD = 'game247!'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True

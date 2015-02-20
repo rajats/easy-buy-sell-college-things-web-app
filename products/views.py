@@ -18,6 +18,9 @@ from analysis.models import PageView
 from notifications.signals import notify
 from notifications.models import NotifyUsers, Notification
 
+
+from django.core.mail import send_mail
+
 # Create your views here.
 
 def check_product(user, product):
@@ -37,6 +40,7 @@ def list_all(request):
     return render_to_response("products/all.html", context, context_instance=RequestContext(request))
 
 def single(request, slug):
+    #send_mail('test', 'new message test.', 'rajat11ukawa@gmail.com', ['rajatk@outlook.in'], fail_silently=False)
     product = Product.objects.get(slug=slug)
     images = ProductImage.objects.filter(product=product)
     categories = product.category_set.all()
@@ -154,7 +158,7 @@ def add_comment(request, slug):
             #c.commenter = request.user                 
             #c.save()
             new_comment = ProductComment.objects.create(product=prod,commenter=request.user,comment=comment_text,pub_date=timezone.now())
-            messages.success(request, "your comment was added")
+            messages.success(request, "Your comment was added")
             sent_senders=[]
             if NotifyUsers.objects.filter(product = prod).exists():
                 for obj in NotifyUsers.objects.filter(product = prod):
@@ -164,8 +168,8 @@ def add_comment(request, slug):
                     sent_senders.append(obj.sender)
             else:
                 notify.send(request.user, action=new_comment, target = prod, receiver_user=prod.user, msg='commented on')
-
-
+        else:
+            messages.error(request, "There was an error with your comment")
 
             return HttpResponseRedirect('/products/%s/' %(prod.slug)) 
     else:
