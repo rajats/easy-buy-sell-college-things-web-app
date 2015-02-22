@@ -5,6 +5,6 @@
 <h1>{{ prod.title }} </h1>
 <form method='POST' action=''> {% csrf_token %}
     {{ cform.as_p }}
-<button type="submit" class="btn btn-primary" >Post Comment</button>
+<button type="submit" class="btn btn-primary" ><span class="glyphicon glyphicon-comment" aria-hidden="true"></span>Post Comment</button>
 </form>
 {% endblock %}

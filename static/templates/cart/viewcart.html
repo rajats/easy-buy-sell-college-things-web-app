@@ -21,7 +21,7 @@
 			{{ item.product.get_price }}
 		</td>
 		<td>
-			<a href='{% url "delete_from_cart" item.product.id %}'><font color="red"><h3>X</h3></font></a>
+			<a href='{% url "delete_from_cart" item.product.id %}'><span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span></a>
 		</td>
 	</tr>
 	{% endfor %}
