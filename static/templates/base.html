@@ -103,6 +103,7 @@
             {% else %}
               <li><a href='{% url "register" %}'>Register</a></li>
               <li><a href='{% url "login" %}'>Login</a></li>
+
             {% endif %}
           </ul>
         </div><!--/.nav-collapse -->
@@ -142,6 +143,57 @@
 
 			  {% endblock %}
     </div>
+
+    <footer class="footer">
+      <div class="container">
+        <h4 class="copyright">Copyright Rajat Kumar Singh 2015</h4>
+        <h4 class="contact"><a href="#" data-toggle="modal" data-target="#contactus">Contact us</a>
+        </br><a href="#" data-toggle="modal" data-target="#aboutus">About Us</a></h4>
+        <h4 class="social"><a href="https://github.com/rajats/easy-buy-sell-college-things-web-app">Github</a></h4>
+      </div>
+
+    </footer>
+
+
+  <div class="modal fade" id="aboutus" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title" id="myModalLabel">About us</h4>
+        </div>
+        <div class="modal-body">
+          <p>We are trying to make used things not considered as waste.By making this site we are enhancing the value of
+            used products.What you think is useless may be a need for someone.You never know.So start selling your
+            things and make yourself and buyer happy.
+          </p>
+        </div>
+        <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">OK</button>
+        </div>
+      </div>
+      </div>
+    </div>
+
+
+  <div class="modal fade" id="contactus" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title" id="myModalLabel">contact us</h4>
+        </div>
+        <div class="modal-body">
+          <p>You can contact us through email at rajatk@outlook.in</br>
+            Help us improve this site by suggesting changes, feature addtion, founding bugs etc
+          </p>
+        </div>
+        <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">OK</button>
+        </div>
+      </div>
+      </div>
+    </div>
+
+
 
     <!-- Bootstrap core JavaScript
     ================================================== -->

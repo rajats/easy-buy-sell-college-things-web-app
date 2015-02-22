@@ -5,7 +5,7 @@
 
 {% block jumbotron %}
 
-<div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="2500">
+<div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="3000">
       <!-- Indicators -->
       <ol class="carousel-indicators">
         <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
@@ -18,11 +18,13 @@
           <div class="container">
             <div class="carousel-caption">
               <h1>Sell anything</h1>
-              <p>This site is for college students to buy/sell their college realted things</br>
-                (it can be anything from study related things such as books to non academic things like laptops, camera etc)
-                </br>Finding buyers can never have been so easy..!!</br>
-                
-              </p>
+              <h4>
+                <p>This site is for college students to buy/sell their college realted things</br>
+                  (it can be anything from study related things such as books to non academic things like laptops, camera etc)
+                  </br>Finding buyers can never have been so easy..!!</br>
+                  
+                </p>
+            </h4>
               {% if not user.is_authenticated %}
                 <p><a class="btn btn-lg btn-primary" href='{% url "login" %}' role="button">Sign up today</a></p>
               {% endif %}
@@ -34,7 +36,7 @@
           <div class="container">
             <div class="carousel-caption">
               <h1>Expanding Products Category.</h1>
-              <p>Bikes, Laptops, Books, Gaming Accessories aready added.More is on it's way </p>
+              <h4><p>Bikes, Laptops, Books, Gaming Accessories aready added.More is on it's way </p></h4>
               <p><a class="btn btn-lg btn-primary" href='{% url "all_products" %}' role="button">Explore now!!</a></p>
             </div>
           </div>
