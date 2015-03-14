@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+
+{% block content %}
+	<ol>
+		{% for product in products %}
+			<li>{% url "single_product" product.slug %}	{{ product }} </li>     <!-- single_product needs parameter !-->
+		{% endfor %}
+	</ol>
+{% endblock %}

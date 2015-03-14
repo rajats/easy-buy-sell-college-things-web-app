@@ -6,25 +6,44 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" href="{{ STATIC_URL }}images/favicon.ico">
+    <link rel="icon" href="{{ STATIC_URL }}images/sitelogo.png">
+    <script src="{{ STATIC_URL }}js/jquery-1.11.1.min.js"></script>
 
-    <title>Students' need ecommerce</title>
+    <title>Hassle free buying and selling</title>
 
     <!-- Bootstrap core CSS -->
     <link href="{{ STATIC_URL }}css/bootstrap.min.css" rel="stylesheet">
+    <link href="{{ STATIC_URL }}css/bootstrap.css" rel="stylesheet">
+    <link href="{{ STATIC_URL }}css/navbar-fixed-top.css" rel="stylesheet">
+    <link href="{{ STATIC_URL }}css/style.css" rel="stylesheet">
+
+    {{ page_template }}
+
+    {% block js %}
+        {{ block.super }}
+        <script src="http://code.jquery.com/jquery-latest.js"></script>
+        <script src="{{ STATIC_URL }}endless_pagination/js/endless-pagination.js"></script>
+        <script>$.endlessPaginate({paginateOnScroll: true});</script>
+    {% endblock %}
+
 
     <!-- Custom styles for this template -->
  	<style>
  		body {
- 			min-height: 2000px;
+ 			min-height: 1100px;
  		}
  		.navbar-static-top: {
  			margin-bottom: 19px;
  		}
  	</style>
+  <style type="text/css">
+      body { background: #E8E8E8 ; }
+  </style>
     <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
     <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
     <script src="{{ STATIC_URL }}js/ie-emulation-modes-warning.js"></script>
+    <script src="{{ STATIC_URL }}js/jarallax-min-0.2.1.js"></script>
+
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -35,9 +54,9 @@
 
   <body>
 
-    <!-- Static navbar -->
-    <nav class="navbar navbar-default navbar-static-top">
+    <nav class="navbar navbar-default navbar-fixed-top navbar-inverse">
       <div class="container">
+
         <div class="navbar-header">
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
             <span class="sr-only">Toggle navigation</span>
@@ -45,37 +64,62 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">Students ecommerce</a>
+          <!--<a class="navbar-brand" >College Students' E-commerce</a> -->
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
 
-
-			<li><a href=''>Home</a></li>
-			<li><a href='{% url "all_products" %}'>Products</a></li>
-			<li><a href='{% url "library" %}'>My Library</a></li>
-			<li><a href='{% url "cart" %}'>View Cart</a></li>
-			<li><a href=''>Account Info</a></li>
-			<li>
-					<form action='{% url "search" %}'>
-						<input type='text' name='q'>
-						<input type='submit'>
-					</form>
-			</li>
-          </ul>
-          <ul class="nav navbar-nav navbar-right">
-			<li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Dropdown <span class="caret"></span></a>
-              <ul class="dropdown-menu" role="menu">
-                <li><a href="#">Action</a></li>
-                <li><a href="#">Another action</a></li>
-                <li><a href="#">Something else here</a></li>
-                <li class="divider"></li>
-                <li class="dropdown-header">Nav header</li>
-                <li><a href="#">Separated link</a></li>
-                <li><a href="#">One more separated link</a></li>
+            <li><a href='{% url "home" %}'><span class="glyphicon glyphicon-home" aria-hidden="true"></span>Home</a></li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle products-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+              <span class="glyphicon glyphicon-folder-open" aria-hidden="true"></span>
+              products <span class="caret"></span></a>
+              <ul class="dropdown-menu" role="menu" id='products_dropdown'>
               </ul>
             </li>
+
+
+            <li>
+                <form class="navbar-form navbar-left" role="search" action='{% url "search" %}'>
+                  <div class="form-group">
+                    <input type="text" class="form-control" name='q' placeholder="Search">
+                  </div>
+                  <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search" aria-hidden="true"></span>Search</button>
+                </form>
+
+            </li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href='{% url "cart" %}'><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>View Cart</a></li>
+            {% if user.is_authenticated %}
+              <li><a href='{% url "add_product" %}'><span class="glyphicon glyphicon-usd" aria-hidden="true"></span>Sell Product</a></li>
+              <li><a href='{% url "user_products" %}'><span class="glyphicon glyphicon-briefcase" aria-hidden="true"></span>My Products</a></li>
+              <li class="dropdown">
+              <a href="#" class="dropdown-toggle notification-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+              <span class="glyphicon glyphicon-bell" aria-hidden="true"></span>
+              Notifications <span class="caret"></span></a>
+              <ul class="dropdown-menu" role="menu" id='notification_dropdown'>
+                
+              </ul>
+            </li>
+
+             <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                <span class="glyphicon glyphicon-user" aria-hidden="true"></span>Account <span class="caret"></span></a>
+              <ul class="dropdown-menu" role="menu">
+                <li><a href=''>Account Info</a></li>
+                <li class="divider"></li>
+                <li><a href='{% url "user_products" %}'>My products</a></li>
+
+                <li class="divider"></li>
+                <li><a href='{% url "logout" %}'>Logout</a></li>
+              </ul>
+            </li>
+            {% else %}
+              <li><a href='{% url "register" %}'>Register</a></li>
+              <li><a href='{% url "login" %}'>Login</a></li>
+
+            {% endif %}
           </ul>
         </div><!--/.nav-collapse -->
       </div>
@@ -84,8 +128,8 @@
 
     <div class="container">
 
-      <!-- Main component for a primary marketing message or call to action -->
-      <div class="jumbotron">
+        <!--
+       <div class="jumbotron">
         <h1>Navbar example</h1>
         <p>This example is a quick exercise to illustrate how the default, static and fixed to top navbar work. It includes the responsive CSS and HTML, so it also adapts to your viewport and device.</p>
         <p>To see the difference between static and fixed top navbars, just scroll.</p>
@@ -93,14 +137,78 @@
           <a class="btn btn-lg btn-primary" href="http://getbootstrap.com/components/#navbar" role="button">View navbar docs &raquo;</a>
         </p>
       </div>
-
-    </div> <!-- /container -->
+      !-->
+    </div> 
 
     <div class="container">
+        <div id='notificationsLoader'>
+
+        </div>
+
+        {% if messages %}
+          {% for message in messages %}
+            <div class="alert {% if 'error' in message.tags %}alert-danger{% elif 'warning' in message.tags %}alert-warning
+            {%else %}alert-success{% endif %}" role="alert">{% if 'safe' in message.tags %}{{ message|safe }}{% else %} {{ message }}{% endif %}
+            </div>
+        
+          {% endfor %}
+        {% endif %}
+
 		    {% block content %}
 
-			{% endblock %}
+			  {% endblock %}
     </div>
+
+    <footer class="footer">
+      <div class="container">
+        <h4 class="copyright">Copyright Rajat Kumar Singh 2015</h4>
+        <h4 class="contact"><a href="#" data-toggle="modal" data-target="#contactus">Contact us</a>
+        </br><a href="#" data-toggle="modal" data-target="#aboutus">About Us</a></h4>
+        <h4 class="social"><a href="https://github.com/rajats/easy-buy-sell-college-things-web-app">Github</a></h4>
+      </div>
+
+    </footer>
+
+
+  <div class="modal fade" id="aboutus" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title" id="myModalLabel">About us</h4>
+        </div>
+        <div class="modal-body">
+          <p>We are trying to make used things not considered as waste.By making this site we are enhancing the value of
+            used products.What you think is useless may be a need for someone.You never know.So start selling your
+            things and make yourself and buyer happy.
+          </p>
+        </div>
+        <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">OK</button>
+        </div>
+      </div>
+      </div>
+    </div>
+
+
+  <div class="modal fade" id="contactus" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title" id="myModalLabel">contact us</h4>
+        </div>
+        <div class="modal-body">
+          <p>You can contact us through email at rajatk@outlook.in</br>
+            Help us improve this site by suggesting changes, feature addtion, founding bugs etc
+          </p>
+        </div>
+        <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">OK</button>
+        </div>
+      </div>
+      </div>
+    </div>
+
+
 
     <!-- Bootstrap core JavaScript
     ================================================== -->
@@ -109,5 +217,91 @@
     <script src="{{ STATIC_URL }}js/bootstrap.min.js"></script>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src="http://getbootstrap.com/assets/js/ie10-viewport-bug-workaround.js"></script>
+
+
+
+
+    <script>
+    $(document).ready(function(){
+      $(".notification-toggle").click(function(e){
+        e.preventDefault();
+        $.ajax({                                         //this is how ajax call is done
+          type: "POST",                                  //method that we want to use
+          url: "{% url 'get_notifications_using_ajax' %}",
+          data: {                                         //additional data
+            csrfmiddlewaretoken: "{{ csrf_token }}",       
+          },
+          success: function(data){
+            console.log(data.count)
+            if(data.count==0)
+              $("#notification_dropdown").html('<div><a href="{% url 'notifications_all' %}">View all notifications</a></div>');
+            else
+              $("#notification_dropdown").html('<div id="mark-all"><a href="#">Mark all as read</a></div>');
+
+            $("#mark-all").click(function(e){
+              e.preventDefault();
+              $.ajax({                                         //this is how ajax call is done
+                  type: "POST",                                  //method that we want to use
+                  url: "{% url 'mark_all_as_read' %}",
+                  data: {                                         //additional data
+                    csrfmiddlewaretoken: "{{ csrf_token }}",       
+                  },
+                  success: function(data){
+                  
+                  },
+                  error: function(rs, e) {                            //response and event
+                    console.log(rs);
+                    console.log(e);
+                  }
+                }) 
+              })
+                                        //data.count refers to count from view (get_notification_ajax)
+              $(data.notifications).each(function(){                 //this is same as for each loop for data.notifications elements 
+                $("#notification_dropdown").append("<li>"+this+"<hr/>"+"</li>")    
+              })
+              console.log(data.notifications);                  //data.notifications refers to notification from view (get_notification_ajax)
+          },
+          error: function(rs, e) {                            //response and event
+            console.log(rs);
+            console.log(e);
+          }
+        })
+      })
+    })
+    </script>
+
+    <script>
+    $(document).ready(function(){
+      $(".products-toggle").one('click', function(e) {
+        e.preventDefault();
+        $.ajax({
+          type: "POST",
+          url: "{% url 'get_products_categories_using_ajax' %}",
+          data: {
+            csrfmiddlewaretoken: "{{ csrf_token }}",
+          },
+          success: function(data){ 
+              for (var i = 0; i < data.categories.length; i++) {
+                
+                  if(i==0)
+                    $("#products_dropdown").append('<li role="presentation"><a role="menuitem" tabindex="-1" href="{% url "all_products" %}">' + data.categories[i] + "</li>"+' <li class="divider"></li>')
+                  else{
+                    var link="/products/'param'/category"
+                    link = link.replace('param', data.category_slugs[i]);
+                    link = link.replace(/["']/g, "");
+                    $("#products_dropdown").append('<li role="presentation"><a role="menuitem" tabindex="-1" href='+link+'>' + data.categories[i] + "</li>"+' <li class="divider"></li>')
+                  }              
+              }
+              console.log(data.category_slugs);
+          },
+          error: function(rs, e) {
+            console.log(rs);
+            console.log(e);
+          }
+        })
+      })
+    })
+    </script>
+
   </body>
 </html>

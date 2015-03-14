@@ -1,6 +1,9 @@
+import json
+
 from itertools import chain
 import itertools
 
+from django.http import HttpResponse
 from django.shortcuts import render_to_response, RequestContext, Http404,HttpResponseRedirect
 from django.contrib.auth.models import User
 from django.contrib.contenttypes.models import ContentType
@@ -9,7 +12,9 @@ from django.forms.models import modelformset_factory
 from django.core.urlresolvers import reverse
 from django.db.models import Q 
 from django.utils import timezone
-from django.contrib import messages    
+from django.contrib import messages 
+
+from endless_pagination.decorators import page_template   
 from .models import Product, Category, ProductImage, ProductComment
 from .forms import ProductForm, ProductImageForm, ProductCommentForm, UnRegUserProductCommentForm
 from cart.models import Cart
@@ -29,16 +34,27 @@ def check_product(user, product):
     else:
         return False
 
+
+"""
 def list_all(request):
     products = Product.objects.filter(active=True)
     if request.user.is_authenticated():
         products = Product.objects.filter(active=True).filter(~Q(user = request.user))
+    return render_to_response("products/all.html", locals(), context_instance=RequestContext(request))
+"""
 
-    context={
-        "products":products,                
+@page_template('products/all_index_page.html')
+def list_all(request,template='products/all_index.html', extra_context=None):
+    products = Product.objects.filter(active=True)
+    if request.user.is_authenticated():
+        products = Product.objects.filter(active=True).filter(~Q(user = request.user))
+
+    context = {
+        'products': products,
     }
-    return render_to_response("products/all.html", context, context_instance=RequestContext(request))
-
+    if extra_context is not None:
+        context.update(extra_context)
+    return render_to_response(template, context, context_instance=RequestContext(request))
 def single(request, slug):
     #send_mail('test', 'new message test.', 'rajat11ukawa@gmail.com', ['rajatk@outlook.in'], fail_silently=False)
     product = Product.objects.get(slug=slug)
@@ -186,4 +202,36 @@ def add_comment(request, slug):
     else:
         cform=ProductCommentForm()              
     return render_to_response("products/add_comment.html", locals(), context_instance=RequestContext(request))
+
+
+def category_products(request, catslug):
+    category = Category.objects.get(slug=catslug)
+    products = Product.objects.filter(category=category,active=True)
+    if request.user.is_authenticated():
+        products = Product.objects.filter(category=category,active=True).filter(~Q(user = request.user))
+    return render_to_response("products/all.html", locals(), context_instance=RequestContext(request))
+
+
+
+def get_products_categories_using_ajax(request):                                       #return HttpResponse with ajax data
+    if request.is_ajax() and request.method == "POST":
+        categories=["all"]
+        category_slugs=["products"]
+        try:
+            categories_obj = Category.objects.all()
+        except Category.DoesNotExist:
+            categories_obj = None
+        for obj in categories_obj:
+            categories.append(obj.title)
+            category_slugs.append(obj.slug)
+        data = {
+            "categories": categories,
+            "category_slugs": category_slugs,
+        }
+        json_data = json.dumps(data)               #converts to json
+        print categories 
+        return HttpResponse(json_data, content_type='application/json')
+    else:
+        raise Http404
+
 

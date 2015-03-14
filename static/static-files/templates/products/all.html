@@ -1,16 +1,53 @@
 {% extends "base.html" %}
 
+
+
+<div class="row">
+	<div class="col-md-12">
+		<h1>Products</h1>
+	</div>
+</div>
+<!--
+{% block jumbotron %}
+
+      <div class="jumbotron">
+        <h1>Navbar example</h1>
+        <p>This example is a quick exercise to illustrate how the default, static and fixed to top navbar work. It includes the responsive CSS and HTML, so it also adapts to your viewport and device.</p>
+        <p>To see the difference between static and fixed top navbars, just scroll.</p>
+        <p>
+          <a class="btn btn-lg btn-primary" href="http://getbootstrap.com/components/#navbar" role="button">View navbar docs &raquo;</a>
+        </p>
+      </div>
+
+{% endblock %}
+-->
 {% block content %}
-	<ol>
-		{% for product in products %}
-			<li>
+
+{% load endless %}
+
+{% paginate 12 products %}
+<div class="row">
+
+	{% for product in products %}
+		<div class="col-sm-4" style='text-align: center;'>
+			<div class="thumbnail">
 				{% for image in product.productimage_set.all %}
 					{% if image.featured_image %}
-						<img src='{{ MEDIA_URL }}{{ image.image }}' width='300' />
+							<a href="{% url "single_product" product.slug %}">
+								<img class="img-responsive" src='{{ MEDIA_URL }}{{ image.image }}' style='max-height:170px; margin: 0 auto;' />
+							</a>
 					{% endif %}
 				{% endfor %}
-				<a href="{% url "single_product" product.slug %}">{{ product }}</a>
-			</li>     <!-- single_product needs parameter !-->
-		{% endfor %}
-	</ol>
+		     	<!-- single_product needs parameter !-->
+		     	<div class="caption">
+			        <h3>{{ product }}</h3>
+			        <p><a href="{% url "single_product" product.slug %}" class="btn btn-primary" role="button">View Product</a> 
+			        </p>
+		      	</div>
+			</div>
+		</div>
+	{% cycle '' '' '</div><hr/><div class="row">' %}
+	{% endfor %}
+	{% show_more %}
+</div>
 {% endblock %}

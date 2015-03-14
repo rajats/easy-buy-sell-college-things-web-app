@@ -5,6 +5,7 @@ from django.http import HttpResponse
 from django.shortcuts import render_to_response, RequestContext, Http404,HttpResponseRedirect
 
 from .models import Notification, NotifyUsers
+from products.models import Category
 # Create your views here.
 
 @login_required
@@ -59,3 +60,6 @@ def mark_all_as_read(request):                                       #return Htt
 		return HttpResponse(json_data, content_type='application/json')
 	else:
 		raise Http404
+
+
+

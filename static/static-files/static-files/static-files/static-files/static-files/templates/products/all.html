@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block content %}
+	<ol>
+		{% for product in products %}
+			<li>
+				{% for image in product.productimage_set.all %}
+					{% if image.featured_image %}
+						<img src='{{ MEDIA_URL }}{{ image.image }}' width='300' />
+					{% endif %}
+				{% endfor %}
+				<a href="{% url "single_product" product.slug %}">{{ product }}</a>
+			</li>     <!-- single_product needs parameter !-->
+		{% endfor %}
+	</ol>
+{% endblock %}

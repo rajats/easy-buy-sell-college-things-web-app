@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="row">
+	<div class="col-md-12">
+		<h1>Products</h1>
+		{% include page_template %}
+		{% block js %}
+		    {{ block.super }}
+		    <script src="http://code.jquery.com/jquery-latest.js"></script>
+		    <script src="{{ STATIC_URL }}endless_pagination/js/endless-pagination.js"></script>
+		    <script>
+		        $.endlessPaginate({
+		            paginateOnScroll: true,
+		            paginateOnScrollMargin: 20
+		        });
+    		</script>
+		{% endblock %}
+	</div>
+</div>
+{% endblock %}

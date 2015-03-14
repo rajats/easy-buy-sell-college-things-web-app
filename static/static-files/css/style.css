@@ -1,0 +1,63 @@
+.thumbnail {
+    background: #FFFFFF;
+}
+
+
+.jumbotron {
+	background-image: url("../images/billboard_ecommerce.jpg");
+	background-size: cover;
+	color: #FFFFFF;
+	-webkit-background-size: 100% 100%;
+    -moz-background-size: 100% 100%;
+    -o-background-size: 100% 100%;
+    background-size: 100% 100%;
+
+}
+
+.item{
+	width=100%;
+	height: 500px;
+  	max-height: 500px;
+  	.transition(.1s ease-in-out left);
+}
+
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+body {
+  /* Margin bottom by footer height */
+  margin-bottom: 60px;
+}
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 60px;
+  background-color:#000000 ;
+}
+
+.footer > .container {
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+.copyright {
+	float: left;
+    width:33.333%;
+    text-align:left;
+}
+
+.contact { 
+	float: left;
+    width:33.333%;
+    text-align:center;
+}
+
+.social { 
+	float: left;
+    width:33.333%;
+    text-align:right;
+}

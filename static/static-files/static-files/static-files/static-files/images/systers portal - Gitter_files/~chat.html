@@ -1,0 +1,1613 @@
+<!DOCTYPE html>
+<!-- saved from url=(0046)https://gitter.im/systers/portal/~chat#initial -->
+<html class="no-js" lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=IE9">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+    <meta charset="utf-8">
+    <title>systers/portal - Gitter</title>
+    <style>
+
+      @-webkit-keyframes pulsey {
+        0% { opacity: 0.6; }
+        50% { opacity: 1; }
+        100% { opacity: 0.6; }
+      }
+
+      html.loading .trpContentPanel { background: url("//cdn01.gitter.im/_s/53b0255/images/logo-mark-grey-64.png") center no-repeat; height: 90%; -webkit-animation: pulsey 2s ease-out; -webkit-animation-iteration-count: infinite;  }
+      html.loading .trpContentPanel > * { visibility: hidden; }
+    </style>
+    <!--<base target="_parent">--><base href="." target="_parent">
+
+    <link rel="stylesheet" href="https://cdn01.gitter.im/_s/53b0255/sprites/services.css">
+    <link rel="stylesheet" href="https://cdn02.gitter.im/_s/53b0255/styles/router-chat.css">
+    <link id="favicon" rel="shortcut icon" href="https://cdn03.gitter.im/_s/53b0255/images/favicon-normal.ico"><!-- Le fav and touch icons -->
+    <script type="text/javascript" async="" defer="">
+
+  function loadCss(url) {
+    var link = document.createElement("link");
+    link.type = "text/css";
+    link.rel = "stylesheet";
+    link.href = url;
+    document.getElementsByTagName("head")[0].appendChild(link);
+  }
+
+  loadCss('//fonts.googleapis.com/css?family=Open+Sans:400,300,700&subset=latin,cyrillic,vietnamese');
+
+</script><link type="text/css" rel="stylesheet" href="css">
+
+  </head>
+  <body class="iframe ">
+    
+<div class="trpAlertWrapper" id="alert-panel">
+  <div class="trpAlertContainer">
+    <div class="trpAlertContent" id="alert-content">
+    </div>
+  </div>
+</div>
+
+<div class="chat-and-toolbar-wrapper">
+  <div class="right-toolbar right-toolbar--collapsible" id="right-toolbar-layout">
+  <header class="right-toolbar__header">
+    <div class="search js-search"><i class="js-activate-search search__toggle octicon octicon-search"></i>
+<div class="search-input">
+  <i class="js-search-icon search-input__icon octicon octicon-search"></i>
+  <i class="js-search-clear-icon search-input__clear icon-cancel-circle"></i>
+  <input type="search" class="js-search-input search-input-field" placeholder="Search...">
+</div>
+</div>
+  </header>
+  <div id="search-results" class="right-toolbar__body search-results" style="display: none;"><div class="search-header  u-uppercase">Rooms &amp; People</div>
+<div class="js-search-rooms"></div>
+<div class="search-header  u-uppercase">Messages in systers/portal</div>
+<div class="js-search-messages"></div>
+</div>
+  <div id="toolbar-top-content" class="right-toolbar__body">
+    <div id="people-list">
+      <div class="trpToolbarHeader" id="top-header">
+        <div class="trpToolbarHeaderItem selected" id="people-header">
+          People
+        </div>
+        
+          <div class="trpToolbarHeaderItem" id="info-header">
+            Repo info
+          </div>
+        
+      </div>
+      <div class="trpToolbarList">
+        <div class="trpToolbarListContent" id="people-roster"><span class="frame-people">
+  <span id="roster"><ul class="roster"><li><div class="trpDisplayPicture  avatar-54bd60cfdb8155e6700ed5e2  avatar-s  offline  contributor  " style="background-image: url(&#39;https://avatars4.githubusercontent.com/alma-castant?v=3&amp;s=32&#39;)" data-original-title=" (contributor)">
+  <div class="trpStatus" id="status"> </div>
+  
+</div>
+</li><li><div class="trpDisplayPicture  avatar-54ba25c6db8155e6700ec489  avatar-s  offline  contributor  " style="background-image: url(&#39;https://avatars4.githubusercontent.com/ana-balica?&amp;s=32&#39;)" data-original-title=" (contributor)">
+  <div class="trpStatus" id="status"> </div>
+  
+</div>
+</li><li><div class="trpDisplayPicture  avatar-54bba31fdb8155e6700ec9f4  avatar-s  offline  contributor  " style="background-image: url(&#39;https://avatars1.githubusercontent.com/kanika2107?&amp;s=32&#39;)" data-original-title=" (contributor)">
+  <div class="trpStatus" id="status"> </div>
+  
+</div>
+</li><li><div class="trpDisplayPicture  avatar-54fae06015522ed4b3dcef12  avatar-s  offline  contributor  " style="background-image: url(&#39;https://avatars5.githubusercontent.com/reachtarunhere?v=3&amp;s=32&#39;)" data-original-title=" (contributor)">
+  <div class="trpStatus" id="status"> </div>
+  
+</div>
+</li><li><div class="trpDisplayPicture  avatar-54e42e8c15522ed4b3dc23e2  avatar-s  offline  contributor  " style="background-image: url(&#39;https://avatars2.githubusercontent.com/todipratik?&amp;s=32&#39;)" data-original-title=" (contributor)">
+  <div class="trpStatus" id="status"> </div>
+  
+</div>
+</li><li><div class="trpDisplayPicture  avatar-54dd09ef15522ed4b3dbf352  avatar-s  offline    " style="background-image: url(&#39;https://avatars4.githubusercontent.com/aayushsaxena15?v=3&amp;s=32&#39;)" data-original-title="">
+  <div class="trpStatus" id="status"> </div>
+  
+</div>
+</li><li><div class="trpDisplayPicture  avatar-54883834db8155e6700ddae6  avatar-s  offline    " style="background-image: url(&#39;https://avatars3.githubusercontent.com/Akanksha18?v=3&amp;s=32&#39;)" data-original-title="">
+  <div class="trpStatus" id="status"> </div>
+  
+</div>
+</li><li><div class="trpDisplayPicture  avatar-54f6cd0815522ed4b3dcc6fc  avatar-s  offline    " style="background-image: url(&#39;https://avatars0.githubusercontent.com/BeingAnuj?v=3&amp;s=32&#39;)" data-original-title="">
+  <div class="trpStatus" id="status"> </div>
+  
+</div>
+</li><li><div class="trpDisplayPicture  avatar-54f1594c15522ed4b3dc99e5  avatar-s  offline    " style="background-image: url(&#39;https://avatars4.githubusercontent.com/bhaktipriya?v=3&amp;s=32&#39;)" data-original-title="">
+  <div class="trpStatus" id="status"> </div>
+  
+</div>
+</li><li><div class="trpDisplayPicture  avatar-54bc0763db8155e6700ecbdf  avatar-s  offline    " style="background-image: url(&#39;https://avatars5.githubusercontent.com/cheatiiit?v=3&amp;s=32&#39;)" data-original-title="">
+  <div class="trpStatus" id="status"> </div>
+  
+</div>
+</li><li><div class="trpDisplayPicture  avatar-54bfd0b4db8155e6700ee88d  avatar-s  offline    " style="background-image: url(&#39;https://avatars5.githubusercontent.com/GeetikaBatra?&amp;s=32&#39;)" data-original-title="">
+  <div class="trpStatus" id="status"> </div>
+  
+</div>
+</li><li><div class="trpDisplayPicture  avatar-54eaf1fb15522ed4b3dc5944  avatar-s  offline    " style="background-image: url(&#39;https://avatars0.githubusercontent.com/nellyk?&amp;s=32&#39;)" data-original-title="">
+  <div class="trpStatus" id="status"> </div>
+  
+</div>
+</li><li><div class="trpDisplayPicture  avatar-54f567b815522ed4b3dcb811  avatar-s  offline    " style="background-image: url(&#39;https://avatars2.githubusercontent.com/pattu777?v=3&amp;s=32&#39;)" data-original-title="">
+  <div class="trpStatus" id="status"> </div>
+  
+</div>
+</li><li><div class="trpDisplayPicture  avatar-54fb35ed15522ed4b3dcf17b  avatar-s  online    " style="background-image: url(&#39;https://avatars2.githubusercontent.com/rajats?v=3&amp;s=32&#39;)" data-original-title="">
+  <div class="trpStatus" id="status"> </div>
+  
+</div>
+</li></ul></span>
+  <span id="remaining"><div class="remaining showMid"><div style="clear:both"></div>
+  <a href="https://gitter.im/systers/portal/~chat#add" class="trpAddBadge  js-add-more" style="text-decoration: none"><div style="text-align: center;">✛ Add</div></a>
+<span class="js-show-more" style="display: none;">
+  <a href="https://gitter.im/systers/portal/~chat#people" class="trpMoreBadge" style="text-decoration: none"><div style="text-align: center;">See All</div></a><small>(0 member hidden)</small>
+</span>
+</div></span>
+</span>
+</div>
+        <div class="trpToolbarListContent" id="repo-info" style="display: none"><div><div class="trpRepoInfoContainer">
+  <h1>portal</h1>
+  <p>Systers Portal for communities <small>Python</small></p>
+  <p>by <a href="http://github.com/systers">systers</a></p>
+  <div class="vcard-stats">
+      <a href="https://github.com/systers/portal/issues" target="_blank"><strong class="vcard-stat-count">11</strong>
+      issues</a>&nbsp;
+      <a href="https://github.com/systers/portal/watchers" target="_blank"><strong class="vcard-stat-count">12</strong>
+      watchers</a>&nbsp;
+      <strong class="vcard-stat-count">9</strong>
+      stars &nbsp;
+  </div>
+        <li class="github-wiki"><a href="https://github.com/systers/portal/wiki" target="_blank">View the wiki</a></li>
+
+</div>
+</div></div>
+        <div class="trpToolbarHeader" id="activity-header">ACTIVITY</div>
+      </div>
+    </div>
+
+    <div class="trpTroupeRelatedContent scroller" id="room-content">
+      
+
+      <div class="trpTroupeRelatedContentHolder" id="activity"><ul class="gtrActivityList" id="activity-events">
+<li><div class="github-comment view">
+  <i class="octicon octicon-comment"></i>
+  <div class="activity-time"><span><span title="" data-original-title="March 8 2015 8:36 PM">20:36</span></span></div>
+
+  <span class="gtrActivityItemText"><span class="mention" data-link-type="mention" data-screen-name="rosariorobinson">rosariorobinson</span> commented <span class="issue open" data-link-type="issue" data-issue="51" data-issue-repo="systers/portal">#51</span></span>
+
+  <div style="clear: both;"></div>
+</div>
+</li><li><div class="github-push view">
+  <i class="octicon octicon-repo-push"></i>
+  <div class="activity-time"><span><span title="" data-original-title="March 8 2015 2:43 AM">2:43</span></span></div>
+
+  <div class="gtrActivityItemText">
+    <p class="activity-commit">
+      <span class="mention" data-link-type="mention" data-screen-name="rosariorobinson">rosariorobinson</span> on master
+    </p>
+    <p class="activity-commit">
+      <span data-link-type="commit" data-commit-sha="a5ee98fc1cbccad9bf87329bb7559b2bf2da5784" data-commit-repo="systers/portal" class="commit">Meetup Requirements
+
+High Level…</span> <a href="https://github.com/systers/portal/compare/04f37e60ebf1...a5ee98fc1cbc" target="_blank" style="opacity: 0.6">(compare)</a>
+    </p>
+  </div>
+</div>
+</li><li><div class="github-push view">
+  <i class="octicon octicon-repo-push"></i>
+  <div class="activity-time"><span><span title="" data-original-title="March 7 2015 9:49 PM">Mar 07</span></span></div>
+
+  <div class="gtrActivityItemText">
+    <p class="activity-commit">
+      <span class="mention" data-link-type="mention" data-screen-name="ana-balica">ana-balica</span> on develop
+    </p>
+    <p class="activity-commit">
+      <span data-link-type="commit" data-commit-sha="17049aa118ac94a46fce574d5ebbde579370fedf" data-commit-repo="systers/portal" class="commit">add python3-openid package for …</span> <span data-link-type="commit" data-commit-sha="24e733103d5ffe29b67f948ffc3aca5f55a8b9f5" data-commit-repo="systers/portal" class="commit">port portal to python3</span> <span data-link-type="commit" data-commit-sha="5aa43653dedee172178ceff856950f58b547877d" data-commit-repo="systers/portal" class="commit">run travis with python 3.4</span> and 1 more <a href="https://github.com/systers/portal/compare/a70a412b9921...1ec15e7b6167" target="_blank" style="opacity: 0.6">(compare)</a>
+    </p>
+  </div>
+</div>
+</li><li><div class="prerendered normal view">
+  <div class="service-sprite travis-smile"></div>
+  <div class="activity-time"><span><span title="" data-original-title="March 7 2015 9:46 PM">Mar 07</span></span></div>
+  <span class="gtrActivityItemText">Travis <a href="https://github.com/systers/portal/compare/17049aa118ac%5E...1ec15e7b6167" rel="nofollow" target="_blank" class="link">systers/portal</a> (python3-port) <a href="https://travis-ci.org/systers/portal/builds/53465918" rel="nofollow" target="_blank" class="link">passed</a> (410)</span>
+</div>
+</li><li><div class="github-push view">
+  <i class="octicon octicon-repo-push"></i>
+  <div class="activity-time"><span><span title="" data-original-title="March 7 2015 9:42 PM">Mar 07</span></span></div>
+
+  <div class="gtrActivityItemText">
+    <p class="activity-commit">
+      <span class="mention" data-link-type="mention" data-screen-name="ana-balica">ana-balica</span> on python3-port
+    </p>
+    <p class="activity-commit">
+      <span data-link-type="commit" data-commit-sha="17049aa118ac94a46fce574d5ebbde579370fedf" data-commit-repo="systers/portal" class="commit">add python3-openid package for …</span> <span data-link-type="commit" data-commit-sha="24e733103d5ffe29b67f948ffc3aca5f55a8b9f5" data-commit-repo="systers/portal" class="commit">port portal to python3</span> <span data-link-type="commit" data-commit-sha="5aa43653dedee172178ceff856950f58b547877d" data-commit-repo="systers/portal" class="commit">run travis with python 3.4</span> and 1 more <a href="https://github.com/systers/portal/compare/17049aa118ac%5E...1ec15e7b6167" target="_blank" style="opacity: 0.6">(compare)</a>
+    </p>
+  </div>
+</div>
+</li><li><div class="prerendered error view">
+  <div class="service-sprite travis-frown"></div>
+  <div class="activity-time"><span><span title="" data-original-title="March 7 2015 7:02 PM">Mar 07</span></span></div>
+  <span class="gtrActivityItemText">Travis <span data-link-type="issue" data-issue="107" data-issue-repo="systers/portal" class="issue open">systers/portal#107</span> <a href="https://travis-ci.org/systers/portal/builds/53455437" rel="nofollow" target="_blank" class="link">broken</a> (409)</span>
+</div>
+</li><li><div class="github-comment view">
+  <i class="octicon octicon-comment"></i>
+  <div class="activity-time"><span><span title="" data-original-title="March 7 2015 7:02 PM">Mar 07</span></span></div>
+
+  <span class="gtrActivityItemText"><span class="mention" data-link-type="mention" data-screen-name="jayesh92">jayesh92</span> commented <span class="issue open" data-link-type="issue" data-issue="107" data-issue-repo="systers/portal">#107</span></span>
+
+  <div style="clear: both;"></div>
+</div>
+</li><li><div class="github-pull-request view">
+  <i class="octicon octicon-git-pull-request"></i>
+  <div class="activity-time"><span><span title="" data-original-title="March 7 2015 7:00 PM">Mar 07</span></span></div>
+
+  <span class="gtrActivityItemText"><span class="mention" data-link-type="mention" data-screen-name="jayesh92">jayesh92</span> synchronize <a class="issue open" href="https://github.com/systers/portal/pull/107" target="_blank" data-link-type="issue" data-issue="107" data-issue-repo="systers/portal">#107</a></span>
+
+  <div style="clear: both;"></div>
+</div>
+</li><li><div class="github-comment view">
+  <i class="octicon octicon-comment"></i>
+  <div class="activity-time"><span><span title="" data-original-title="March 7 2015 5:48 PM">Mar 07</span></span></div>
+
+  <span class="gtrActivityItemText"><span class="mention" data-link-type="mention" data-screen-name="Akanksha18">Akanksha18</span> commented <span class="issue open" data-link-type="issue" data-issue="108" data-issue-repo="systers/portal">#108</span></span>
+
+  <div style="clear: both;"></div>
+</div>
+</li><li><div class="github-pull-request view">
+  <i class="octicon octicon-git-pull-request"></i>
+  <div class="activity-time"><span><span title="" data-original-title="March 7 2015 5:48 PM">Mar 07</span></span></div>
+
+  <span class="gtrActivityItemText"><span class="mention" data-link-type="mention" data-screen-name="Akanksha18">Akanksha18</span> opened <a class="issue open" href="https://github.com/systers/portal/pull/108" target="_blank" data-link-type="issue" data-issue="108" data-issue-repo="systers/portal">#108</a></span>
+
+  <div style="clear: both;"></div>
+</div>
+</li><li><div class="github-comment view">
+  <i class="octicon octicon-comment"></i>
+  <div class="activity-time"><span><span title="" data-original-title="March 7 2015 4:38 PM">Mar 07</span></span></div>
+
+  <span class="gtrActivityItemText"><span class="mention" data-link-type="mention" data-screen-name="reachtarunhere">reachtarunhere</span> commented <span class="issue closed" data-link-type="issue" data-issue="106" data-issue-repo="systers/portal">#106</span></span>
+
+  <div style="clear: both;"></div>
+</div>
+</li><li><div class="github-issue github-issue-closed view">
+  <i class="octicon octicon-issue-opened"></i>
+  <div class="activity-time"><span><span title="" data-original-title="March 7 2015 4:15 PM">Mar 07</span></span></div>
+
+  <span class="gtrActivityItemText"><span class="mention" data-link-type="mention" data-screen-name="ana-balica">ana-balica</span> closed <span class="issue closed" data-link-type="issue" data-issue="102" data-issue-repo="systers/portal">#102</span></span>
+
+  <div style="clear: both;"></div>
+</div>
+</li><li><div class="github-issue github-issue-closed view">
+  <i class="octicon octicon-issue-opened"></i>
+  <div class="activity-time"><span><span title="" data-original-title="March 7 2015 4:15 PM">Mar 07</span></span></div>
+
+  <span class="gtrActivityItemText"><span class="mention" data-link-type="mention" data-screen-name="ana-balica">ana-balica</span> closed <span class="issue closed" data-link-type="issue" data-issue="101" data-issue-repo="systers/portal">#101</span></span>
+
+  <div style="clear: both;"></div>
+</div>
+</li><li><div class="github-pull-request view">
+  <i class="octicon octicon-git-pull-request"></i>
+  <div class="activity-time"><span><span title="" data-original-title="March 7 2015 4:14 PM">Mar 07</span></span></div>
+
+  <span class="gtrActivityItemText"><span class="mention" data-link-type="mention" data-screen-name="ana-balica">ana-balica</span> closed <a class="issue closed" href="https://github.com/systers/portal/pull/103" target="_blank" data-link-type="issue" data-issue="103" data-issue-repo="systers/portal">#103</a></span>
+
+  <div style="clear: both;"></div>
+</div>
+</li><li><div class="github-comment view">
+  <i class="octicon octicon-comment"></i>
+  <div class="activity-time"><span><span title="" data-original-title="March 7 2015 4:14 PM">Mar 07</span></span></div>
+
+  <span class="gtrActivityItemText"><span class="mention" data-link-type="mention" data-screen-name="ana-balica">ana-balica</span> commented <span class="issue open" data-link-type="issue" data-issue="107" data-issue-repo="systers/portal">#107</span></span>
+
+  <div style="clear: both;"></div>
+</div>
+</li><li><div class="github-pull-request view">
+  <i class="octicon octicon-git-pull-request"></i>
+  <div class="activity-time"><span><span title="" data-original-title="March 7 2015 4:07 PM">Mar 07</span></span></div>
+
+  <span class="gtrActivityItemText"><span class="mention" data-link-type="mention" data-screen-name="ana-balica">ana-balica</span> closed <a class="issue closed" href="https://github.com/systers/portal/pull/106" target="_blank" data-link-type="issue" data-issue="106" data-issue-repo="systers/portal">#106</a></span>
+
+  <div style="clear: both;"></div>
+</div>
+</li><li><div class="github-comment view">
+  <i class="octicon octicon-comment"></i>
+  <div class="activity-time"><span><span title="" data-original-title="March 7 2015 4:07 PM">Mar 07</span></span></div>
+
+  <span class="gtrActivityItemText"><span class="mention" data-link-type="mention" data-screen-name="ana-balica">ana-balica</span> commented <span class="issue closed" data-link-type="issue" data-issue="106" data-issue-repo="systers/portal">#106</span></span>
+
+  <div style="clear: both;"></div>
+</div>
+</li><li><div class="github-push view">
+  <i class="octicon octicon-repo-push"></i>
+  <div class="activity-time"><span><span title="" data-original-title="March 7 2015 4:05 PM">Mar 07</span></span></div>
+
+  <div class="gtrActivityItemText">
+    <p class="activity-commit">
+      <span class="mention" data-link-type="mention" data-screen-name="ana-balica">ana-balica</span> on develop
+    </p>
+    <p class="activity-commit">
+      <span data-link-type="commit" data-commit-sha="a70a412b9921f01cee02db4e55e8b12f3c9f2065" data-commit-repo="systers/portal" class="commit">1.added snippet to show tags ac…</span> <a href="https://github.com/systers/portal/compare/45f0f3d02ae8...a70a412b9921" target="_blank" style="opacity: 0.6">(compare)</a>
+    </p>
+  </div>
+</div>
+</li><li><div class="github-pull-request view">
+  <i class="octicon octicon-git-pull-request"></i>
+  <div class="activity-time"><span><span title="" data-original-title="March 7 2015 3:57 PM">Mar 07</span></span></div>
+
+  <span class="gtrActivityItemText"><span class="mention" data-link-type="mention" data-screen-name="ana-balica">ana-balica</span> closed <a class="issue closed" href="https://github.com/systers/portal/pull/105" target="_blank" data-link-type="issue" data-issue="105" data-issue-repo="systers/portal">#105</a></span>
+
+  <div style="clear: both;"></div>
+</div>
+</li><li><div class="github-comment view">
+  <i class="octicon octicon-comment"></i>
+  <div class="activity-time"><span><span title="" data-original-title="March 7 2015 3:57 PM">Mar 07</span></span></div>
+
+  <span class="gtrActivityItemText"><span class="mention" data-link-type="mention" data-screen-name="ana-balica">ana-balica</span> commented <span class="issue closed" data-link-type="issue" data-issue="105" data-issue-repo="systers/portal">#105</span></span>
+
+  <div style="clear: both;"></div>
+</div>
+</li></ul>
+</div>
+
+    </div>
+  </div>
+
+  <footer id="zendesk-footer" class="right-toolbar__footer">
+    <a href="http://gitter.zendesk.com/" target="_blank" style="text-decoration: none; display: block;">
+      <div class="support">
+        <i class="octicon octicon-question"></i>
+        <div class="trpActionsMenuLabel" style="margin-top: -4px">Gitter Support</div>
+      </div>
+    </a>
+  </footer>
+</div>
+
+  <div class="chat-app">
+    <header class="chat-header" id="header-wrapper">
+  <div id="header">
+    <div class="chat-header__avatar  ">
+  <img src="systers">
+</div>
+<div class="chat-header__buttons">
+  <div class="chat-header__favourite">
+    <i class="js-favourite-button icon-star-1"></i>
+  </div>
+      <div class="chat-header__settings">
+        <i class="js-chat-settings octicon octicon-tools" data-toggle="dropdown"></i>
+      </div>
+</div>
+<div class="chat-header__content">
+  <h1 class="js-chat-name" title="" data-original-title="Anyone can join">
+      <a href="https://github.com/systers/portal" target="_blank">systers/portal</a>
+  </h1>
+  <p class="js-chat-topic">Documentation: <a target="_blank" rel="nofollow" href="http://systers-portal.readthedocs.org/en/develop/">http://systers-portal.readthedocs.org/en/develop/</a></p>
+</div>
+
+  </div>
+  <div class="banner-wrapper" style="display: none;">
+    <div id="unread-banner" class="banner slide-away"></div>
+  </div>
+  <div class="banner-wrapper" style="display: none;">
+    <div id="limit-banner" class="banner slide-away"><button class="main">You have more messages in your history. Upgrade your plan to see them →</button>
+</div>
+  </div>
+</header>
+
+    <div class="trpContentPanel" id="content-wrapper">
+  <div class="scrollHelper js-scroll-to-bottom u-scale-zero"><i class="octicon octicon-chevron-down"></i></div>
+  <div class="trpChatPanel">
+    <div class="trpChatContainer primary-scroll chat-container scroller" id="content-frame">
+      <div id="chat-container">
+        
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+        
+      <div class="chat-item model-id-54f8b9b0e172474214a85e9c burstStart read cantEdit isOld" data-item-id="54f8b9b0e172474214a85e9c" data-mentioned="false" data-item-type="chat"><div class="chat-item__container view">
+  <div class="chat-item__aside">
+      <span><div class="trpDisplayPicture  avatar-54883834db8155e6700ddae6  avatar-s      " style="background-image: url(&#39;https://avatars3.githubusercontent.com/Akanksha18?v=3&amp;s=32&#39;)" data-original-title="Akanksha18">
+  
+  
+</div>
+</span>
+  </div>
+  <div class="chat-item__content">
+    <div class="chat-item__details js-chat-item-details">
+      <div class="chat-item__from js-chat-item-from">Akanksha18</div>
+        <div class="chat-item__time js-chat-item-time chat-item__time--permalinkable">
+          <span><span title="" data-original-title="March 6 2015 1:46 AM &lt;br&gt;(Alt-click to quote)">March 6 2015</span></span>
+        </div>
+          <div class="chat-item__icon--read  js-chat-item-readby"></div>
+      <div class="chat-item__icon--edit  js-chat-item-edit" data-original-title="" title=""></div>
+    </div>
+    <div class="chat-item__text  js-chat-item-text"><p>i have a problem, my forms.py reads from common.forms import ModelFormWithHelper<br>from common.helpers import SubmitCancelFormHelper<br>from blog.models import News, Resource<br>from users.models import SystersUser</p><p>class AddNewsForm(ModelFormWithHelper):<br>    """Form to add new Community News. The author and the community of the<br>     news should be provided by the view:</p><pre><code> * author - currently logged in user
+ * community - defined by the community slug from the URL
+ """
+class <span class="tag">Meta</span><span class="value">:
+    model = News
+    fields = [<span class="string">'slug'</span>, <span class="string">'title'</span>, <span class="string">'content'</span>, <span class="string">'is_public'</span>, <span class="string">'is_monitored'</span>,
+              <span class="string">'tags'</span>]
+    helper_class = SubmitCancelFormHelper
+    helper_cancel_href = <span class="string">"{% url 'view_community_news_list' "</span> \
+                         <span class="string">"community.slug %}"</span>
+
+def __<span class="function">init__</span>(self, *args, **kwargs):
+    self.author = kwargs.<span class="function">pop</span>(<span class="string">'author'</span>)
+    self.community = kwargs.<span class="function">pop</span>(<span class="string">'community'</span>)
+    <span class="function">super</span>(AddNewsForm, self).__<span class="function">init__</span>(*args, **kwargs)
+
+def <span class="function">save</span>(self, commit=True):
+    <span class="string">""</span><span class="string">"Override save to add author and community to the instance."</span><span class="string">""</span>
+    instance = <span class="function">super</span>(AddNewsForm, self).<span class="function">save</span>(commit=False)
+    instance.author = SystersUser.objects.<span class="function">get</span>(user=self.author)
+    instance.community = self.community
+    if commit:
+        instance.<span class="function">save</span>()
+    return instance</span></code></pre><p>class EditNewsForm(ModelFormWithHelper):<br>    """Form to edit Community News."""<br>    class Meta:<br>        model = News<br>        fields = ['slug', 'title', 'content', 'is_public', 'is_monitored',<br>                  'tags']<br>        helper_class = SubmitCancelFormHelper<br>        helper_cancel_href = "{% url 'view_community_news' community.slug " \<br>                             "object.slug %}"</p><p>class AddResourceForm(ModelFormWithHelper):<br>    """Form to add new Community Resource. The author and the community of the<br>     resource should be provided by the view:</p><pre><code> * author - currently logged in user
+ * community - defined by the community slug from the URL
+ """
+class <span class="tag">Meta</span><span class="value">:
+    model = Resource
+    fields = [<span class="string">'slug'</span>, <span class="string">'title'</span>, <span class="string">'content'</span>, <span class="string">'is_public'</span>, <span class="string">'is_monitored'</span>,
+              <span class="string">'tags'</span>, <span class="string">'resource_type'</span>]
+    helper_class = SubmitCancelFormHelper
+    helper_cancel_href = <span class="string">"{% url 'view_community_resource_list' "</span> \
+                         <span class="string">"community.slug %}"</span>
+
+def __<span class="function">init__</span>(self, *args, **kwargs):
+    self.author = kwargs.<span class="function">pop</span>(<span class="string">'author'</span>)
+    self.community = kwargs.<span class="function">pop</span>(<span class="string">'community'</span>)
+    <span class="function">super</span>(AddResourceForm, self).__<span class="function">init__</span>(*args, **kwargs)
+
+def <span class="function">save</span>(self, commit=True):
+    <span class="string">""</span><span class="string">"Override save to add author and community to the instance."</span><span class="string">""</span>
+    instance = <span class="function">super</span>(AddResourceForm, self).<span class="function">save</span>(commit=False)
+    instance.author = SystersUser.objects.<span class="function">get</span>(user=self.author)
+    instance.community = self.community
+    if commit:
+        instance.<span class="function">save</span>()
+    return instance</span></code></pre><p>class EditResourceForm(ModelFormWithHelper):<br>    """Form to edit Community Resource."""<br>    class Meta:<br>        model = Resource<br>        fields = ['slug', 'title', 'content', 'is_public', 'is_monitored',<br>                  'tags', 'resource_type']<br>        helper_class = SubmitCancelFormHelper<br>        helper_cancel_href = "{% url 'view_community_resource' " \<br>                             "community.slug object.slug %}"</p></div>
+  </div>
+</div>
+</div><div class="chat-item model-id-54f8b9c99622a2fc57f6bb95 burstContinued read cantEdit isOld" data-item-id="54f8b9c99622a2fc57f6bb95" data-mentioned="false" data-item-type="chat"><div class="chat-item__container view">
+  <div class="chat-item__aside">
+      <span><div class="trpDisplayPicture  avatar-54883834db8155e6700ddae6  avatar-s      " style="background-image: url(&#39;https://avatars3.githubusercontent.com/Akanksha18?v=3&amp;s=32&#39;)" data-original-title="Akanksha18">
+  
+  
+</div>
+</span>
+  </div>
+  <div class="chat-item__content">
+    <div class="chat-item__details js-chat-item-details">
+      <div class="chat-item__from js-chat-item-from">Akanksha18</div>
+        <div class="chat-item__time js-chat-item-time chat-item__time--permalinkable">
+          <span><span title="" data-original-title="March 6 2015 1:47 AM &lt;br&gt;(Alt-click to quote)">March 6 2015</span></span>
+        </div>
+          <div class="chat-item__icon--read  js-chat-item-readby"></div>
+      <div class="chat-item__icon--edit  js-chat-item-edit" data-original-title="" title=""></div>
+    </div>
+    <div class="chat-item__text  js-chat-item-text">but ticket 100 talks about an example tagform</div>
+  </div>
+</div>
+</div><div class="chat-item model-id-54f8b9d0b1086da6119e4935 burstContinued read cantEdit isOld" data-item-id="54f8b9d0b1086da6119e4935" data-mentioned="false" data-item-type="chat"><div class="chat-item__container view">
+  <div class="chat-item__aside">
+      <span><div class="trpDisplayPicture  avatar-54883834db8155e6700ddae6  avatar-s      " style="background-image: url(&#39;https://avatars3.githubusercontent.com/Akanksha18?v=3&amp;s=32&#39;)" data-original-title="Akanksha18">
+  
+  
+</div>
+</span>
+  </div>
+  <div class="chat-item__content">
+    <div class="chat-item__details js-chat-item-details">
+      <div class="chat-item__from js-chat-item-from">Akanksha18</div>
+        <div class="chat-item__time js-chat-item-time chat-item__time--permalinkable">
+          <span><span title="" data-original-title="March 6 2015 1:47 AM &lt;br&gt;(Alt-click to quote)">March 6 2015</span></span>
+        </div>
+          <div class="chat-item__icon--read  js-chat-item-readby"></div>
+      <div class="chat-item__icon--edit  js-chat-item-edit" data-original-title="" title=""></div>
+    </div>
+    <div class="chat-item__text  js-chat-item-text">i dont find any TagForm</div>
+  </div>
+</div>
+</div><div class="chat-item model-id-54f8b9ef8f03d0fd57bad395 burstContinued read burstFinal cantEdit isOld" data-item-id="54f8b9ef8f03d0fd57bad395" data-mentioned="false" data-item-type="chat"><div class="chat-item__container view">
+  <div class="chat-item__aside">
+      <span><div class="trpDisplayPicture  avatar-54883834db8155e6700ddae6  avatar-s      " style="background-image: url(&#39;https://avatars3.githubusercontent.com/Akanksha18?v=3&amp;s=32&#39;)" data-original-title="Akanksha18">
+  
+  
+</div>
+</span>
+  </div>
+  <div class="chat-item__content">
+    <div class="chat-item__details js-chat-item-details">
+      <div class="chat-item__from js-chat-item-from">Akanksha18</div>
+        <div class="chat-item__time js-chat-item-time chat-item__time--permalinkable">
+          <span><span title="" data-original-title="March 6 2015 1:47 AM &lt;br&gt;(Alt-click to quote)">March 6 2015</span></span>
+        </div>
+          <div class="chat-item__icon--read  js-chat-item-readby"></div>
+      <div class="chat-item__icon--edit  js-chat-item-edit" data-original-title="" title=""></div>
+    </div>
+    <div class="chat-item__text  js-chat-item-text">any solutions?</div>
+  </div>
+</div>
+</div><div class="chat-item model-id-54f92607e172474214a867b4 burstStart read cantEdit isOld" data-item-id="54f92607e172474214a867b4" data-mentioned="false" data-item-type="chat"><div class="chat-item__container view">
+  <div class="chat-item__aside">
+      <span><div class="trpDisplayPicture  avatar-54ba25c6db8155e6700ec489  avatar-s      " style="background-image: url(&#39;https://avatars4.githubusercontent.com/ana-balica?&amp;s=32&#39;)" data-original-title="Ana Balica">
+  
+  
+</div>
+</span>
+  </div>
+  <div class="chat-item__content">
+    <div class="chat-item__details js-chat-item-details">
+      <div class="chat-item__from js-chat-item-from">ana-balica</div>
+        <div class="chat-item__time js-chat-item-time chat-item__time--permalinkable">
+          <span><span title="" data-original-title="March 6 2015 9:29 AM &lt;br&gt;(Alt-click to quote)">March 6 2015</span></span>
+        </div>
+          <div class="chat-item__icon--read  js-chat-item-readby"></div>
+      <div class="chat-item__icon--edit  js-chat-item-edit" data-original-title="" title=""></div>
+    </div>
+    <div class="chat-item__text  js-chat-item-text"><span data-link-type="mention" data-screen-name="Akanksha18" class="mention">@Akanksha18</span> pull from upstream</div>
+  </div>
+</div>
+</div><div class="chat-item model-id-54f9262fe172474214a867b9 burstContinued read burstFinal cantEdit isOld" data-item-id="54f9262fe172474214a867b9" data-mentioned="false" data-item-type="chat"><div class="chat-item__container view">
+  <div class="chat-item__aside">
+      <span><div class="trpDisplayPicture  avatar-54ba25c6db8155e6700ec489  avatar-s      " style="background-image: url(&#39;https://avatars4.githubusercontent.com/ana-balica?&amp;s=32&#39;)" data-original-title="Ana Balica">
+  
+  
+</div>
+</span>
+  </div>
+  <div class="chat-item__content">
+    <div class="chat-item__details js-chat-item-details">
+      <div class="chat-item__from js-chat-item-from">ana-balica</div>
+        <div class="chat-item__time js-chat-item-time chat-item__time--permalinkable">
+          <span><span title="" data-original-title="March 6 2015 9:29 AM &lt;br&gt;(Alt-click to quote)">March 6 2015</span></span>
+        </div>
+          <div class="chat-item__icon--read  js-chat-item-readby"></div>
+      <div class="chat-item__icon--edit  js-chat-item-edit" data-original-title="" title=""></div>
+    </div>
+    <div class="chat-item__text  js-chat-item-text">and please use a pastebin for code snippets</div>
+  </div>
+</div>
+</div><div class="chat-item model-id-54f9b473263f6abf4ee9fde1 burstStart read burstFinal cantEdit isOld" data-item-id="54f9b473263f6abf4ee9fde1" data-mentioned="false" data-item-type="chat"><div class="chat-item__container view">
+  <div class="chat-item__aside">
+      <span><div class="trpDisplayPicture  avatar-54883834db8155e6700ddae6  avatar-s      " style="background-image: url(&#39;https://avatars3.githubusercontent.com/Akanksha18?v=3&amp;s=32&#39;)" data-original-title="Akanksha18">
+  
+  
+</div>
+</span>
+  </div>
+  <div class="chat-item__content">
+    <div class="chat-item__details js-chat-item-details">
+      <div class="chat-item__from js-chat-item-from">Akanksha18</div>
+        <div class="chat-item__time js-chat-item-time chat-item__time--permalinkable">
+          <span><span title="" data-original-title="March 6 2015 7:36 PM &lt;br&gt;(Alt-click to quote)">March 6 2015</span></span>
+        </div>
+          <div class="chat-item__icon--read  js-chat-item-readby"></div>
+      <div class="chat-item__icon--edit  js-chat-item-edit" data-original-title="" title=""></div>
+    </div>
+    <div class="chat-item__text  js-chat-item-text">well i did use pastebin on irc sorry didnt provide with link here</div>
+  </div>
+</div>
+</div><div class="chat-item model-id-54f9dca9dcb652c04e7d4692 burstStart read hasBeenEdited burstFinal cantEdit isOld" data-item-id="54f9dca9dcb652c04e7d4692" data-mentioned="false" data-item-type="chat"><div class="chat-item__container view">
+  <div class="chat-item__aside">
+      <span><div class="trpDisplayPicture  avatar-54f1594c15522ed4b3dc99e5  avatar-s      " style="background-image: url(&#39;https://avatars4.githubusercontent.com/bhaktipriya?v=3&amp;s=32&#39;)" data-original-title="bhaktipriya">
+  
+  
+</div>
+</span>
+  </div>
+  <div class="chat-item__content">
+    <div class="chat-item__details js-chat-item-details">
+      <div class="chat-item__from js-chat-item-from">bhaktipriya</div>
+        <div class="chat-item__time js-chat-item-time chat-item__time--permalinkable">
+          <span><span title="" data-original-title="March 6 2015 10:28 PM &lt;br&gt;(Alt-click to quote)">March 6 2015</span></span>
+        </div>
+          <div class="chat-item__icon--read  js-chat-item-readby"></div>
+      <div class="chat-item__icon--edit  js-chat-item-edit" data-original-title="" title=""></div>
+    </div>
+    <div class="chat-item__text  js-chat-item-text"><span data-link-type="mention" data-screen-name="ana-balica" class="mention">@ana-balica</span>  This is with reference to <span data-link-type="issue" data-issue="102" class="issue closed">#102</span> ..Which url needs to be added.Can you please guide me..</div>
+  </div>
+</div>
+</div><div class="chat-item model-id-54f9e661a9c85ff64bc46889 burstStart read cantEdit isOld" data-item-id="54f9e661a9c85ff64bc46889" data-mentioned="false" data-item-type="chat"><div class="chat-item__container view">
+  <div class="chat-item__aside">
+      <span><div class="trpDisplayPicture  avatar-54883834db8155e6700ddae6  avatar-s      " style="background-image: url(&#39;https://avatars3.githubusercontent.com/Akanksha18?v=3&amp;s=32&#39;)" data-original-title="Akanksha18">
+  
+  
+</div>
+</span>
+  </div>
+  <div class="chat-item__content">
+    <div class="chat-item__details js-chat-item-details">
+      <div class="chat-item__from js-chat-item-from">Akanksha18</div>
+        <div class="chat-item__time js-chat-item-time chat-item__time--permalinkable">
+          <span><span title="" data-original-title="March 6 2015 11:09 PM &lt;br&gt;(Alt-click to quote)">March 6 2015</span></span>
+        </div>
+          <div class="chat-item__icon--read  js-chat-item-readby"></div>
+      <div class="chat-item__icon--edit  js-chat-item-edit" data-original-title="" title=""></div>
+    </div>
+    <div class="chat-item__text  js-chat-item-text"> <a href="http://pastebin.com/E6Y0285d" rel="nofollow" target="_blank" class="link">http://pastebin.com/E6Y0285d</a></div>
+  </div>
+</div>
+</div><div class="chat-item model-id-54f9e773a9c85ff64bc4689d burstContinued read burstFinal cantEdit isOld" data-item-id="54f9e773a9c85ff64bc4689d" data-mentioned="false" data-item-type="chat"><div class="chat-item__container view">
+  <div class="chat-item__aside">
+      <span><div class="trpDisplayPicture  avatar-54883834db8155e6700ddae6  avatar-s      " style="background-image: url(&#39;https://avatars3.githubusercontent.com/Akanksha18?v=3&amp;s=32&#39;)" data-original-title="Akanksha18">
+  
+  
+</div>
+</span>
+  </div>
+  <div class="chat-item__content">
+    <div class="chat-item__details js-chat-item-details">
+      <div class="chat-item__from js-chat-item-from">Akanksha18</div>
+        <div class="chat-item__time js-chat-item-time chat-item__time--permalinkable">
+          <span><span title="" data-original-title="March 6 2015 11:14 PM &lt;br&gt;(Alt-click to quote)">March 6 2015</span></span>
+        </div>
+          <div class="chat-item__icon--read  js-chat-item-readby"></div>
+      <div class="chat-item__icon--edit  js-chat-item-edit" data-original-title="" title=""></div>
+    </div>
+    <div class="chat-item__text  js-chat-item-text"><span data-link-type="mention" data-screen-name="ana-balica" class="mention">@ana-balica</span>  umm, i git cloned it, is dat wrong?</div>
+  </div>
+</div>
+</div><div class="chat-item model-id-54fa10fef3c5261c3e8cb38b burstStart read burstFinal cantEdit isOld" data-item-id="54fa10fef3c5261c3e8cb38b" data-mentioned="false" data-item-type="chat"><div class="chat-item__container view">
+  <div class="chat-item__aside">
+      <span><div class="trpDisplayPicture  avatar-54f6cd0815522ed4b3dcc6fc  avatar-s      " style="background-image: url(&#39;https://avatars0.githubusercontent.com/BeingAnuj?v=3&amp;s=32&#39;)" data-original-title="BeingAnuj">
+  
+  
+</div>
+</span>
+  </div>
+  <div class="chat-item__content">
+    <div class="chat-item__details js-chat-item-details">
+      <div class="chat-item__from js-chat-item-from">BeingAnuj</div>
+        <div class="chat-item__time js-chat-item-time chat-item__time--permalinkable">
+          <span><span title="" data-original-title="March 7 2015 2:11 AM &lt;br&gt;(Alt-click to quote)">March 7 2015</span></span>
+        </div>
+          <div class="chat-item__icon--read  js-chat-item-readby"></div>
+      <div class="chat-item__icon--edit  js-chat-item-edit" data-original-title="" title=""></div>
+    </div>
+    <div class="chat-item__text  js-chat-item-text"><span data-link-type="issue" data-issue="100" data-issue-repo="systers/portal" class="issue open">systers/portal#100</span></div>
+  </div>
+</div>
+</div><div class="chat-item model-id-54facae1263f6abf4eea10af burstStart read burstFinal cantEdit isOld" data-item-id="54facae1263f6abf4eea10af" data-mentioned="false" data-item-type="chat"><div class="chat-item__container view">
+  <div class="chat-item__aside">
+      <span><div class="trpDisplayPicture  avatar-54883834db8155e6700ddae6  avatar-s      " style="background-image: url(&#39;https://avatars3.githubusercontent.com/Akanksha18?v=3&amp;s=32&#39;)" data-original-title="Akanksha18">
+  
+  
+</div>
+</span>
+  </div>
+  <div class="chat-item__content">
+    <div class="chat-item__details js-chat-item-details">
+      <div class="chat-item__from js-chat-item-from">Akanksha18</div>
+        <div class="chat-item__time js-chat-item-time chat-item__time--permalinkable">
+          <span><span title="" data-original-title="March 7 2015 3:24 PM &lt;br&gt;(Alt-click to quote)">March 7 2015</span></span>
+        </div>
+          <div class="chat-item__icon--read  js-chat-item-readby"></div>
+      <div class="chat-item__icon--edit  js-chat-item-edit" data-original-title="" title=""></div>
+    </div>
+    <div class="chat-item__text  js-chat-item-text">plz check ticket 100, solved it</div>
+  </div>
+</div>
+</div><div class="chat-item model-id-54fad6fa263f6abf4eea10f9 burstStart read cantEdit isOld" data-item-id="54fad6fa263f6abf4eea10f9" data-mentioned="false" data-item-type="chat"><div class="chat-item__container view">
+  <div class="chat-item__aside">
+      <span><div class="trpDisplayPicture  avatar-54ba25c6db8155e6700ec489  avatar-s      " style="background-image: url(&#39;https://avatars4.githubusercontent.com/ana-balica?&amp;s=32&#39;)" data-original-title="Ana Balica">
+  
+  
+</div>
+</span>
+  </div>
+  <div class="chat-item__content">
+    <div class="chat-item__details js-chat-item-details">
+      <div class="chat-item__from js-chat-item-from">ana-balica</div>
+        <div class="chat-item__time js-chat-item-time chat-item__time--permalinkable">
+          <span><span title="" data-original-title="March 7 2015 4:16 PM &lt;br&gt;(Alt-click to quote)">March 7 2015</span></span>
+        </div>
+          <div class="chat-item__icon--read  js-chat-item-readby"></div>
+      <div class="chat-item__icon--edit  js-chat-item-edit" data-original-title="" title=""></div>
+    </div>
+    <div class="chat-item__text  js-chat-item-text"><span data-link-type="mention" data-screen-name="all" class="mention">@all</span> reviewed all the pull request, some merged, some not, see comments.</div>
+  </div>
+</div>
+</div><div class="chat-item model-id-54fad700a9c85ff64bc474ba burstContinued read burstFinal cantEdit isOld" data-item-id="54fad700a9c85ff64bc474ba" data-mentioned="false" data-item-type="chat"><div class="chat-item__container view">
+  <div class="chat-item__aside">
+      <span><div class="trpDisplayPicture  avatar-54ba25c6db8155e6700ec489  avatar-s      " style="background-image: url(&#39;https://avatars4.githubusercontent.com/ana-balica?&amp;s=32&#39;)" data-original-title="Ana Balica">
+  
+  
+</div>
+</span>
+  </div>
+  <div class="chat-item__content">
+    <div class="chat-item__details js-chat-item-details">
+      <div class="chat-item__from js-chat-item-from">ana-balica</div>
+        <div class="chat-item__time js-chat-item-time chat-item__time--permalinkable">
+          <span><span title="" data-original-title="March 7 2015 4:16 PM &lt;br&gt;(Alt-click to quote)">March 7 2015</span></span>
+        </div>
+          <div class="chat-item__icon--read  js-chat-item-readby"></div>
+      <div class="chat-item__icon--edit  js-chat-item-edit" data-original-title="" title=""></div>
+    </div>
+    <div class="chat-item__text  js-chat-item-text"><span data-link-type="mention" data-screen-name="Akanksha18" class="mention">@Akanksha18</span> I don't see your pull request</div>
+  </div>
+</div>
+</div><div class="chat-item model-id-54fae1fa263f6abf4eea113e burstStart read burstFinal cantEdit isOld" data-item-id="54fae1fa263f6abf4eea113e" data-mentioned="false" data-item-type="chat"><div class="chat-item__container view">
+  <div class="chat-item__aside">
+      <span><div class="trpDisplayPicture  avatar-54883834db8155e6700ddae6  avatar-s      " style="background-image: url(&#39;https://avatars3.githubusercontent.com/Akanksha18?v=3&amp;s=32&#39;)" data-original-title="Akanksha18">
+  
+  
+</div>
+</span>
+  </div>
+  <div class="chat-item__content">
+    <div class="chat-item__details js-chat-item-details">
+      <div class="chat-item__from js-chat-item-from">Akanksha18</div>
+        <div class="chat-item__time js-chat-item-time chat-item__time--permalinkable">
+          <span><span title="" data-original-title="March 7 2015 5:03 PM &lt;br&gt;(Alt-click to quote)">March 7 2015</span></span>
+        </div>
+          <div class="chat-item__icon--read  js-chat-item-readby"></div>
+      <div class="chat-item__icon--edit  js-chat-item-edit" data-original-title="" title=""></div>
+    </div>
+    <div class="chat-item__text  js-chat-item-text"><span data-link-type="mention" data-screen-name="ana-balica" class="mention">@ana-balica</span>  let me check again</div>
+  </div>
+</div>
+</div><div class="chat-item model-id-54fae2f77f09341b3e6b5d12 burstStart read hasBeenEdited cantEdit isOld" data-item-id="54fae2f77f09341b3e6b5d12" data-mentioned="false" data-item-type="chat"><div class="chat-item__container view">
+  <div class="chat-item__aside">
+      <span><div class="trpDisplayPicture  avatar-54f6cd0815522ed4b3dcc6fc  avatar-s      " style="background-image: url(&#39;https://avatars0.githubusercontent.com/BeingAnuj?v=3&amp;s=32&#39;)" data-original-title="BeingAnuj">
+  
+  
+</div>
+</span>
+  </div>
+  <div class="chat-item__content">
+    <div class="chat-item__details js-chat-item-details">
+      <div class="chat-item__from js-chat-item-from">BeingAnuj</div>
+        <div class="chat-item__time js-chat-item-time chat-item__time--permalinkable">
+          <span><span title="" data-original-title="March 7 2015 5:07 PM &lt;br&gt;(Alt-click to quote)">March 7 2015</span></span>
+        </div>
+          <div class="chat-item__icon--read  js-chat-item-readby"></div>
+      <div class="chat-item__icon--edit  js-chat-item-edit" data-original-title="" title=""></div>
+    </div>
+    <div class="chat-item__text  js-chat-item-text">hey <span data-link-type="mention" data-screen-name="ana-balica" class="mention">@ana-balica</span> , are there no more tickets/issues left to resolve</div>
+  </div>
+</div>
+</div><div class="chat-item model-id-54fae35b263f6abf4eea114d burstContinued read cantEdit isOld" data-item-id="54fae35b263f6abf4eea114d" data-mentioned="false" data-item-type="chat"><div class="chat-item__container view">
+  <div class="chat-item__aside">
+      <span><div class="trpDisplayPicture  avatar-54f6cd0815522ed4b3dcc6fc  avatar-s      " style="background-image: url(&#39;https://avatars0.githubusercontent.com/BeingAnuj?v=3&amp;s=32&#39;)" data-original-title="BeingAnuj">
+  
+  
+</div>
+</span>
+  </div>
+  <div class="chat-item__content">
+    <div class="chat-item__details js-chat-item-details">
+      <div class="chat-item__from js-chat-item-from">BeingAnuj</div>
+        <div class="chat-item__time js-chat-item-time chat-item__time--permalinkable">
+          <span><span title="" data-original-title="March 7 2015 5:09 PM &lt;br&gt;(Alt-click to quote)">March 7 2015</span></span>
+        </div>
+          <div class="chat-item__icon--read  js-chat-item-readby"></div>
+      <div class="chat-item__icon--edit  js-chat-item-edit" data-original-title="" title=""></div>
+    </div>
+    <div class="chat-item__text  js-chat-item-text">I have been working on some of the issues that were closed</div>
+  </div>
+</div>
+</div><div class="chat-item model-id-54fae363dcb652c04e7d562a burstContinued read burstFinal cantEdit isOld" data-item-id="54fae363dcb652c04e7d562a" data-mentioned="false" data-item-type="chat"><div class="chat-item__container view">
+  <div class="chat-item__aside">
+      <span><div class="trpDisplayPicture  avatar-54f6cd0815522ed4b3dcc6fc  avatar-s      " style="background-image: url(&#39;https://avatars0.githubusercontent.com/BeingAnuj?v=3&amp;s=32&#39;)" data-original-title="BeingAnuj">
+  
+  
+</div>
+</span>
+  </div>
+  <div class="chat-item__content">
+    <div class="chat-item__details js-chat-item-details">
+      <div class="chat-item__from js-chat-item-from">BeingAnuj</div>
+        <div class="chat-item__time js-chat-item-time chat-item__time--permalinkable">
+          <span><span title="" data-original-title="March 7 2015 5:09 PM &lt;br&gt;(Alt-click to quote)">March 7 2015</span></span>
+        </div>
+          <div class="chat-item__icon--read  js-chat-item-readby"></div>
+      <div class="chat-item__icon--edit  js-chat-item-edit" data-original-title="" title=""></div>
+    </div>
+    <div class="chat-item__text  js-chat-item-text">recently</div>
+  </div>
+</div>
+</div><div class="chat-item model-id-54fae3e7dcb652c04e7d5632 burstStart read burstFinal cantEdit isOld" data-item-id="54fae3e7dcb652c04e7d5632" data-mentioned="false" data-item-type="chat"><div class="chat-item__container view">
+  <div class="chat-item__aside">
+      <span><div class="trpDisplayPicture  avatar-54fae06015522ed4b3dcef12  avatar-s      " style="background-image: url(&#39;https://avatars5.githubusercontent.com/reachtarunhere?v=3&amp;s=32&#39;)" data-original-title="Tarun Kumar Vangani">
+  
+  
+</div>
+</span>
+  </div>
+  <div class="chat-item__content">
+    <div class="chat-item__details js-chat-item-details">
+      <div class="chat-item__from js-chat-item-from">reachtarunhere</div>
+        <div class="chat-item__time js-chat-item-time chat-item__time--permalinkable">
+          <span><span title="" data-original-title="March 7 2015 5:11 PM &lt;br&gt;(Alt-click to quote)">March 7 2015</span></span>
+        </div>
+          <div class="chat-item__icon--read  js-chat-item-readby"></div>
+      <div class="chat-item__icon--edit  js-chat-item-edit" data-original-title="" title=""></div>
+    </div>
+    <div class="chat-item__text  js-chat-item-text">Hi! everyone I have introduced myself on the systers-dev list but as I see that most of the activity is going in here I think its important to do it here too. Its a little long so I have posted it here <a href="http://pastebin.com/QzP8JrpC" rel="nofollow" target="_blank" class="link">http://pastebin.com/QzP8JrpC</a> (links to my work inside) I am an enthusiastic person who would like to contribute to the project. I have skills in Python,Django and JS and look forward to working with the community.</div>
+  </div>
+</div>
+</div><div class="chat-item model-id-54fae54f7f09341b3e6b5d1d burstStart read cantEdit isOld" data-item-id="54fae54f7f09341b3e6b5d1d" data-mentioned="false" data-item-type="chat"><div class="chat-item__container view">
+  <div class="chat-item__aside">
+      <span><div class="trpDisplayPicture  avatar-54883834db8155e6700ddae6  avatar-s      " style="background-image: url(&#39;https://avatars3.githubusercontent.com/Akanksha18?v=3&amp;s=32&#39;)" data-original-title="Akanksha18">
+  
+  
+</div>
+</span>
+  </div>
+  <div class="chat-item__content">
+    <div class="chat-item__details js-chat-item-details">
+      <div class="chat-item__from js-chat-item-from">Akanksha18</div>
+        <div class="chat-item__time js-chat-item-time chat-item__time--permalinkable">
+          <span><span title="" data-original-title="March 7 2015 5:17 PM &lt;br&gt;(Alt-click to quote)">March 7 2015</span></span>
+        </div>
+          <div class="chat-item__icon--read  js-chat-item-readby"></div>
+      <div class="chat-item__icon--edit  js-chat-item-edit" data-original-title="" title=""></div>
+    </div>
+    <div class="chat-item__text  js-chat-item-text"><span data-link-type="mention" data-screen-name="ana-balica" class="mention">@ana-balica</span>   git pull origin develop<br>From github.com:akanksha18/portal<ul>
+<li>branch            develop    -&gt; FETCH_HEAD<br>Already up-to-date.</li>
+</ul>
+</div>
+  </div>
+</div>
+</div><div class="chat-item model-id-54fae56563f73cf44ba96cd0 burstContinued read burstFinal cantEdit isOld" data-item-id="54fae56563f73cf44ba96cd0" data-mentioned="false" data-item-type="chat"><div class="chat-item__container view">
+  <div class="chat-item__aside">
+      <span><div class="trpDisplayPicture  avatar-54883834db8155e6700ddae6  avatar-s      " style="background-image: url(&#39;https://avatars3.githubusercontent.com/Akanksha18?v=3&amp;s=32&#39;)" data-original-title="Akanksha18">
+  
+  
+</div>
+</span>
+  </div>
+  <div class="chat-item__content">
+    <div class="chat-item__details js-chat-item-details">
+      <div class="chat-item__from js-chat-item-from">Akanksha18</div>
+        <div class="chat-item__time js-chat-item-time chat-item__time--permalinkable">
+          <span><span title="" data-original-title="March 7 2015 5:17 PM &lt;br&gt;(Alt-click to quote)">March 7 2015</span></span>
+        </div>
+          <div class="chat-item__icon--read  js-chat-item-readby"></div>
+      <div class="chat-item__icon--edit  js-chat-item-edit" data-original-title="" title=""></div>
+    </div>
+    <div class="chat-item__text  js-chat-item-text">wat is the error</div>
+  </div>
+</div>
+</div><div class="chat-item model-id-54fae5d3a9c85ff64bc47532 burstStart read cantEdit isOld" data-item-id="54fae5d3a9c85ff64bc47532" data-mentioned="false" data-item-type="chat"><div class="chat-item__container view">
+  <div class="chat-item__aside">
+      <span><div class="trpDisplayPicture  avatar-54ba25c6db8155e6700ec489  avatar-s      " style="background-image: url(&#39;https://avatars4.githubusercontent.com/ana-balica?&amp;s=32&#39;)" data-original-title="Ana Balica">
+  
+  
+</div>
+</span>
+  </div>
+  <div class="chat-item__content">
+    <div class="chat-item__details js-chat-item-details">
+      <div class="chat-item__from js-chat-item-from">ana-balica</div>
+        <div class="chat-item__time js-chat-item-time chat-item__time--permalinkable">
+          <span><span title="" data-original-title="March 7 2015 5:19 PM &lt;br&gt;(Alt-click to quote)">March 7 2015</span></span>
+        </div>
+          <div class="chat-item__icon--read  js-chat-item-readby"></div>
+      <div class="chat-item__icon--edit  js-chat-item-edit" data-original-title="" title=""></div>
+    </div>
+    <div class="chat-item__text  js-chat-item-text"><span data-link-type="mention" data-screen-name="Akanksha18" class="mention">@Akanksha18</span> I would guess the problem is that you don't pay enough attention and don't read documentation <img class="emoji" src="smile.png" title=":smile:" alt=":smile:" align="absmiddle" data-g-load-listener-id="1"></img><br>Here is the solution to your problem - <a href="https://help.github.com/articles/configuring-a-remote-for-a-fork/" rel="nofollow" target="_blank" class="link">https://help.github.com/articles/configuring-a-remote-for-a-fork/</a></div>
+  </div>
+</div>
+</div><div class="chat-item model-id-54fae5d663f73cf44ba96cd8 burstContinued read cantEdit isOld" data-item-id="54fae5d663f73cf44ba96cd8" data-mentioned="false" data-item-type="chat"><div class="chat-item__container view">
+  <div class="chat-item__aside">
+      <span><div class="trpDisplayPicture  avatar-54ba25c6db8155e6700ec489  avatar-s      " style="background-image: url(&#39;https://avatars4.githubusercontent.com/ana-balica?&amp;s=32&#39;)" data-original-title="Ana Balica">
+  
+  
+</div>
+</span>
+  </div>
+  <div class="chat-item__content">
+    <div class="chat-item__details js-chat-item-details">
+      <div class="chat-item__from js-chat-item-from">ana-balica</div>
+        <div class="chat-item__time js-chat-item-time chat-item__time--permalinkable">
+          <span><span title="" data-original-title="March 7 2015 5:19 PM &lt;br&gt;(Alt-click to quote)">March 7 2015</span></span>
+        </div>
+          <div class="chat-item__icon--read  js-chat-item-readby"></div>
+      <div class="chat-item__icon--edit  js-chat-item-edit" data-original-title="" title=""></div>
+    </div>
+    <div class="chat-item__text  js-chat-item-text"><span data-link-type="mention" data-screen-name="reachtarunhere" class="mention">@reachtarunhere</span> hi</div>
+  </div>
+</div>
+</div><div class="chat-item model-id-54fae601a9c85ff64bc47534 burstContinued read burstFinal cantEdit isOld" data-item-id="54fae601a9c85ff64bc47534" data-mentioned="false" data-item-type="chat"><div class="chat-item__container view">
+  <div class="chat-item__aside">
+      <span><div class="trpDisplayPicture  avatar-54ba25c6db8155e6700ec489  avatar-s      " style="background-image: url(&#39;https://avatars4.githubusercontent.com/ana-balica?&amp;s=32&#39;)" data-original-title="Ana Balica">
+  
+  
+</div>
+</span>
+  </div>
+  <div class="chat-item__content">
+    <div class="chat-item__details js-chat-item-details">
+      <div class="chat-item__from js-chat-item-from">ana-balica</div>
+        <div class="chat-item__time js-chat-item-time chat-item__time--permalinkable">
+          <span><span title="" data-original-title="March 7 2015 5:20 PM &lt;br&gt;(Alt-click to quote)">March 7 2015</span></span>
+        </div>
+          <div class="chat-item__icon--read  js-chat-item-readby"></div>
+      <div class="chat-item__icon--edit  js-chat-item-edit" data-original-title="" title=""></div>
+    </div>
+    <div class="chat-item__text  js-chat-item-text"><span data-link-type="mention" data-screen-name="BeingAnuj" class="mention">@BeingAnuj</span> not at the moment. Meanwhile try to poke around and understand how the system works. Maybe find bugs - that would be really useful. </div>
+  </div>
+</div>
+</div><div class="chat-item model-id-54fae65d63f73cf44ba96cdc burstStart read burstFinal cantEdit isOld" data-item-id="54fae65d63f73cf44ba96cdc" data-mentioned="false" data-item-type="chat"><div class="chat-item__container view">
+  <div class="chat-item__aside">
+      <span><div class="trpDisplayPicture  avatar-54883834db8155e6700ddae6  avatar-s      " style="background-image: url(&#39;https://avatars3.githubusercontent.com/Akanksha18?v=3&amp;s=32&#39;)" data-original-title="Akanksha18">
+  
+  
+</div>
+</span>
+  </div>
+  <div class="chat-item__content">
+    <div class="chat-item__details js-chat-item-details">
+      <div class="chat-item__from js-chat-item-from">Akanksha18</div>
+        <div class="chat-item__time js-chat-item-time chat-item__time--permalinkable">
+          <span><span title="" data-original-title="March 7 2015 5:21 PM &lt;br&gt;(Alt-click to quote)">March 7 2015</span></span>
+        </div>
+          <div class="chat-item__icon--read  js-chat-item-readby"></div>
+      <div class="chat-item__icon--edit  js-chat-item-edit" data-original-title="" title=""></div>
+    </div>
+    <div class="chat-item__text  js-chat-item-text"><span data-link-type="mention" data-screen-name="ana-balica" class="mention">@ana-balica</span>  i read and followed the steps, i thought work was done, glad you could help <img class="emoji" src="grinning.png" title=":grinning:" alt=":grinning:" align="absmiddle" data-g-load-listener-id="2"></img></div>
+  </div>
+</div>
+</div><div class="chat-item model-id-54fae68af3c5261c3e8cbc26 burstStart read burstFinal cantEdit isOld" data-item-id="54fae68af3c5261c3e8cbc26" data-mentioned="false" data-item-type="chat"><div class="chat-item__container view">
+  <div class="chat-item__aside">
+      <span><div class="trpDisplayPicture  avatar-54fae06015522ed4b3dcef12  avatar-s      " style="background-image: url(&#39;https://avatars5.githubusercontent.com/reachtarunhere?v=3&amp;s=32&#39;)" data-original-title="Tarun Kumar Vangani">
+  
+  
+</div>
+</span>
+  </div>
+  <div class="chat-item__content">
+    <div class="chat-item__details js-chat-item-details">
+      <div class="chat-item__from js-chat-item-from">reachtarunhere</div>
+        <div class="chat-item__time js-chat-item-time chat-item__time--permalinkable">
+          <span><span title="" data-original-title="March 7 2015 5:22 PM &lt;br&gt;(Alt-click to quote)">March 7 2015</span></span>
+        </div>
+          <div class="chat-item__icon--read  js-chat-item-readby"></div>
+      <div class="chat-item__icon--edit  js-chat-item-edit" data-original-title="" title=""></div>
+    </div>
+    <div class="chat-item__text  js-chat-item-text"><span data-link-type="mention" data-screen-name="ana-balica" class="mention">@ana-balica</span>  hi <img class="emoji" src="smile.png" title=":smile:" alt=":smile:" align="absmiddle" data-g-load-listener-id="3"></img> Are there more issues coming up? It would be great if you can give me some pointers on what more I can do and the direction I should pursue. PS: Thanks for the help you gave while solving the permissions related issue</div>
+  </div>
+</div>
+</div><div class="chat-item model-id-54fae6bc63f73cf44ba96ce1 burstStart read burstFinal cantEdit isOld" data-item-id="54fae6bc63f73cf44ba96ce1" data-mentioned="false" data-item-type="chat"><div class="chat-item__container view">
+  <div class="chat-item__aside">
+      <span><div class="trpDisplayPicture  avatar-54f6cd0815522ed4b3dcc6fc  avatar-s      " style="background-image: url(&#39;https://avatars0.githubusercontent.com/BeingAnuj?v=3&amp;s=32&#39;)" data-original-title="BeingAnuj">
+  
+  
+</div>
+</span>
+  </div>
+  <div class="chat-item__content">
+    <div class="chat-item__details js-chat-item-details">
+      <div class="chat-item__from js-chat-item-from">BeingAnuj</div>
+        <div class="chat-item__time js-chat-item-time chat-item__time--permalinkable">
+          <span><span title="" data-original-title="March 7 2015 5:23 PM &lt;br&gt;(Alt-click to quote)">March 7 2015</span></span>
+        </div>
+          <div class="chat-item__icon--read  js-chat-item-readby"></div>
+      <div class="chat-item__icon--edit  js-chat-item-edit" data-original-title="" title=""></div>
+    </div>
+    <div class="chat-item__text  js-chat-item-text">okay!!!!!</div>
+  </div>
+</div>
+</div><div class="chat-item model-id-54fae6bc263f6abf4eea115b burstStart read burstFinal cantEdit isOld" data-item-id="54fae6bc263f6abf4eea115b" data-mentioned="false" data-item-type="chat"><div class="chat-item__container view">
+  <div class="chat-item__aside">
+      <span><div class="trpDisplayPicture  avatar-54ba25c6db8155e6700ec489  avatar-s      " style="background-image: url(&#39;https://avatars4.githubusercontent.com/ana-balica?&amp;s=32&#39;)" data-original-title="Ana Balica">
+  
+  
+</div>
+</span>
+  </div>
+  <div class="chat-item__content">
+    <div class="chat-item__details js-chat-item-details">
+      <div class="chat-item__from js-chat-item-from">ana-balica</div>
+        <div class="chat-item__time js-chat-item-time chat-item__time--permalinkable">
+          <span><span title="" data-original-title="March 7 2015 5:23 PM &lt;br&gt;(Alt-click to quote)">March 7 2015</span></span>
+        </div>
+          <div class="chat-item__icon--read  js-chat-item-readby"></div>
+      <div class="chat-item__icon--edit  js-chat-item-edit" data-original-title="" title=""></div>
+    </div>
+    <div class="chat-item__text  js-chat-item-text"><span data-link-type="mention" data-screen-name="reachtarunhere" class="mention">@reachtarunhere</span> see my previous answer <img class="emoji" src="smile.png" title=":smile:" alt=":smile:" align="absmiddle" data-g-load-listener-id="4"></img></div>
+  </div>
+</div>
+</div><div class="chat-item model-id-54fae770f3c5261c3e8cbc2e burstStart read hasBeenEdited cantEdit isOld" data-item-id="54fae770f3c5261c3e8cbc2e" data-mentioned="false" data-item-type="chat"><div class="chat-item__container view">
+  <div class="chat-item__aside">
+      <span><div class="trpDisplayPicture  avatar-54fae06015522ed4b3dcef12  avatar-s      " style="background-image: url(&#39;https://avatars5.githubusercontent.com/reachtarunhere?v=3&amp;s=32&#39;)" data-original-title="Tarun Kumar Vangani">
+  
+  
+</div>
+</span>
+  </div>
+  <div class="chat-item__content">
+    <div class="chat-item__details js-chat-item-details">
+      <div class="chat-item__from js-chat-item-from">reachtarunhere</div>
+        <div class="chat-item__time js-chat-item-time chat-item__time--permalinkable">
+          <span><span title="" data-original-title="March 7 2015 5:26 PM &lt;br&gt;(Alt-click to quote)">March 7 2015</span></span>
+        </div>
+          <div class="chat-item__icon--read  js-chat-item-readby"></div>
+      <div class="chat-item__icon--edit  js-chat-item-edit" data-original-title="" title=""></div>
+    </div>
+    <div class="chat-item__text  js-chat-item-text">the one referenced to be BeingAnuj I guess? Yeah I am already playing with system <img class="emoji" src="smile.png" title=":smile:" alt=":smile:" align="absmiddle" data-g-load-listener-id="5"></img> Also django-guardian was one plugin I had not used before but I have gone through its docs and feel comfortable there too. </div>
+  </div>
+</div>
+</div><div class="chat-item model-id-54fae797f3c5261c3e8cbc2f burstContinued read burstFinal cantEdit isOld" data-item-id="54fae797f3c5261c3e8cbc2f" data-mentioned="false" data-item-type="chat"><div class="chat-item__container view">
+  <div class="chat-item__aside">
+      <span><div class="trpDisplayPicture  avatar-54fae06015522ed4b3dcef12  avatar-s      " style="background-image: url(&#39;https://avatars5.githubusercontent.com/reachtarunhere?v=3&amp;s=32&#39;)" data-original-title="Tarun Kumar Vangani">
+  
+  
+</div>
+</span>
+  </div>
+  <div class="chat-item__content">
+    <div class="chat-item__details js-chat-item-details">
+      <div class="chat-item__from js-chat-item-from">reachtarunhere</div>
+        <div class="chat-item__time js-chat-item-time chat-item__time--permalinkable">
+          <span><span title="" data-original-title="March 7 2015 5:27 PM &lt;br&gt;(Alt-click to quote)">March 7 2015</span></span>
+        </div>
+          <div class="chat-item__icon--read  js-chat-item-readby"></div>
+      <div class="chat-item__icon--edit  js-chat-item-edit" data-original-title="" title=""></div>
+    </div>
+    <div class="chat-item__text  js-chat-item-text"><span data-link-type="mention" data-screen-name="ana-balica" class="mention">@ana-balica</span>  Also what other plugins should I read about?</div>
+  </div>
+</div>
+</div><div class="chat-item model-id-54fae7a0dcb652c04e7d564a burstStart read hasBeenEdited cantEdit isOld" data-item-id="54fae7a0dcb652c04e7d564a" data-mentioned="false" data-item-type="chat"><div class="chat-item__container view">
+  <div class="chat-item__aside">
+      <span><div class="trpDisplayPicture  avatar-54f6cd0815522ed4b3dcc6fc  avatar-s      " style="background-image: url(&#39;https://avatars0.githubusercontent.com/BeingAnuj?v=3&amp;s=32&#39;)" data-original-title="BeingAnuj">
+  
+  
+</div>
+</span>
+  </div>
+  <div class="chat-item__content">
+    <div class="chat-item__details js-chat-item-details">
+      <div class="chat-item__from js-chat-item-from">BeingAnuj</div>
+        <div class="chat-item__time js-chat-item-time chat-item__time--permalinkable">
+          <span><span title="" data-original-title="March 7 2015 5:27 PM &lt;br&gt;(Alt-click to quote)">March 7 2015</span></span>
+        </div>
+          <div class="chat-item__icon--read  js-chat-item-readby"></div>
+      <div class="chat-item__icon--edit  js-chat-item-edit" data-original-title="" title=""></div>
+    </div>
+    <div class="chat-item__text  js-chat-item-text">I have been looking into the system , various features  are yet to be solved</div>
+  </div>
+</div>
+</div><div class="chat-item model-id-54fae7ea7f09341b3e6b5d37 burstContinued read cantEdit isOld" data-item-id="54fae7ea7f09341b3e6b5d37" data-mentioned="false" data-item-type="chat"><div class="chat-item__container view">
+  <div class="chat-item__aside">
+      <span><div class="trpDisplayPicture  avatar-54f6cd0815522ed4b3dcc6fc  avatar-s      " style="background-image: url(&#39;https://avatars0.githubusercontent.com/BeingAnuj?v=3&amp;s=32&#39;)" data-original-title="BeingAnuj">
+  
+  
+</div>
+</span>
+  </div>
+  <div class="chat-item__content">
+    <div class="chat-item__details js-chat-item-details">
+      <div class="chat-item__from js-chat-item-from">BeingAnuj</div>
+        <div class="chat-item__time js-chat-item-time chat-item__time--permalinkable">
+          <span><span title="" data-original-title="March 7 2015 5:28 PM &lt;br&gt;(Alt-click to quote)">March 7 2015</span></span>
+        </div>
+          <div class="chat-item__icon--read  js-chat-item-readby"></div>
+      <div class="chat-item__icon--edit  js-chat-item-edit" data-original-title="" title=""></div>
+    </div>
+    <div class="chat-item__text  js-chat-item-text">I have already made such portals so you just need to let me go through some issues</div>
+  </div>
+</div>
+</div><div class="chat-item model-id-54fae801263f6abf4eea1162 burstContinued read hasBeenEdited cantEdit isOld" data-item-id="54fae801263f6abf4eea1162" data-mentioned="false" data-item-type="chat"><div class="chat-item__container view">
+  <div class="chat-item__aside">
+      <span><div class="trpDisplayPicture  avatar-54f6cd0815522ed4b3dcc6fc  avatar-s      " style="background-image: url(&#39;https://avatars0.githubusercontent.com/BeingAnuj?v=3&amp;s=32&#39;)" data-original-title="BeingAnuj">
+  
+  
+</div>
+</span>
+  </div>
+  <div class="chat-item__content">
+    <div class="chat-item__details js-chat-item-details">
+      <div class="chat-item__from js-chat-item-from">BeingAnuj</div>
+        <div class="chat-item__time js-chat-item-time chat-item__time--permalinkable">
+          <span><span title="" data-original-title="March 7 2015 5:28 PM &lt;br&gt;(Alt-click to quote)">March 7 2015</span></span>
+        </div>
+          <div class="chat-item__icon--read  js-chat-item-readby"></div>
+      <div class="chat-item__icon--edit  js-chat-item-edit" data-original-title="" title=""></div>
+    </div>
+    <div class="chat-item__text  js-chat-item-text">which you can think of</div>
+  </div>
+</div>
+</div><div class="chat-item model-id-54fae83263f73cf44ba96cee burstContinued read burstFinal cantEdit isOld" data-item-id="54fae83263f73cf44ba96cee" data-mentioned="false" data-item-type="chat"><div class="chat-item__container view">
+  <div class="chat-item__aside">
+      <span><div class="trpDisplayPicture  avatar-54f6cd0815522ed4b3dcc6fc  avatar-s      " style="background-image: url(&#39;https://avatars0.githubusercontent.com/BeingAnuj?v=3&amp;s=32&#39;)" data-original-title="BeingAnuj">
+  
+  
+</div>
+</span>
+  </div>
+  <div class="chat-item__content">
+    <div class="chat-item__details js-chat-item-details">
+      <div class="chat-item__from js-chat-item-from">BeingAnuj</div>
+        <div class="chat-item__time js-chat-item-time chat-item__time--permalinkable">
+          <span><span title="" data-original-title="March 7 2015 5:29 PM &lt;br&gt;(Alt-click to quote)">March 7 2015</span></span>
+        </div>
+          <div class="chat-item__icon--read  js-chat-item-readby"></div>
+      <div class="chat-item__icon--edit  js-chat-item-edit" data-original-title="" title=""></div>
+    </div>
+    <div class="chat-item__text  js-chat-item-text">or maybe I can ponder upon those features</div>
+  </div>
+</div>
+</div><div class="chat-item model-id-54fae8bba9c85ff64bc47545 burstStart read burstFinal cantEdit isOld" data-item-id="54fae8bba9c85ff64bc47545" data-mentioned="false" data-item-type="chat"><div class="chat-item__container view">
+  <div class="chat-item__aside">
+      <span><div class="trpDisplayPicture  avatar-54883834db8155e6700ddae6  avatar-s      " style="background-image: url(&#39;https://avatars3.githubusercontent.com/Akanksha18?v=3&amp;s=32&#39;)" data-original-title="Akanksha18">
+  
+  
+</div>
+</span>
+  </div>
+  <div class="chat-item__content">
+    <div class="chat-item__details js-chat-item-details">
+      <div class="chat-item__from js-chat-item-from">Akanksha18</div>
+        <div class="chat-item__time js-chat-item-time chat-item__time--permalinkable">
+          <span><span title="" data-original-title="March 7 2015 5:32 PM &lt;br&gt;(Alt-click to quote)">March 7 2015</span></span>
+        </div>
+          <div class="chat-item__icon--read  js-chat-item-readby"></div>
+      <div class="chat-item__icon--edit  js-chat-item-edit" data-original-title="" title=""></div>
+    </div>
+    <div class="chat-item__text  js-chat-item-text"><span data-link-type="mention" data-screen-name="ana-balica" class="mention">@ana-balica</span>  plz check now</div>
+  </div>
+</div>
+</div><div class="chat-item model-id-54faf0c47f09341b3e6b5d79 burstStart read burstFinal cantEdit isOld" data-item-id="54faf0c47f09341b3e6b5d79" data-mentioned="false" data-item-type="chat"><div class="chat-item__container view">
+  <div class="chat-item__aside">
+      <span><div class="trpDisplayPicture  avatar-54ba25c6db8155e6700ec489  avatar-s      " style="background-image: url(&#39;https://avatars4.githubusercontent.com/ana-balica?&amp;s=32&#39;)" data-original-title="Ana Balica">
+  
+  
+</div>
+</span>
+  </div>
+  <div class="chat-item__content">
+    <div class="chat-item__details js-chat-item-details">
+      <div class="chat-item__from js-chat-item-from">ana-balica</div>
+        <div class="chat-item__time js-chat-item-time chat-item__time--permalinkable">
+          <span><span title="" data-original-title="March 7 2015 6:06 PM &lt;br&gt;(Alt-click to quote)">March 7 2015</span></span>
+        </div>
+          <div class="chat-item__icon--read  js-chat-item-readby"></div>
+      <div class="chat-item__icon--edit  js-chat-item-edit" data-original-title="" title=""></div>
+    </div>
+    <div class="chat-item__text  js-chat-item-text"><span data-link-type="mention" data-screen-name="Akanksha18" class="mention">@Akanksha18</span> it's good to know your local postgres server password is "akanksha"</div>
+  </div>
+</div>
+</div><div class="chat-item model-id-54faf12edcb652c04e7d5686 burstStart read burstFinal cantEdit isOld" data-item-id="54faf12edcb652c04e7d5686" data-mentioned="false" data-item-type="chat"><div class="chat-item__container view">
+  <div class="chat-item__aside">
+      <span><div class="trpDisplayPicture  avatar-54883834db8155e6700ddae6  avatar-s      " style="background-image: url(&#39;https://avatars3.githubusercontent.com/Akanksha18?v=3&amp;s=32&#39;)" data-original-title="Akanksha18">
+  
+  
+</div>
+</span>
+  </div>
+  <div class="chat-item__content">
+    <div class="chat-item__details js-chat-item-details">
+      <div class="chat-item__from js-chat-item-from">Akanksha18</div>
+        <div class="chat-item__time js-chat-item-time chat-item__time--permalinkable">
+          <span><span title="" data-original-title="March 7 2015 6:08 PM &lt;br&gt;(Alt-click to quote)">March 7 2015</span></span>
+        </div>
+          <div class="chat-item__icon--read  js-chat-item-readby"></div>
+      <div class="chat-item__icon--edit  js-chat-item-edit" data-original-title="" title=""></div>
+    </div>
+    <div class="chat-item__text  js-chat-item-text">umm...</div>
+  </div>
+</div>
+</div><div class="chat-item model-id-54faf136263f6abf4eea11af burstStart read burstFinal cantEdit isOld" data-item-id="54faf136263f6abf4eea11af" data-mentioned="false" data-item-type="chat"><div class="chat-item__container view">
+  <div class="chat-item__aside">
+      <span><div class="trpDisplayPicture  avatar-54ba25c6db8155e6700ec489  avatar-s      " style="background-image: url(&#39;https://avatars4.githubusercontent.com/ana-balica?&amp;s=32&#39;)" data-original-title="Ana Balica">
+  
+  
+</div>
+</span>
+  </div>
+  <div class="chat-item__content">
+    <div class="chat-item__details js-chat-item-details">
+      <div class="chat-item__from js-chat-item-from">ana-balica</div>
+        <div class="chat-item__time js-chat-item-time chat-item__time--permalinkable">
+          <span><span title="" data-original-title="March 7 2015 6:08 PM &lt;br&gt;(Alt-click to quote)">March 7 2015</span></span>
+        </div>
+          <div class="chat-item__icon--read  js-chat-item-readby"></div>
+      <div class="chat-item__icon--edit  js-chat-item-edit" data-original-title="" title=""></div>
+    </div>
+    <div class="chat-item__text  js-chat-item-text"><span data-link-type="mention" data-screen-name="Akanksha18" class="mention">@Akanksha18</span> there is an existing pull request that solves that issues, it requires a small fix and it's ready to merge. Your pull request has a plethora of issues. Try looking at the diff and identify yourself what are the problems. Take as a comparison the other pull request, it's still open on github. Remember this is only an exercise. </div>
+  </div>
+</div>
+</div><div class="chat-item model-id-54faf16f263f6abf4eea11b4 burstStart read cantEdit isOld" data-item-id="54faf16f263f6abf4eea11b4" data-mentioned="false" data-item-type="chat"><div class="chat-item__container view">
+  <div class="chat-item__aside">
+      <span><div class="trpDisplayPicture  avatar-54883834db8155e6700ddae6  avatar-s      " style="background-image: url(&#39;https://avatars3.githubusercontent.com/Akanksha18?v=3&amp;s=32&#39;)" data-original-title="Akanksha18">
+  
+  
+</div>
+</span>
+  </div>
+  <div class="chat-item__content">
+    <div class="chat-item__details js-chat-item-details">
+      <div class="chat-item__from js-chat-item-from">Akanksha18</div>
+        <div class="chat-item__time js-chat-item-time chat-item__time--permalinkable">
+          <span><span title="" data-original-title="March 7 2015 6:09 PM &lt;br&gt;(Alt-click to quote)">March 7 2015</span></span>
+        </div>
+          <div class="chat-item__icon--read  js-chat-item-readby"></div>
+      <div class="chat-item__icon--edit  js-chat-item-edit" data-original-title="" title=""></div>
+    </div>
+    <div class="chat-item__text  js-chat-item-text"><span data-link-type="mention" data-screen-name="ana-balica" class="mention">@ana-balica</span> but dont you think that i commented on it first, so like the first time i was told only the person who comments can work on any issue?</div>
+  </div>
+</div>
+</div><div class="chat-item model-id-54faf20d263f6abf4eea11ba burstContinued read cantEdit isOld" data-item-id="54faf20d263f6abf4eea11ba" data-mentioned="false" data-item-type="chat"><div class="chat-item__container view">
+  <div class="chat-item__aside">
+      <span><div class="trpDisplayPicture  avatar-54883834db8155e6700ddae6  avatar-s      " style="background-image: url(&#39;https://avatars3.githubusercontent.com/Akanksha18?v=3&amp;s=32&#39;)" data-original-title="Akanksha18">
+  
+  
+</div>
+</span>
+  </div>
+  <div class="chat-item__content">
+    <div class="chat-item__details js-chat-item-details">
+      <div class="chat-item__from js-chat-item-from">Akanksha18</div>
+        <div class="chat-item__time js-chat-item-time chat-item__time--permalinkable">
+          <span><span title="" data-original-title="March 7 2015 6:11 PM &lt;br&gt;(Alt-click to quote)">March 7 2015</span></span>
+        </div>
+          <div class="chat-item__icon--read  js-chat-item-readby"></div>
+      <div class="chat-item__icon--edit  js-chat-item-edit" data-original-title="" title=""></div>
+    </div>
+    <div class="chat-item__text  js-chat-item-text">because i was not able to understand the reason for my branch being merged, i was told to read the documentation, even though the link just provided by you an hour ago, was not given anywhere in the documentation, so i have really gone through the documentation, even though i might have not been able to merge according to watever is needed by portal</div>
+  </div>
+</div>
+</div><div class="chat-item model-id-54faf286dcb652c04e7d5691 burstContinued read burstFinal cantEdit isOld" data-item-id="54faf286dcb652c04e7d5691" data-mentioned="false" data-item-type="chat"><div class="chat-item__container view">
+  <div class="chat-item__aside">
+      <span><div class="trpDisplayPicture  avatar-54883834db8155e6700ddae6  avatar-s      " style="background-image: url(&#39;https://avatars3.githubusercontent.com/Akanksha18?v=3&amp;s=32&#39;)" data-original-title="Akanksha18">
+  
+  
+</div>
+</span>
+  </div>
+  <div class="chat-item__content">
+    <div class="chat-item__details js-chat-item-details">
+      <div class="chat-item__from js-chat-item-from">Akanksha18</div>
+        <div class="chat-item__time js-chat-item-time chat-item__time--permalinkable">
+          <span><span title="" data-original-title="March 7 2015 6:13 PM &lt;br&gt;(Alt-click to quote)">March 7 2015</span></span>
+        </div>
+          <div class="chat-item__icon--read  js-chat-item-readby"></div>
+      <div class="chat-item__icon--edit  js-chat-item-edit" data-original-title="" title=""></div>
+    </div>
+    <div class="chat-item__text  js-chat-item-text">i didnot work on few other issues even though i knew their solution because i was told here that once a person has commented on any issue, other person can not work on it.. i don't know i may be wrong but i dont really find any solution to my understanding</div>
+  </div>
+</div>
+</div><div class="chat-item model-id-54faf560f3c5261c3e8cbcbd burstStart read burstFinal cantEdit isOld" data-item-id="54faf560f3c5261c3e8cbcbd" data-mentioned="false" data-item-type="chat"><div class="chat-item__container view">
+  <div class="chat-item__aside">
+      <span><div class="trpDisplayPicture  avatar-54ba25c6db8155e6700ec489  avatar-s      " style="background-image: url(&#39;https://avatars4.githubusercontent.com/ana-balica?&amp;s=32&#39;)" data-original-title="Ana Balica">
+  
+  
+</div>
+</span>
+  </div>
+  <div class="chat-item__content">
+    <div class="chat-item__details js-chat-item-details">
+      <div class="chat-item__from js-chat-item-from">ana-balica</div>
+        <div class="chat-item__time js-chat-item-time chat-item__time--permalinkable">
+          <span><span title="" data-original-title="March 7 2015 6:26 PM &lt;br&gt;(Alt-click to quote)">March 7 2015</span></span>
+        </div>
+          <div class="chat-item__icon--read  js-chat-item-readby"></div>
+      <div class="chat-item__icon--edit  js-chat-item-edit" data-original-title="" title=""></div>
+    </div>
+    <div class="chat-item__text  js-chat-item-text"><p><span data-link-type="mention" data-screen-name="Akanksha18" class="mention">@Akanksha18</span> when we talk about documentation, it doesn't imply necessarily Portal documentation. It means also git, GitHub, Django, Django packages, etc. Of course, when we provide documentation we have some assumptions about developers, that you know how to operate a fork for example. I am wondering what was your effort in finding the issue? Did you try to read how forks work? Did you try to google it?</p><p>We are not babysitting here. We expect a student to be well prepared for the task he or she will do. Plus you will be paid for it. You need to show and prove to us that you are the best. </p><p>Moreover I am the only mentor so far and Systers Portal is not my full-time job. As the flow of students grows, I am unable to manage who said what. And since a decent pull request got opened, i reviewed it and found it very well done. From my perspective it doesn't matter who solves the issue, in my interest is to get the job done, that means getting Portal to a stable release.</p><p>Next time be faster and I'd still recommend reviewing the pull request yourself.</p></div>
+  </div>
+</div>
+</div><div class="chat-item model-id-54faf6c4f3c5261c3e8cbccd burstStart read burstFinal cantEdit isOld" data-item-id="54faf6c4f3c5261c3e8cbccd" data-mentioned="false" data-item-type="chat"><div class="chat-item__container view">
+  <div class="chat-item__aside">
+      <span><div class="trpDisplayPicture  avatar-54883834db8155e6700ddae6  avatar-s      " style="background-image: url(&#39;https://avatars3.githubusercontent.com/Akanksha18?v=3&amp;s=32&#39;)" data-original-title="Akanksha18">
+  
+  
+</div>
+</span>
+  </div>
+  <div class="chat-item__content">
+    <div class="chat-item__details js-chat-item-details">
+      <div class="chat-item__from js-chat-item-from">Akanksha18</div>
+        <div class="chat-item__time js-chat-item-time chat-item__time--permalinkable">
+          <span><span title="" data-original-title="March 7 2015 6:31 PM &lt;br&gt;(Alt-click to quote)">March 7 2015</span></span>
+        </div>
+          <div class="chat-item__icon--read  js-chat-item-readby"></div>
+      <div class="chat-item__icon--edit  js-chat-item-edit" data-original-title="" title=""></div>
+    </div>
+    <div class="chat-item__text  js-chat-item-text"><span data-link-type="mention" data-screen-name="ana-balica" class="mention">@ana-balica</span> i understand that one needs to be prepared for the project, as i have already said, i have worked on such projects before but not portal, also i have put in efforts from my side, even though it may or may not be visible to anyone i did google everything more than 3 times before asking here, also, the only issue i have is why was i asked not to work on a particular issue when i said i really want to and know the solution? while, someone else is doing the same thing here and is not given any such warning like i was? still if i am considered wrong my apologies, again i am wrongly understanding the concept on systers where girls are motivated and guided if they are well deserving, seriously sorry </div>
+  </div>
+</div>
+</div><div class="chat-item model-id-54faf913263f6abf4eea11ff burstStart read cantEdit isOld" data-item-id="54faf913263f6abf4eea11ff" data-mentioned="false" data-item-type="chat"><div class="chat-item__container view">
+  <div class="chat-item__aside">
+      <span><div class="trpDisplayPicture  avatar-54ba25c6db8155e6700ec489  avatar-s      " style="background-image: url(&#39;https://avatars4.githubusercontent.com/ana-balica?&amp;s=32&#39;)" data-original-title="Ana Balica">
+  
+  
+</div>
+</span>
+  </div>
+  <div class="chat-item__content">
+    <div class="chat-item__details js-chat-item-details">
+      <div class="chat-item__from js-chat-item-from">ana-balica</div>
+        <div class="chat-item__time js-chat-item-time chat-item__time--permalinkable">
+          <span><span title="" data-original-title="March 7 2015 6:41 PM &lt;br&gt;(Alt-click to quote)">March 7 2015</span></span>
+        </div>
+          <div class="chat-item__icon--read  js-chat-item-readby"></div>
+      <div class="chat-item__icon--edit  js-chat-item-edit" data-original-title="" title=""></div>
+    </div>
+    <div class="chat-item__text  js-chat-item-text"><p>As far as I remember alma has already opened a pull request on that issue by the time you left the comment. You offered me to see your solution as well. It wasn't as good as alma's by that time. The situation is slightly different now though.</p><p>I admit that since you left the comment that you will be working on this issue, nobody else should have picked it up. That's why here is your chance. I give you 2 days to fix your pull request and will postpone the other persons pull request. Start with reviewing the code yourself. Let's see if Systers can motivate you and guide you if you are well deserving. </p><p>And by the way I don't discriminate on gender and I truly don't care whether someone is a girl, a boy or a transgender as long as they do the job.</p></div>
+  </div>
+</div>
+</div><div class="chat-item model-id-54faf9d863f73cf44ba96d77 burstContinued read burstFinal cantEdit isOld" data-item-id="54faf9d863f73cf44ba96d77" data-mentioned="false" data-item-type="chat"><div class="chat-item__container view">
+  <div class="chat-item__aside">
+      <span><div class="trpDisplayPicture  avatar-54ba25c6db8155e6700ec489  avatar-s      " style="background-image: url(&#39;https://avatars4.githubusercontent.com/ana-balica?&amp;s=32&#39;)" data-original-title="Ana Balica">
+  
+  
+</div>
+</span>
+  </div>
+  <div class="chat-item__content">
+    <div class="chat-item__details js-chat-item-details">
+      <div class="chat-item__from js-chat-item-from">ana-balica</div>
+        <div class="chat-item__time js-chat-item-time chat-item__time--permalinkable">
+          <span><span title="" data-original-title="March 7 2015 6:45 PM &lt;br&gt;(Alt-click to quote)">March 7 2015</span></span>
+        </div>
+          <div class="chat-item__icon--read  js-chat-item-readby"></div>
+      <div class="chat-item__icon--edit  js-chat-item-edit" data-original-title="" title=""></div>
+    </div>
+    <div class="chat-item__text  js-chat-item-text"> I will be partially available tomorrow and the day after tomorrow in the evening if you will have questions. I am in your timezone</div>
+  </div>
+</div>
+</div><div class="chat-item model-id-54fb25b0dcb652c04e7d5873 burstStart read burstFinal cantEdit isOld" data-item-id="54fb25b0dcb652c04e7d5873" data-mentioned="false" data-item-type="chat"><div class="chat-item__container view">
+  <div class="chat-item__aside">
+      <span><div class="trpDisplayPicture  avatar-54ba25c6db8155e6700ec489  avatar-s      " style="background-image: url(&#39;https://avatars4.githubusercontent.com/ana-balica?&amp;s=32&#39;)" data-original-title="Ana Balica">
+  
+  
+</div>
+</span>
+  </div>
+  <div class="chat-item__content">
+    <div class="chat-item__details js-chat-item-details">
+      <div class="chat-item__from js-chat-item-from">ana-balica</div>
+        <div class="chat-item__time js-chat-item-time chat-item__time--permalinkable">
+          <span><span title="" data-original-title="March 7 2015 9:52 PM &lt;br&gt;(Alt-click to quote)">March 7 2015</span></span>
+        </div>
+          <div class="chat-item__icon--read  js-chat-item-readby"></div>
+      <div class="chat-item__icon--edit  js-chat-item-edit" data-original-title="" title=""></div>
+    </div>
+    <div class="chat-item__text  js-chat-item-text"><span data-link-type="mention" data-screen-name="all" class="mention">@all</span> The project have switched from Python 2 to Python 3. You will need to install Python 3 if you don't have one yet and rebuild your virtualenv. See instructions in the README.md.</div>
+  </div>
+</div>
+</div><div class="chat-item model-id-54fb4965a9c85ff64bc478ee burstStart read  isViewers cantEdit isOld" data-item-id="54fb4965a9c85ff64bc478ee" data-mentioned="false" data-item-type="chat"><div class="chat-item__container view">
+  <div class="chat-item__aside">
+      <span><div class="trpDisplayPicture  avatar-54fb35ed15522ed4b3dcf17b  avatar-s      " style="background-image: url(&#39;https://avatars2.githubusercontent.com/rajats?v=3&amp;s=32&#39;)" data-original-title="Rajat kumar Singh">
+  
+  
+</div>
+</span>
+  </div>
+  <div class="chat-item__content">
+    <div class="chat-item__details js-chat-item-details">
+      <div class="chat-item__from js-chat-item-from">rajats</div>
+        <div class="chat-item__time js-chat-item-time chat-item__time--permalinkable">
+          <span><span title="" data-original-title="March 8 2015 12:24 AM &lt;br&gt;(Alt-click to quote)">March 8 2015</span></span>
+        </div>
+          <div class="chat-item__icon--read  js-chat-item-readby"></div>
+      <div class="chat-item__icon--edit  js-chat-item-edit" data-original-title="" title=""></div>
+    </div>
+    <div class="chat-item__text  js-chat-item-text">hi everyone, i am rajat.</div>
+  </div>
+</div>
+</div><div class="chat-item model-id-54fb49aa7f09341b3e6b6101 burstContinued read  isViewers hasBeenEdited burstFinal cantEdit isOld" data-item-id="54fb49aa7f09341b3e6b6101" data-mentioned="false" data-item-type="chat"><div class="chat-item__container view">
+  <div class="chat-item__aside">
+      <span><div class="trpDisplayPicture  avatar-54fb35ed15522ed4b3dcf17b  avatar-s      " style="background-image: url(&#39;https://avatars2.githubusercontent.com/rajats?v=3&amp;s=32&#39;)" data-original-title="Rajat kumar Singh">
+  
+  
+</div>
+</span>
+  </div>
+  <div class="chat-item__content">
+    <div class="chat-item__details js-chat-item-details">
+      <div class="chat-item__from js-chat-item-from">rajats</div>
+        <div class="chat-item__time js-chat-item-time chat-item__time--permalinkable">
+          <span><span title="" data-original-title="March 8 2015 12:25 AM &lt;br&gt;(Alt-click to quote)">March 8 2015</span></span>
+        </div>
+          <div class="chat-item__icon--read  js-chat-item-readby"></div>
+      <div class="chat-item__icon--edit  js-chat-item-edit" data-original-title="" title=""></div>
+    </div>
+    <div class="chat-item__text  js-chat-item-text">its bit long so here is my introduction <a href="http://gist.github.com/rajats/ace0229624349669c0fd" rel="nofollow" target="_blank" class="link">gist.github.com/rajats/ace0229624349669c0fd</a></div>
+  </div>
+</div>
+</div><div class="chat-item model-id-54fb4aa0a9c85ff64bc478f9 burstStart read burstFinal cantEdit isOld" data-item-id="54fb4aa0a9c85ff64bc478f9" data-mentioned="false" data-item-type="chat"><div class="chat-item__container view">
+  <div class="chat-item__aside">
+      <span><div class="trpDisplayPicture  avatar-54f6cd0815522ed4b3dcc6fc  avatar-s      " style="background-image: url(&#39;https://avatars0.githubusercontent.com/BeingAnuj?v=3&amp;s=32&#39;)" data-original-title="BeingAnuj">
+  
+  
+</div>
+</span>
+  </div>
+  <div class="chat-item__content">
+    <div class="chat-item__details js-chat-item-details">
+      <div class="chat-item__from js-chat-item-from">BeingAnuj</div>
+        <div class="chat-item__time js-chat-item-time chat-item__time--permalinkable">
+          <span><span title="" data-original-title="March 8 2015 12:29 AM &lt;br&gt;(Alt-click to quote)">March 8 2015</span></span>
+        </div>
+          <div class="chat-item__icon--read  js-chat-item-readby"></div>
+      <div class="chat-item__icon--edit  js-chat-item-edit" data-original-title="" title=""></div>
+    </div>
+    <div class="chat-item__text  js-chat-item-text">okay , Yey Python <span data-link-type="issue" data-issue="3" class="issue closed">#3</span> <img class="emoji" src="grinning.png" title=":grinning:" alt=":grinning:" align="absmiddle" data-g-load-listener-id="6"></img></div>
+  </div>
+</div>
+</div><div class="chat-item model-id-54fbc0e0263f6abf4eea1b6d burstStart read burstFinal cantEdit isOld mention" data-item-id="54fbc0e0263f6abf4eea1b6d" data-mentioned="true" data-item-type="chat"><div class="chat-item__container view">
+  <div class="chat-item__aside">
+      <span><div class="trpDisplayPicture  avatar-54ba25c6db8155e6700ec489  avatar-s      " style="background-image: url(&#39;https://avatars4.githubusercontent.com/ana-balica?&amp;s=32&#39;)" data-original-title="Ana Balica">
+  
+  
+</div>
+</span>
+  </div>
+  <div class="chat-item__content">
+    <div class="chat-item__details js-chat-item-details">
+      <div class="chat-item__from js-chat-item-from">ana-balica</div>
+        <div class="chat-item__time js-chat-item-time chat-item__time--permalinkable">
+          <span><span title="" data-original-title="March 8 2015 8:54 AM &lt;br&gt;(Alt-click to quote)">16 hours ago</span></span>
+        </div>
+          <div class="chat-item__icon--read  js-chat-item-readby"></div>
+      <div class="chat-item__icon--edit  js-chat-item-edit" data-original-title="" title=""></div>
+    </div>
+    <div class="chat-item__text  js-chat-item-text">hi <span data-link-type="mention" data-screen-name="rajats" class="mention">@rajats</span> </div>
+  </div>
+</div>
+</div></div>
+      
+        
+        <div id="initial" style="height:0;width:0;overflow:hidden"><a name="initial">_</a></div>
+      
+    </div>
+  </div>
+</div>
+
+    <footer class="chat-input" id="chat-input-wrapper">
+  <div class="progress">
+    <div class="progress__bar" id="file-progress-bar"></div>
+  </div>
+  <div class="banner-wrapper  bottom" style="display: none;">
+    <div id="bottom-unread-banner" class="banner slide-away"></div>
+  </div>
+  <div class="chat-input__container  js-chat-input-container scrollpush" id="chat-input"><div class="chat-input__area view">
+  <div class="chat-input__avatar">
+    <span><div class="trpDisplayPicture  avatar-54fb35ed15522ed4b3dcf17b  avatar-s      " style="background-image: url(&#39;https://avatars2.githubusercontent.com/rajats?v=3&amp;s=32&#39;)" data-original-title="">
+  
+  
+</div>
+</span>
+  </div>
+  <form class="chat-input__box" name="chat">
+    <div class="textcomplete-wrapper" style="position: relative; display: block;"><ul class="dropdown-menu" style="position: absolute; top: initial; left: 0px; z-index: 100; display: none;"></ul><textarea class="chat-input__text-area scroller" name="chat" id="chat-input-textarea" placeholder="Click here to type a chat message. Supports GitHub flavoured markdown." autofocus="" onfocus="this.value = this.value;" maxlength="4096"></textarea></div>
+  </form>
+  <div class="chat-input__buttons">
+    <a href="https://gitter.im/systers/portal/~chat#" class="js-toggle-compose-mode" title="" data-original-title="Switch to compose mode (ctrl + /)"><i class="icon-chat-alt"></i></a>
+    <a href="https://gitter.im/systers/portal/~chat#markdown" class="js-md-help" style="text-decoration: none; display: block;" title="" data-original-title="Markdown help (ctrl + ⇧ + m)"><i class="icon-doc-text"></i></a>
+  </div>
+</div>
+</div>
+  <div id="search-input"></div>
+</footer>
+
+  </div>
+</div>
+
+<div class="trpBlankPage"></div>
+<script type="text/javascript">
+  var isIE = "ActiveXObject" in window;
+  var isHashSet = window.location.hash.length > 1;
+  if(isIE || isHashSet) {
+    var s = document.querySelector('#initial');
+    if(s) s.scrollIntoView();    
+  } else {
+    window.location = '#initial';
+  }
+</script>
+
+<script type="text/javascript">window.troupeEnv = {"lang":"en","domain":"gitter.im","baseServer":"gitter.im","basePath":"https://gitter.im","apiBasePath":"https://api.gitter.im","homeUrl":"/","badgeBaseUrl":"https://badges.gitter.im","mixpanelToken":"d43f5f0ef2f5e96d90325f539fc61337","googleTrackingId":"UA-45918290-1","googleTrackingDomain":"gitter.im","goSquaredTrackingId":"GSN-457403-A","env":"prod","cdns":["cdn01.gitter.im","cdn02.gitter.im","cdn03.gitter.im"],"version":"53b025","assetTag":"53b0255","logging":false,"ravenUrl":"https://0f50f03f994740328ab6a67c82395948@app.getsentry.com/19257","websockets":{"fayeUrl":"https://ws.gitter.im/faye","options":{"timeout":45,"retry":5,"interval":1}},"embed":{"basepath":"https://embed.gitter.im","cacheBuster":"1"},"billingUrl":"http://billing.gitter.im"};window.troupeContext = {"user":{"id":"54fb35ed15522ed4b3dcf17b","username":"rajats","displayName":"Rajat kumar Singh","fallbackDisplayName":"Rajat kumar Singh","url":"/rajats","avatarUrlSmall":"https://avatars2.githubusercontent.com/rajats?v=3&s=60","avatarUrlMedium":"https://avatars2.githubusercontent.com/rajats?v=3&s=128","gv":"3","scopes":{"public_repo":false,"private_repo":false}},"troupe":{"id":"54ba2761db8155e6700ec498","name":"systers/portal","topic":"Documentation: http://systers-portal.readthedocs.org/en/develop/","uri":"systers/portal","oneToOne":false,"userCount":14,"unreadItems":0,"mentions":0,"lastAccessTime":"2015-03-08T19:34:56.597Z","lurk":false,"url":"/systers/portal","githubType":"REPO","security":"PUBLIC","premium":false,"noindex":false,"v":22},"accessToken":"2a910b919f7988e43c31bab0963e7961551daea7","desktopNotifications":true,"events":[],"troupeUri":"systers/portal","troupeHash":"d61d6100a3191f60ad3e4a607980a5671a5aa099bcc3993a7bfeb5cd11601d07","isNativeDesktopApp":false,"permissions":{"admin":false},"locale":{"%s ago":"%s ago","%d unread message":{"one":"%d unread message","other":"%d unread messages"},"Unread messages in %%s, %%s and one other":{"one":"Unread messages in %%s, %%s and one other","other":"Unread messages in %%s, %%s and %d others"},"Unread messages in %s":"Unread messages in %s","Unread messages in %s and %s":"Unread messages in %s and %s","Unread messages from %s":"Unread messages from %s","Unread messages from %s and %s":"Unread messages from %s and %s","Unread messages from %%s, %%s and one other":{"one":"Unread messages from %%s, %%s and one other","other":"Unread messages from %%s, %%s and %d others"}},"snapshots":{"chat":{"limit":50,"aroundId":""}},"permalinkChatId":""};</script>
+<script type="text/javascript">window.webpackPublicPath = '//cdn02.gitter.im/_s/53b0255/js/';</script><script type="text/javascript" src="vendor.js"></script><script type="text/javascript" src="router-chat.js"></script>
+<div style="display: none;">
+  <form id="upload-form" action="" enctype="multipart/form-data" method="POST">
+    <input type="hidden" name="params" value="">
+    <input type="file" name="file" multiple="multiple">
+  </form>
+</div>
+
+
+    <div class="js-drag-overlay drag-frame hide">
+      <span class="octicon octicon-arrow-down"></span>
+    </div>
+  
+
+</body></html>

@@ -34,6 +34,7 @@
     <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
     <script src="{{ STATIC_URL }}js/ie-emulation-modes-warning.js"></script>
     <script src="{{ STATIC_URL }}js/jarallax-min-0.2.1.js"></script>
+    
 
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -61,7 +62,14 @@
           <ul class="nav navbar-nav">
 
             <li><a href='{% url "home" %}'><span class="glyphicon glyphicon-home" aria-hidden="true"></span>Home</a></li>
-            <li><a href='{% url "all_products" %}'><span class="glyphicon glyphicon-folder-open" aria-hidden="true"></span>Products</a></li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle products-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+              <span class="glyphicon glyphicon-folder-open" aria-hidden="true"></span>
+              products <span class="caret"></span></a>
+              <ul class="dropdown-menu" role="menu" id='products_dropdown'>
+              </ul>
+            </li>
+
 
             <li>
                 <form class="navbar-form navbar-left" role="search" action='{% url "search" %}'>
@@ -86,7 +94,6 @@
                 
               </ul>
             </li>
-
 
              <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
@@ -247,6 +254,39 @@
               console.log(data.notifications);                  //data.notifications refers to notification from view (get_notification_ajax)
           },
           error: function(rs, e) {                            //response and event
+            console.log(rs);
+            console.log(e);
+          }
+        })
+      })
+    })
+    </script>
+
+    <script>
+    $(document).ready(function(){
+      $(".products-toggle").one('click', function(e) {
+        e.preventDefault();
+        $.ajax({
+          type: "POST",
+          url: "{% url 'get_products_categories_using_ajax' %}",
+          data: {
+            csrfmiddlewaretoken: "{{ csrf_token }}",
+          },
+          success: function(data){ 
+              for (var i = 0; i < data.categories.length; i++) {
+                
+                  if(i==0)
+                    $("#products_dropdown").append('<li role="presentation"><a role="menuitem" tabindex="-1" href="{% url "all_products" %}">' + data.categories[i] + "</li>"+' <li class="divider"></li>')
+                  else{
+                    var link="/products/'param'/category"
+                    link = link.replace('param', data.category_slugs[i]);
+                    link = link.replace(/["']/g, "");
+                    $("#products_dropdown").append('<li role="presentation"><a role="menuitem" tabindex="-1" href='+link+'>' + data.categories[i] + "</li>"+' <li class="divider"></li>')
+                  }              
+              }
+              console.log(data.category_slugs);
+          },
+          error: function(rs, e) {
             console.log(rs);
             console.log(e);
           }

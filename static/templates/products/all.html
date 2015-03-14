@@ -22,7 +22,12 @@
 {% endblock %}
 -->
 {% block content %}
+
+{% load endless %}
+
+{% paginate 12 products %}
 <div class="row">
+
 	{% for product in products %}
 		<div class="col-sm-4" style='text-align: center;'>
 			<div class="thumbnail">
@@ -43,5 +48,6 @@
 		</div>
 	{% cycle '' '' '</div><hr/><div class="row">' %}
 	{% endfor %}
+	{% show_more %}
 </div>
 {% endblock %}

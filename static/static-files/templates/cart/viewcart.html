@@ -21,7 +21,7 @@
 			{{ item.product.get_price }}
 		</td>
 		<td>
-			<a href='{% url "delete_from_cart" item.product.id %}'>Remove from cart</a>
+			<a href='{% url "delete_from_cart" item.product.id %}'><span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span></a>
 		</td>
 	</tr>
 	{% endfor %}
@@ -32,6 +32,6 @@
 	</tr>
 </table>
 {% else %}
-	<h1>Your cart is empty</h1>
+	<h1>  <div class="alert alert-warning" role="alert">Your cart is empty</div> </h1>
 {% endif %}
 {% endblock %}
