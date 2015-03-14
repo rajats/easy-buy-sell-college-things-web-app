@@ -204,12 +204,18 @@ def add_comment(request, slug):
     return render_to_response("products/add_comment.html", locals(), context_instance=RequestContext(request))
 
 
-def category_products(request, catslug):
+@page_template('products/all_index_page.html')
+def category_products(request, catslug, template='products/all_index.html', extra_context=None):
     category = Category.objects.get(slug=catslug)
     products = Product.objects.filter(category=category,active=True)
     if request.user.is_authenticated():
         products = Product.objects.filter(category=category,active=True).filter(~Q(user = request.user))
-    return render_to_response("products/all.html", locals(), context_instance=RequestContext(request))
+    context = {
+        'products': products,
+    }
+    if extra_context is not None:
+        context.update(extra_context)
+    return render_to_response(template, context, context_instance=RequestContext(request))
 
 
 
