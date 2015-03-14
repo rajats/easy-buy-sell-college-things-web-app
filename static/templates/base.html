@@ -222,6 +222,10 @@
       </div>
     </div>
 
+    <div id="loading" style="display: none">
+      <img src="{{ STATIC_URL }}images/loading.gif" />
+    </div>
+
 
 
     <!-- Bootstrap core JavaScript
@@ -239,6 +243,7 @@
     $(document).ready(function(){
       $(".notification-toggle").click(function(e){
         e.preventDefault();
+        $("#loading").show();
         $.ajax({                                         //this is how ajax call is done
           type: "POST",                                  //method that we want to use
           url: "{% url 'get_notifications_using_ajax' %}",
@@ -246,6 +251,7 @@
             csrfmiddlewaretoken: "{{ csrf_token }}",       
           },
           success: function(data){
+            $("#loading").hide();
             console.log(data.count)
             if(data.count==0)
               $("#notification_dropdown").html('<div><a href="{% url 'notifications_all' %}">View all notifications</a></div>');
@@ -254,6 +260,7 @@
 
             $("#mark-all").click(function(e){
               e.preventDefault();
+              $("#loading").show();
               $.ajax({                                         //this is how ajax call is done
                   type: "POST",                                  //method that we want to use
                   url: "{% url 'mark_all_as_read' %}",
@@ -261,9 +268,10 @@
                     csrfmiddlewaretoken: "{{ csrf_token }}",       
                   },
                   success: function(data){
-                  
+                    $("#loading").hide();
                   },
-                  error: function(rs, e) {                            //response and event
+                  error: function(rs, e) {  
+                    $("#loading").hide();                          //response and event
                     console.log(rs);
                     console.log(e);
                   }
@@ -276,6 +284,7 @@
               console.log(data.notifications);                  //data.notifications refers to notification from view (get_notification_ajax)
           },
           error: function(rs, e) {                            //response and event
+            $("#loading").hide();
             console.log(rs);
             console.log(e);
           }
@@ -288,6 +297,7 @@
     $(document).ready(function(){
       $(".products-toggle").one('click', function(e) {
         e.preventDefault();
+        $("#loading").show();
         $.ajax({
           type: "POST",
           url: "{% url 'get_products_categories_using_ajax' %}",
@@ -295,6 +305,7 @@
             csrfmiddlewaretoken: "{{ csrf_token }}",
           },
           success: function(data){ 
+              $("#loading").hide();
               for (var i = 0; i < data.categories.length; i++) {
                 
                   if(i==0)
@@ -309,6 +320,7 @@
               console.log(data.category_slugs);
           },
           error: function(rs, e) {
+            $("#loading").hide();
             console.log(rs);
             console.log(e);
           }
