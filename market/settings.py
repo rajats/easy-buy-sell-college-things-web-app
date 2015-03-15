@@ -45,7 +45,8 @@ INSTALLED_APPS = (
     'profiles',
     'cart',
     'analysis',
-    'notifications'
+    'notifications',
+    'checkout',
 )
 
 MIDDLEWARE_CLASSES = (

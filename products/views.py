@@ -179,11 +179,6 @@ def add_comment(request, slug):
         cform=ProductCommentForm(request.POST)         #create commentform using POST
         if cform.is_valid():
             comment_text = cform.cleaned_data['comment']
-            #c=cform.save(commit=False)          #save form but dont push it to database,this returns instance of comment in c
-            #c.pub_date=timezone.now()       #setting pub_date for comment using current time of server
-            #c.product=prod   
-            #c.commenter = request.user                 
-            #c.save()
             new_comment = ProductComment.objects.create(product=prod,commenter=request.user,comment=comment_text,pub_date=timezone.now())
             messages.success(request, "Your comment was added")
             sent_senders=[]
@@ -191,10 +186,10 @@ def add_comment(request, slug):
                 for obj in NotifyUsers.objects.filter(product = prod):
                     if request.user != obj.sender:
                         if obj.sender not in sent_senders:
-                            notify.send(request.user, action=new_comment, target = prod, receiver_user=obj.sender, msg='commented on') 
+                            notify.send(request.user, action=new_comment, target = prod, receiver_user=obj.sender, msg='commented on', signal_sender=Product) 
                     sent_senders.append(obj.sender)
             else:
-                notify.send(request.user, action=new_comment, target = prod, receiver_user=prod.user, msg='commented on')
+                notify.send(request.user, action=new_comment, target = prod, receiver_user=prod.user, msg='commented on', signal_sender=Product)
         else:
             messages.error(request, "There was an error with your comment")
 

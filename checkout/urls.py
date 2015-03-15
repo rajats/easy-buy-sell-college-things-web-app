@@ -4,6 +4,6 @@ from django.conf import settings
 
 
 urlpatterns = patterns('checkout.views',
-	url(r'^(?P<slug>.*)/$','buy', name="buy"),
+	url(r'^(?P<slug>.*)/buy/','buy', name="buy"),
 )
 

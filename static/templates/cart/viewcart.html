@@ -20,8 +20,15 @@
 		<td>
 			{{ item.product.get_price }}
 		</td>
+		
 		<td>
-			<a href='{% url "delete_from_cart" item.product.id %}'><span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span></a>
+			</br><a href='{% url "delete_from_cart" item.product.id %}'><span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span></a>
+		</td>
+		<td>
+			Buy this item
+		</td>
+		<td>
+			<a href="{% url "buy" item.product.slug %}" class="btn btn-primary" role="button">Buy Now</a> 		
 		</td>
 	</tr>
 	{% endfor %}

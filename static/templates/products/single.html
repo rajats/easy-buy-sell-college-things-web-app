@@ -63,32 +63,54 @@
 				  </div>
 				  <div class="panel-body">
 				    {% if edit %}
+				    	<div class="text-center">
+					    	<div class="btn-group" role="group" aria-label="...">
+					    		{% if active %}
+							  		<!--<a type="button" class="btn btn-default" href="{% url "mark_product_as_sold" product.slug %}">Mark as sold</a>  -->
+							  		<button type="button" class="btn btn-default" data-toggle="modal" data-target="#confirmsold">Mark as sold</button>
+								{% else %}	
+									<a type="button" class="btn btn-default" >sold</a>	
+								{% endif %}				  
 
-				    	<div class="btn-group" role="group" aria-label="...">
-				    		{% if active %}
-						  		<!--<a type="button" class="btn btn-default" href="{% url "mark_product_as_sold" product.slug %}">Mark as sold</a>  -->
-						  		<button type="button" class="btn btn-default" data-toggle="modal" data-target="#confirmsold">Mark as sold</button>
-							{% else %}	
-								<a type="button" class="btn btn-default" >sold</a>	
-							{% endif %}				  
+							  	<div class="btn-group">
+								  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+								    Action <span class="caret"></span>
+								  </button>
+								  <ul class="dropdown-menu" role="menu">
+								    <li><a href="{% url "edit_product" product.slug %}">Edit</a></li>
+								    <li class="divider"></li>
+								    <li><a href="{% url "manage_product_image" product.slug %}">Manage images</a></li>
+								  </ul>
+								</div>
 
-						  	<div class="btn-group">
-							  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-							    Action <span class="caret"></span>
-							  </button>
-							  <ul class="dropdown-menu" role="menu">
-							    <li><a href="{% url "edit_product" product.slug %}">Edit</a></li>
-							    <li class="divider"></li>
-							    <li><a href="{% url "manage_product_image" product.slug %}">Manage images</a></li>
-							  </ul>
 							</div>
-
 						</div>
-
 					{% endif %}
 				  </div>
 				</div>
 			{% endif %}
+
+			{% if edit %}
+				<div class="panel panel-default">
+				  <div class="panel-heading">
+				    <h3 class="panel-title">Buy Requests</h3>
+				  </div>
+				  <div class="panel-body">
+				    {% if edit %}
+				    	<div class="text-center">
+					    	<div class="btn-group" role="group" aria-label="...">
+					    		{% if active %}
+							  		<button type="button" class="btn btn-default" data-toggle="modal" data-target="#confirmsold">buy request from user rajat</button>
+								{% endif %}
+
+							</div>
+						</div>
+					{% endif %}
+				  </div>
+				</div>
+			{% endif %}
+
+
 		</div>
 	</div>
 	<div class="row">
