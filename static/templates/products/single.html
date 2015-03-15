@@ -38,6 +38,7 @@
 			    {{ product.description }}
 			   </br>
 			   <p>Year of purchase:{{ product.yearofpurchase }}</p>
+			   <p>Owner's college:{{ product.ownercollege }}</p>
 			   </br>
 			   	ActualPrice: Rs{{ product.price }}
 			   	</br>
@@ -102,7 +103,31 @@
 				    	<div class="text-center">
 					    	<div class="btn-group" role="group" aria-label="...">
 					    		{% if active %}
-							  		<button type="button" class="btn btn-default" data-toggle="modal" data-target="#confirmsold">buy request from user rajat</button>
+					    			{% for order in user_orders %}
+					    				{% if not order.confirmed and not order.rejected %}
+								  			<button type="button" class="btn btn-default" data-toggle="modal" data-target="#confirmorder">buy request from user {{ order.buyer }}</button>
+
+								  			    <div class="modal fade" id="confirmorder" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+											      <div class="modal-dialog">
+											      <div class="modal-content">
+											        <div class="modal-header">
+											        	<h4 class="modal-title" id="myModalLabel">Confirm this order</h4>
+											        </div>
+											        <div class="modal-body">
+											          <p>user {{ order.buyer }} wants to buy this product.You can contact the user at {{ order.buyer.email }}.If you confirm this order we will share your contact details with buyer and buyer will be notified about this confirmation, if 
+											          	you reject this order we won't share any of your contact details with buyer and buyer will not be notified about this rejection.
+											          </p>
+											        </div>
+											        <div class="modal-footer">
+											        <a type="button" class="btn btn-default" href="{% url "confirmorder" product.slug %}">Confirm order</a>
+											        <a type="button" class="btn btn-default" href="{% url "rejectorder" product.slug %}">Reject order</a>
+											        <button type="button" class="btn btn-default" data-dismiss="modal">Save for later</button>
+											        </div>
+											      </div>
+											      </div>
+											    </div>
+											{% endif %}
+							  		{% endfor %}
 								{% endif %}
 
 							</div>
@@ -144,7 +169,5 @@
       </div>
       </div>
     </div>
-
-
 
 {% endblock %}

@@ -331,7 +331,8 @@
           csrfmiddlewaretoken: "{{ csrf_token }}",       
         },
         success: function(data){
-               $(".numbernotifications").html('<span class="badge">'+data.count+'</span>')
+              if(data.count>0)
+                $(".numbernotifications").html('<span class="badge">'+data.count+'</span>')
             },
             complete: function() {
               setTimeout(checknotificaions, 20000);

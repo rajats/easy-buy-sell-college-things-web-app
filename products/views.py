@@ -82,7 +82,7 @@ def single(request, slug):
     try:
         ordered_products = []
         if request.user.is_authenticated():
-            user_orders = Orders.objects.filter(buyer = request.user)
+            user_orders = Orders.objects.filter(product = product)
             for order_obj in user_orders:
                 ordered_products.append(order_obj.product)
 
