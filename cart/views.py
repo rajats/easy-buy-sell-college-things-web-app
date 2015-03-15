@@ -22,10 +22,6 @@ def cart(request):
 		exists = True
 	else:
 		exists = False
-	if request.user.is_authenticated():
-		user_orders = Orders.objects.filter(buyer = request.user)
-	else:
-		user_orders = []
 	return render_to_response("cart/viewcart.html",locals(), context_instance=RequestContext(request))
 
 def add_to_cart(request, id):
@@ -70,7 +66,6 @@ def delete_from_cart(request, id):
 	if product:
 		new_item, created = CartItem.objects.get_or_create(cart = cart, product = product)
 		new_item.delete()
-		messages.warning(request, 'removed from cart')
 	return HttpResponseRedirect('/cart/')
 
 

@@ -49,6 +49,8 @@
 				    {% if not edit %}
 					    {% if in_cart %}
 							in cart<a class='btn btn-success' href='{% url "cart" %}'>View cart</a>
+						{% elif product in ordered_products %}
+							<div class="alert alert-info" role="alert">You've already ordered this product</div>
 						{% else %}
 							<a class='btn btn-primary' href='{% url "add_to_cart" product.id %}'>Add to cart</a>
 						{% endif %}

@@ -4,6 +4,7 @@ from django.contrib.auth.models import User
 from django.contrib.contenttypes import generic
 from django.contrib.contenttypes.models import ContentType
 from products.models import Product
+from checkout.models import Orders
 
 from .signals import notify
 
@@ -118,7 +119,10 @@ def new_notification(sender, **kwargs):
 	new_note.save()
 	product = Product.objects.get(id = target.id)
 	sender = User.objects.get(id = sender.id)
-	NotifyUsers.objects.create(sender = sender, user = receiver_user, notifications = new_note, product = product)
+	if signal_sender == Orders:
+		NotifyUsers.objects.create(sender = sender, user = receiver_user, notifications = new_note, product = product, buy_request=True)
+	else:
+		NotifyUsers.objects.create(sender = sender, user = receiver_user, notifications = new_note, product = product)
 
 
 notify.connect(new_notification)

@@ -22,6 +22,7 @@ from analysis.signals import page_view
 from analysis.models import PageView
 from notifications.signals import notify
 from notifications.models import NotifyUsers, Notification
+from checkout.models import Orders
 
 
 from django.core.mail import send_mail
@@ -77,12 +78,20 @@ def single(request, slug):
             for item in products_category:
                 if not item == product:
                     related.append(item)
+
     try:
+        ordered_products = []
+        if request.user.is_authenticated():
+            user_orders = Orders.objects.filter(buyer = request.user)
+            for order_obj in user_orders:
+                ordered_products.append(order_obj.product)
+
         cart_id = request.session['cart_id']
         cart = Cart.objects.get(id = cart_id)
         for item in cart.cartitem_set.all():
             if item.product == product:
                 in_cart = True
+
     except:
         in_cart = False
 

@@ -24,6 +24,7 @@
 			<td>
 				</br><a href='{% url "delete_from_cart" item.product.id %}'><span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span></a>
 			</td>
+
 			<td>
 				Buy this item
 			</td>
@@ -59,6 +60,26 @@
 				    })
 				</script>
 
+				<div class="modal fade" id="buyrequest" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+			      <div class="modal-dialog">
+			      <div class="modal-content">
+			        <div class="modal-header">
+			          <h4 class="modal-title" id="myModalLabel">Buy request created</h4>
+			        </div>
+			        <div class="modal-body">
+			          <p>A buy request for this product has been created for you and we have inforrmed the seller about your
+			          	buy request.Your contact details has been shared with seller and if seller wants to sell this product
+			          	to you, you will soon receive a confirmation from seller.</br>
+			          	Thank you! for using our site..!!we are waiting for your next order..!!
+			          </p>
+			        </div>
+			        <div class="modal-footer">
+			        	<a class='btn btn-primary' href='{% url "delete_from_cart" item.product.id %}'>OK</a>
+			        </div>
+			      </div>
+			      </div>
+			    </div>
+
 			</td>
 		</tr>
 		{% endfor %}
@@ -72,31 +93,11 @@
 	<h1>  <div class="alert alert-warning" role="alert">Your cart is empty</div> </h1>
 {% endif %}
 
-    <div class="modal fade" id="buyrequest" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-      <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h4 class="modal-title" id="myModalLabel">Buy request created</h4>
-        </div>
-        <div class="modal-body">
-          <p>A buy request for this product has been created for you and we have inforrmed the seller about your
-          	buy request.Your contact details has been shared with seller and if seller wants to sell this product
-          	to you, you will soon receive a confirmation from seller.</br>
-          	Thank you! for using our site..!!we are waiting for your next order..!!
-          </p>
-        </div>
-        <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">OK</button>
-        </div>
-      </div>
-      </div>
-    </div>
-
     <div class="modal fade" id="unregbuyrequest" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
       <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h4 class="modal-title" id="myModalLabel">Buy request created</h4>
+          <h4 class="modal-title" id="myModalLabel"></h4>
         </div>
         <div class="modal-body">
           <p>Please login to buy this product!!</br>
@@ -105,7 +106,7 @@
           <a class='btn btn-primary' href='{% url "register" %}'>Register</a>
         </div>
         <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">OK</button>
+        	 <button type="button" class="btn btn-default" data-dismiss="modal">OK</button>
         </div>
       </div>
       </div>

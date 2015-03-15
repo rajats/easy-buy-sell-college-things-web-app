@@ -35,13 +35,6 @@
     <script src="{{ STATIC_URL }}js/ie-emulation-modes-warning.js"></script>
     <script src="{{ STATIC_URL }}js/jarallax-min-0.2.1.js"></script>
     
-
-
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
   </head>
 
   <body>
@@ -89,7 +82,7 @@
               <li class="dropdown">
               <a href="#" class="dropdown-toggle notification-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
               <span class="glyphicon glyphicon-bell" aria-hidden="true"></span>
-              Notifications <span class="caret"></span></a>
+              Notifications<span class="numbernotifications"></span> <span class="caret"></a>
               <ul class="dropdown-menu" role="menu" id='notification_dropdown'>
                 
               </ul>
@@ -222,7 +215,7 @@
       </div>
     </div>
 
-    <div id="loading" style="display: none">
+    <div id="loading" style="display: none; text-align:center;">
       <img src="{{ STATIC_URL }}images/loading.gif" />
     </div>
 
@@ -329,5 +322,27 @@
     })
     </script>
 
+    <script>
+    $(document).ready(function checknotificaions() {
+      $.ajax({                                         //this is how ajax call is done
+        type: "POST",                                  //method that we want to use
+        url: "{% url 'get_notifications_using_ajax' %}",
+        data: {                                         //additional data
+          csrfmiddlewaretoken: "{{ csrf_token }}",       
+        },
+        success: function(data){
+               $(".numbernotifications").html('<span class="badge">'+data.count+'</span>')
+            },
+            complete: function() {
+              setTimeout(checknotificaions, 20000);
+            },
+            error: function(rs, e) {  
+              $("#loading").hide();                          //response and event
+              console.log(rs);
+              console.log(e);
+            }
+          })
+      })
+    </script>
   </body>
 </html>
