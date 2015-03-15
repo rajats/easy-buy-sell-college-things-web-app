@@ -1,19 +1,29 @@
 {% extends "base.html" %}
 {% block content %}
-	</br>
-	<h3><p>searched results for</p> {{ query }}</h3>
-	<ol>
-		{% for product in products %}
-			<li>
-				{% for image in product.productimage_set.all %}
-					{% if image.featured_image %}
-						<img src='{{ MEDIA_URL }}{{ image.image }}' width='300' />
-					{% endif %}
-				{% endfor %}
-			</br>
-				<h3>{{ product }}</h3>
-				<p><a href="{{ product.get_absolute_url }}" class="btn btn-primary" role="button">View Product</a> 
-			</li>     <!-- single_product needs parameter !-->
-		{% endfor %}
-	</ol>
+
+	{% if user.is_authenticated %}
+		<div data-toggle="modal" data-target="#buyrequest">
+		</div>
+	{% endif %}
+
+	<div class="modal fade" id="buyrequest" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title" id="myModalLabel">Buy request created</h4>
+        </div>
+        <div class="modal-body">
+          <p>A buy request for this product has been created for you and we have inforrmed the seller about your
+          	buy request.Your contact details has been shared with seller and if seller wants to sell this product
+          	to you, you will soon receive a confirmation from seller.</br>
+          	Thank you! for using our site..!!we are waiting for your next order..!!
+          </p>
+        </div>
+        <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">OK</button>
+        </div>
+      </div>
+      </div>
+    </div>
+
 {% endblock %}

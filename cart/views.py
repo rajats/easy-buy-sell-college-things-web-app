@@ -4,6 +4,7 @@ from django.core.urlresolvers import reverse
 from products.models import Product
 from .models import Cart, CartItem
 from products.views import check_product
+from checkout.models import Orders
 
 # Create your views here.
 
@@ -21,6 +22,10 @@ def cart(request):
 		exists = True
 	else:
 		exists = False
+	if request.user.is_authenticated():
+		user_orders = Orders.objects.filter(buyer = request.user)
+	else:
+		user_orders = []
 	return render_to_response("cart/viewcart.html",locals(), context_instance=RequestContext(request))
 
 def add_to_cart(request, id):
