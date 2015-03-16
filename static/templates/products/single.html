@@ -38,6 +38,7 @@
 			    {{ product.description }}
 			   </br>
 			   <p>Year of purchase:{{ product.yearofpurchase }}</p>
+			   <p>Owner :{{ product.user }}</p>
 			   <p>Owner's college:{{ product.ownercollege }}</p>
 			   </br>
 			   	ActualPrice: Rs{{ product.price }}
@@ -126,6 +127,7 @@
 											      </div>
 											      </div>
 											    </div>
+
 											{% endif %}
 							  		{% endfor %}
 								{% endif %}
