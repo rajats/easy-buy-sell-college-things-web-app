@@ -3,8 +3,7 @@ easy buy/sell college things web app is implemented as part as part of my sixth 
 framework and postgresql as database.
 
 For screenshots of project please visit:
-
-[a link](https://drive.google.com/folderview?id=0B298A8MGFMjKfnhidTJwd24yNm5ncVlIcXhxa2xlOGtjMkNJR2loSF96SFlqeWEtQTZfcG8&usp=sharing)
+[Screenshots](https://drive.google.com/folderview?id=0B298A8MGFMjKfnhidTJwd24yNm5ncVlIcXhxa2xlOGtjMkNJR2loSF96SFlqeWEtQTZfcG8&usp=sharing)
 
 The purpose of this project is to allow college students to get college needed things easily at lesser price.Students can search 
 if a product is available in products library and
