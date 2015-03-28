@@ -41,6 +41,7 @@ INSTALLED_APPS = (
     'south',
     'endless_pagination',
     'products',
+    'profiles',
     'cart',
     'analysis',
     'notifications',
