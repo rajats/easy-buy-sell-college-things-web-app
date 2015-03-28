@@ -9,7 +9,6 @@ from django.utils import timezone
 from products.models import Product
 from .signals import page_view
 
-
 class PageViewQuerySet(models.query.QuerySet):
 	def products(self):
 		content_type = ContentType.objects.get_for_model(Product)
@@ -29,9 +28,7 @@ class PageView(models.Model):
 											null=True, blank=True)
 	primary_object_id = models.PositiveIntegerField(null=True, blank=True)
 	primary_object = generic.GenericForeignKey("primary_content_type", "primary_object_id")
-
 	timestamp = models.DateTimeField(default=timezone.now())
-
 	objects = PageViewManager()
 
 	def __unicode__(self):
@@ -39,7 +36,6 @@ class PageView(models.Model):
 
 	class Meta:
 		ordering = ['-timestamp']
-
 
 def page_view_received(sender, **kwargs):
 	kwargs.pop('signal', None)

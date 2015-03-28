@@ -15,26 +15,21 @@ from django.utils import timezone
 from django.contrib import messages 
 
 from endless_pagination.decorators import page_template   
+
 from .models import Product, Category, ProductImage, ProductComment
 from .forms import ProductForm, ProductImageForm, ProductCommentForm, UnRegUserProductCommentForm
 from cart.models import Cart
-from analysis.signals import page_view
-from analysis.models import PageView
-from notifications.signals import notify
 from notifications.models import NotifyUsers, Notification
 from checkout.models import Orders
-
-
-from django.core.mail import send_mail
-
-# Create your views here.
+from analysis.models import PageView
+from notifications.signals import notify
+from analysis.signals import page_view
 
 def check_product(user, product):
     if product in request.user.userpurchase.products.all():
         return True
     else:
         return False
-
 
 """
 def list_all(request):
@@ -56,8 +51,8 @@ def list_all(request,template='products/all_index.html', extra_context=None):
     if extra_context is not None:
         context.update(extra_context)
     return render_to_response(template, context, context_instance=RequestContext(request))
+
 def single(request, slug):
-    #send_mail('test', 'new message test.', 'rajat11ukawa@gmail.com', ['rajatk@outlook.in'], fail_silently=False)
     product = Product.objects.get(slug=slug)
     active = product.active
     if not active:
@@ -65,7 +60,6 @@ def single(request, slug):
     images = ProductImage.objects.filter(product=product)
     categories = product.category_set.all()
     page_view.send(request.user, page_path = request.get_full_path(),primary_obj = product)
-    #print request.user.userpurchase.products.all()
     categories = product.category_set.all()
     if request.user == product.user:
         edit = True
@@ -78,23 +72,19 @@ def single(request, slug):
             for item in products_category:
                 if not item == product:
                     related.append(item)
-
     try:
         ordered_products = []
         if request.user.is_authenticated():
             user_orders = Orders.objects.filter(product = product)
             for order_obj in user_orders:
                 ordered_products.append(order_obj.product)
-
         cart_id = request.session['cart_id']
         cart = Cart.objects.get(id = cart_id)
         for item in cart.cartitem_set.all():
             if item.product == product:
                 in_cart = True
-
     except:
         in_cart = False
-
     return render_to_response("products/single.html", locals(), context_instance=RequestContext(request))
 
 def edit_product(request, slug):
@@ -115,7 +105,6 @@ def mark_product_as_sold(request, slug):
         instance.save()
     return HttpResponseRedirect('/products/')
 
-
 def add_product(request):
     if request.user.is_authenticated():
         form = ProductForm(request.POST or None)
@@ -124,14 +113,10 @@ def add_product(request):
             product.user = request.user
             product.active = True
             product.slug = temp = slugify(form.cleaned_data['title'])   #automatically creates slug using title
-
-
             for x in itertools.count(1):
                 if not Product.objects.filter(slug=product.slug).exists():
                     break
                 product.slug = '%s-%d' % (temp, x)
-
-
             product.save()
             return HttpResponseRedirect('/products/%s/images/' %(product.slug))
         return render_to_response("products/edit.html", locals(), context_instance=RequestContext(request))
@@ -175,7 +160,6 @@ def search(request):
         Q(description__icontains=q)
     )
     products = list(chain(products_set, category_set))
-
     return render_to_response("products/search.html", locals(), context_instance=RequestContext(request))
 
 def user_products(request):
@@ -201,12 +185,10 @@ def add_comment(request, slug):
                 notify.send(request.user, action=new_comment, target = prod, receiver_user=prod.user, msg='commented on', signal_sender=Product)
         else:
             messages.error(request, "There was an error with your comment")
-
             return HttpResponseRedirect('/products/%s/' %(prod.slug)) 
     else:
         cform=ProductCommentForm()              
     return render_to_response("products/add_comment.html", locals(), context_instance=RequestContext(request))
-
 
 @page_template('products/all_index_page.html')
 def category_products(request, catslug, template='products/all_index.html', extra_context=None):
@@ -220,8 +202,6 @@ def category_products(request, catslug, template='products/all_index.html', extr
     if extra_context is not None:
         context.update(extra_context)
     return render_to_response(template, context, context_instance=RequestContext(request))
-
-
 
 def get_products_categories_using_ajax(request):                                       #return HttpResponse with ajax data
     if request.is_ajax() and request.method == "POST":

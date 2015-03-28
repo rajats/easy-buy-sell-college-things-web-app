@@ -1,29 +1,26 @@
 {% extends "base.html" %}
 {% block content %}
-
-	{% if user.is_authenticated %}
-		<div data-toggle="modal" data-target="#buyrequest">
-		</div>
-	{% endif %}
-
-	<div class="modal fade" id="buyrequest" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-      <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h4 class="modal-title" id="myModalLabel">Buy request created</h4>
-        </div>
-        <div class="modal-body">
-          <p>A buy request for this product has been created for you and we have inforrmed the seller about your
-          	buy request.Your contact details has been shared with seller and if seller wants to sell this product
-          	to you, you will soon receive a confirmation from seller.</br>
-          	Thank you! for using our site..!!we are waiting for your next order..!!
-          </p>
-        </div>
-        <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">OK</button>
-        </div>
+{% if user.is_authenticated %}
+	<div data-toggle="modal" data-target="#buyrequest">
+	</div>
+{% endif %}
+<div class="modal fade" id="buyrequest" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" id="myModalLabel">Buy request created</h4>
       </div>
+      <div class="modal-body">
+        <p>A buy request for this product has been created for you and we have inforrmed the seller about your
+        	buy request.Your contact details has been shared with seller and if seller wants to sell this product
+        	to you, you will soon receive a confirmation from seller.</br>
+        	Thank you! for using our site..!!we are waiting for your next order..!!
+        </p>
+      </div>
+      <div class="modal-footer">
+      <button type="button" class="btn btn-default" data-dismiss="modal">OK</button>
       </div>
     </div>
-
+  </div>
+</div>
 {% endblock %}

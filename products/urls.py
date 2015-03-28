@@ -1,8 +1,6 @@
 from django.conf.urls import patterns, include, url
 from django.conf import settings 
 
-
-
 urlpatterns = patterns('products.views',
     url(r'^$','list_all', name="all_products"),           #this home page url
     url(r'^search/','search', name="search"),

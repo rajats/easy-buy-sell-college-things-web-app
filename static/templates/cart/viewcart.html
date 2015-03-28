@@ -1,7 +1,5 @@
 {% extends "base.html" %}
-
 {% block content %}
-
 {% if exists %}
 	<h1>Cart</h1>
 	<table>
@@ -20,18 +18,14 @@
 			<td>
 				{{ item.product.get_price }}
 			</td>
-			
 			<td>
 				</br><a href='{% url "delete_from_cart" item.product.id %}'><span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span></a>
 			</td>
-
 			<td>
 				Buy this item
 			</td>
 			<td>
 				<a href="#" class="btn btn-primary buynow" role="button">Buy Now</a> 
-
-
 				<script>
 				    $(document).ready(function(){
 				      $(".buynow").click(function(e){
@@ -59,7 +53,6 @@
 				      })
 				    })
 				</script>
-
 				<div class="modal fade" id="buyrequest" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 			      <div class="modal-dialog">
 			      <div class="modal-content">
@@ -79,7 +72,6 @@
 			      </div>
 			      </div>
 			    </div>
-
 			</td>
 		</tr>
 		{% endfor %}
@@ -92,8 +84,7 @@
 {% else %}
 	<h1>  <div class="alert alert-warning" role="alert">Your cart is empty</div> </h1>
 {% endif %}
-
-    <div class="modal fade" id="unregbuyrequest" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal fade" id="unregbuyrequest" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
       <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
@@ -111,5 +102,4 @@
       </div>
       </div>
     </div>
-
 {% endblock %}

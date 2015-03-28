@@ -1,11 +1,11 @@
 from django.forms import ModelForm
+
 from .models import Product, ProductImage, ProductComment
 
 class ProductForm(ModelForm):
 	class Meta:
 		model = Product
 		fields = ('title','description','yearofpurchase','price','sale_price','ownercollege','ownerphone')
-
 
 class ProductImageForm(ModelForm):
 	class Meta:

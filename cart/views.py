@@ -1,12 +1,11 @@
 from django.shortcuts import render_to_response, RequestContext, Http404,HttpResponseRedirect
 from django.contrib import messages
 from django.core.urlresolvers import reverse
+
 from products.models import Product
-from .models import Cart, CartItem
 from products.views import check_product
 from checkout.models import Orders
-
-# Create your views here.
+from .models import Cart, CartItem
 
 def cart(request):
 	try:
@@ -45,9 +44,6 @@ def add_to_cart(request, id):
 			new_item.cart = cart
 			new_item.save()
 			messages.success(request, 'added to cart')
-		#else:
-		#	new_item.delete()
-		#	messages.success(request, 'removed from cart')
 		return HttpResponseRedirect('/cart/')
 
 def delete_from_cart(request, id):

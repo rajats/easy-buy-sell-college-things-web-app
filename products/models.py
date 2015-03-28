@@ -4,17 +4,9 @@ from django.conf import settings
 from django.core.urlresolvers import reverse
 from django.core.files.storage import FileSystemStorage
 from django.core.validators import MinValueValidator, MaxValueValidator
+
 from PIL import Image
 
-
-#protected_loc = settings.PROTECTED_UPLOADS
-
-#def download_loc(instace, filename):
-#	if instace.user.username:
-#		return "%s/download/%s" %(instance.user.username, filename)
-#	else:
-#		return "%s/download/%s" %("default", filename)
-# Create your models here.
 class Product(models.Model):
 	user = models.ForeignKey(User, null=True, blank=True)   #if we are adding products we can leave it null
 														  #but if seller student is adding it can be null
@@ -35,12 +27,12 @@ class Product(models.Model):
 	class Meta:
 		ordering=['-order']
 
-	
 	def get_price(self):
 		if self.sale_price > 0:
 			return "Actual price is :%s You get it for: %s" %(self.price, self.sale_price)
 		else:
 			return "You get it for: %s"%(self.price)
+	
 	def get_absolute_url(self):
 		return reverse('single_product', args = [self.slug])                #single_product name of url
 

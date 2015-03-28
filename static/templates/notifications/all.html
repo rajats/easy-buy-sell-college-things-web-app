@@ -1,13 +1,8 @@
 {% extends "base.html" %}
-
-
 {% block content %}
-
-
 <table class='table'>
-{% for note in notifications %}
-
-	<tr><td>{{ note|safe }}</td><td>{% if note.read %} Read {% else %} Unread {% endif %}</td></tr>
-{% endfor %}
+	{% for note in notifications %}
+		<tr><td>{{ note|safe }}</td><td>{% if note.read %} Read {% else %} Unread {% endif %}</td></tr>
+	{% endfor %}
 </table>
 {% endblock %}

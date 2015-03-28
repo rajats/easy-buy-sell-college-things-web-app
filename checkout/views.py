@@ -1,30 +1,15 @@
 import json
-from django.http import HttpResponse
 
+from django.http import HttpResponse
 from django.shortcuts import render_to_response, RequestContext, Http404,HttpResponseRedirect
 from django.contrib import messages    
 from django.contrib.auth.decorators import login_required
+
 from .models import Orders
 from products.models import Product
 from notifications.signals import notify
 from notifications.models import NotifyUsers, Notification
 
-# Create your views here.
-
-'''def buy(request, slug):
-	product = Product.objects.get(slug=slug)
-	seller = product.user
-	if request.user.is_authenticated():
-		buyer = request.user
-		order_obj = Orders.objects.create(buyer=request.user, seller=seller, product = product)
-		notify.send(buyer, target = product, receiver_user=seller, msg='wants to buy', signal_sender=Orders)
-		user_orders = Orders.objects.filter(buyer = request.user)
-	else:
-		messages.warning(request, "Please login to buy this product!!")
-		user_orders = []
-
-	return render_to_response("checkout/buy.html", locals(), context_instance=RequestContext(request))
-'''
 @login_required
 def buy(request, slug):
 	if request.is_ajax() and request.method == "POST":

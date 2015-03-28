@@ -1,12 +1,12 @@
 import json
+
 from django.core.urlresolvers import reverse
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
 from django.shortcuts import render_to_response, RequestContext, Http404,HttpResponseRedirect
 
-from .models import Notification, NotifyUsers
 from products.models import Category
-# Create your views here.
+from .models import Notification, NotifyUsers
 
 @login_required
 def all(request):
@@ -14,10 +14,7 @@ def all(request):
 	notifications=[]
 	for obj in all_notify_obj:
 		notifications.append(obj.notifications)
-	
 	return render_to_response("notifications/all.html", locals(), context_instance=RequestContext(request))
-
-
 
 @login_required
 def get_notifications_using_ajax(request):                                       #return HttpResponse with ajax data

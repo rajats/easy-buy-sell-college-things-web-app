@@ -1,8 +1,7 @@
 {% extends "base.html" %}
-
 {% block content %}
 <h1>{{ product.title }} images</h1>
-<form method='POST' action='' enctype="multipart/form-data"> {% csrf_token %}   <!-- enctype shd be used when sending media to form !-->
+<form method='POST' action='' enctype="multipart/form-data"> {% csrf_token %}   
 	{{ formset.management_form }}
 	<table>
 		<thead>

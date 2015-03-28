@@ -1,9 +1,6 @@
 {% extends "base.html" %}
-
 {% block content %}
-
 <p><h1>Recently Viewed Products</h1></p>
-
 <div class="row">
   {% if unique_recent_products_obj %}
   {% for product in unique_recent_products_obj %}
@@ -16,7 +13,6 @@
               </a>
           {% endif %}
         {% endfor %}
-          <!-- single_product needs parameter !-->
           <div class="caption">
               <h3>{{ product }}</h3>
               <p><a href="{% url "single_product" product.slug %}" class="btn btn-primary" role="button">View Product</a> 
@@ -28,6 +24,5 @@
   {% endfor %}
   {% endif %}
 </div>
-
 {% endblock %}
 

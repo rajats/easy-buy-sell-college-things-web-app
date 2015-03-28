@@ -3,8 +3,8 @@ from products.models import Product
 from django.contrib.auth.models import User
 from django.dispatch.dispatcher import receiver
 from django.db.models import signals
+
 from products.models import Product
-# Create your models here.
 
 class Cart(models.Model):
 	user = models.ForeignKey(User, null = True, blank = True)
@@ -37,6 +37,3 @@ def calculate_total(sender, instance, **kwargs):
 			totals.append(item.product.price)
 	cart.total = sum(totals)
 	cart.save()
-
-#signas.post_save.connect(calculate_total, sender = CartItem)
-#signas.post_delete.connect(calculate_total, sender = CartItem)

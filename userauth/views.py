@@ -1,13 +1,12 @@
 from django.shortcuts import render, HttpResponseRedirect
-from .forms import LoginForm, RegistrationForm
 from django.contrib.auth import get_user_model, authenticate, login, logout
 from django.contrib.auth.hashers import make_password
 from django.contrib import messages
 
+from .forms import LoginForm, RegistrationForm
 
 User = get_user_model()
 
-# Create your views here.
 def signin(request):
 	form = LoginForm(request.POST or None)
 	if form.is_valid():

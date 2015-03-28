@@ -1,9 +1,6 @@
-
 <div class="row">
 	{% load endless %}
-
 	{% paginate 9 products %}
-
 	{% for product in products %}
 		<div class="col-sm-4" style='text-align: center;'>
 			<div class="thumbnail">
@@ -14,7 +11,6 @@
 							</a>
 					{% endif %}
 				{% endfor %}
-		     	<!-- single_product needs parameter !-->
 		     	<div class="caption">
 			        <h3>{{ product }}</h3>
 			        <p><a href="{% url "single_product" product.slug %}" class="btn btn-primary" role="button">View Product</a> 
@@ -22,7 +18,7 @@
 		      	</div>
 			</div>
 		</div>
-	{% cycle '' '' '</div><hr/><div class="row">' %}
+		{% cycle '' '' '</div><hr/><div class="row">' %}
 	{% endfor %}
 	{% show_more %}
 </div>
