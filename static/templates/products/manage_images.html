@@ -17,7 +17,7 @@
 		{% endfor %}
 		<hr>
 		<tfoot><td><input type='submit' value='Save' /></td></tfoot>
-		<a class='btn btn-info' href="{% url "manage_product_image" product.slug %}">Add more images</a>
+		<a class='btn btn-info' href="{% url 'manage_product_image' product.slug %}">Add more images</a>
 	</table>
 </form>
 {% endblock %}

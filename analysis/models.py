@@ -24,8 +24,7 @@ class PageViewManager(models.Manager):
 class PageView(models.Model):
 	path = models.CharField(max_length=350)
 	user = models.ForeignKey(User, null=True, blank=True)
-	primary_content_type = models.ForeignKey(ContentType, related_name='primary_obj',\
-											null=True, blank=True)
+	primary_content_type = models.ForeignKey(ContentType, related_name='primary_obj',null=True, blank=True)
 	primary_object_id = models.PositiveIntegerField(null=True, blank=True)
 	primary_object = generic.GenericForeignKey("primary_content_type", "primary_object_id")
 	timestamp = models.DateTimeField(default=timezone.now())

@@ -24,6 +24,7 @@ from checkout.models import Orders
 from analysis.models import PageView
 from notifications.signals import notify
 from analysis.signals import page_view
+from profiles.signals import update_total_products
 
 def check_product(user, product):
     if product in request.user.userpurchase.products.all():
@@ -118,6 +119,7 @@ def add_product(request):
                     break
                 product.slug = '%s-%d' % (temp, x)
             product.save()
+            update_total_products.send(request.user)
             return HttpResponseRedirect('/products/%s/images/' %(product.slug))
         return render_to_response("products/edit.html", locals(), context_instance=RequestContext(request))
     else:
@@ -172,17 +174,17 @@ def add_comment(request, slug):
         cform=ProductCommentForm(request.POST)         #create commentform using POST
         if cform.is_valid():
             comment_text = cform.cleaned_data['comment']
-            new_comment = ProductComment.objects.create(product=prod,commenter=request.user,comment=comment_text,pub_date=timezone.now())
+            new_comment = ProductComment.objects.create(product=prod, commenter=request.user, comment=comment_text, pub_date=timezone.now())
             messages.success(request, "Your comment was added")
             sent_senders=[]
             if NotifyUsers.objects.filter(product = prod).exists():
                 for obj in NotifyUsers.objects.filter(product = prod):
                     if request.user != obj.sender:
                         if obj.sender not in sent_senders:
-                            notify.send(request.user, action=new_comment, target = prod, receiver_user=obj.sender, msg='commented on', signal_sender=Product) 
+                            notify.send(request.user, action=new_comment, target=prod, receiver_user=obj.sender, msg='commented on', signal_sender=Product) 
                     sent_senders.append(obj.sender)
             else:
-                notify.send(request.user, action=new_comment, target = prod, receiver_user=prod.user, msg='commented on', signal_sender=Product)
+                notify.send(request.user, action=new_comment, target=prod, receiver_user=prod.user, msg='commented on', signal_sender=Product)
         else:
             messages.error(request, "There was an error with your comment")
             return HttpResponseRedirect('/products/%s/' %(prod.slug)) 
@@ -193,9 +195,9 @@ def add_comment(request, slug):
 @page_template('products/all_index_page.html')
 def category_products(request, catslug, template='products/all_index.html', extra_context=None):
     category = Category.objects.get(slug=catslug)
-    products = Product.objects.filter(category=category,active=True)
+    products = Product.objects.filter(category=category, active=True)
     if request.user.is_authenticated():
-        products = Product.objects.filter(category=category,active=True).filter(~Q(user = request.user))
+        products = Product.objects.filter(category=category, active=True).filter(~Q(user = request.user))
     context = {
         'products': products,
     }

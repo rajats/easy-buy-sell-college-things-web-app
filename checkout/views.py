@@ -7,22 +7,22 @@ from django.contrib.auth.decorators import login_required
 
 from .models import Orders
 from products.models import Product
-from notifications.signals import notify
 from notifications.models import NotifyUsers, Notification
+from notifications.signals import notify
+from profiles.signals import update_total_orders
 
-@login_required
 def buy(request, slug):
 	if request.is_ajax() and request.method == "POST":
 		product = Product.objects.get(slug=slug)
 		seller = product.user
-		ordered = 0
 		if request.user.is_authenticated():
 			buyer = request.user
 			order_obj = Orders.objects.create(buyer=request.user, seller=seller, product = product)
-			notify.send(buyer, target = product, receiver_user=seller, msg='wants to buy', signal_sender=Orders)
+			notify.send(buyer, target=product, receiver_user=seller, msg='wants to buy', signal_sender=Orders)
+			update_total_orders.send(buyer, ordered_product=product)
 			ordered = 1
 		else:
-			pass
+			ordered = 0
 		data = {
 			"ordered": ordered,
 		}
