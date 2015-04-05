@@ -4,6 +4,7 @@ from django.contrib.auth.hashers import make_password
 from django.contrib import messages
 
 from .forms import LoginForm, RegistrationForm
+from profiles.signals import new_user_profile
 
 User = get_user_model()
 
@@ -17,7 +18,7 @@ def signin(request):
 			login(request, user)
 			return HttpResponseRedirect('/products/')
 		else:
-			return HttpResponseRedirect('/userauth/register/')
+			messages.error(request, 'username or password does not match')
 	context = {'form': form}
 	return render(request, "userauth/form.html",context)
 
@@ -31,6 +32,9 @@ def register(request):
 		if created:
 			new_user.password = password
 			new_user.save()
+			new_user_profile.send(new_user)
+			messages.success(request, 'Your account has been registered, You can login now!')
+			return HttpResponseRedirect('/userauth/login/')
 	context = {'form': form}
 	return render(request, "userauth/form.html",context)
 

@@ -29,15 +29,15 @@ class RegistrationForm(forms.Form):
 	def clean(self):
 		cleaned_data = super(RegistrationForm,self).clean()
 		password = cleaned_data.get("password")
-		password1 = cleaned_data.get("password1")
+		password1 = cleaned_data.get("repeat_password")
 		if password != password1:
 			raise forms.ValidationError("Passwords do not match")
 			del cleaned_data['password']
-			del cleaned_data['password1']
+			del cleaned_data['repeat_password']
 		else:
 			set_password = make_password(password)
 			cleaned_data['password'] = set_password
-			cleaned_data['password1'] = set_password
+			cleaned_data['repeat_password'] = set_password
 		return cleaned_data
 
 

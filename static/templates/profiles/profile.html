@@ -4,7 +4,11 @@
 	<p><h2>My Profile</h2></p>
 	<h3>
 		<p>Name : {{ profile.user }}</p>
-		<p>Total products for sale : {{ profile.total_products }} <p><a href='{% url "user_products" %}'><span class="glyphicon glyphicon-briefcase" aria-hidden="true"></span>View all</a></p>
+		{% if profile.total_products > 0 %}
+			<p>Total products for sale : {{ profile.total_products }} </p><p><a href='{% url "user_products" %}'><span class="glyphicon glyphicon-briefcase" aria-hidden="true"></span>View all</a></p>
+		{% else %}
+			<p>Total products for sale : {{ profile.total_products }} </p>
+		{% endif %}
 		<p>Total orders : {{ profile.total_orders }}</p>
 		{% if orders %}
 			<p>My Orders:</p>

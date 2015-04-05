@@ -2,7 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 
 from products.models import Product
-from .signals import update_total_products, update_total_orders
+from .signals import update_total_products, update_total_orders, new_user_profile 
 
 class UserProfile(models.Model):
 	user = models.ForeignKey(User)
@@ -33,3 +33,9 @@ def update_profile_orders(sender, **kwargs):
 	profile.save()
 
 update_total_orders.connect(update_profile_orders)
+
+def add_new_user_profile(sender, **kwargs):
+	kwargs.pop('signal', None)
+	UserProfile.objects.create(user=sender)
+
+new_user_profile.connect(add_new_user_profile)
