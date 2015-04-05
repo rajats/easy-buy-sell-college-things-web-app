@@ -9,7 +9,7 @@
 		{% if orders %}
 			<p>My Orders:</p>
 			{% for order in orders %}
-				<p>{{ order.order }}</p>
+				<p><a href="{% url "single_product" order.order.slug %}">{{ order.order }}</a> 
 			{% endfor %}
 		{% endif %}
 	</h3>
