@@ -16,6 +16,13 @@
 				<p><a href="{% url "single_product" order.order.slug %}">{{ order.order }}</a> 
 			{% endfor %}
 		{% endif %}
+		<p>Total products sold : {{ profile.total_sold_products }}</p>
+		{% if solds %}
+			<p>My Sold Products:</p>
+			{% for sold in solds %}
+				<p><a href="{% url "single_product" sold.sold_product.slug %}">{{ sold.sold_product }}</a> 
+			{% endfor %}
+		{% endif %}
 	</h3>
 </div>
 {% endblock %}

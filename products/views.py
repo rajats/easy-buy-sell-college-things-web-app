@@ -24,7 +24,7 @@ from checkout.models import Orders
 from analysis.models import PageView
 from notifications.signals import notify
 from analysis.signals import page_view
-from profiles.signals import update_total_products
+from profiles.signals import update_total_products, update_total_sold_products
 
 def check_product(user, product):
     if product in request.user.userpurchase.products.all():
@@ -100,10 +100,11 @@ def edit_product(request, slug):
         raise Http404
 
 def mark_product_as_sold(request, slug):
-    instance = Product.objects.get(slug=slug)
-    if request.user == instance.user:
-        instance.active = False
-        instance.save()
+    product = Product.objects.get(slug=slug)
+    if request.user == product.user:
+        product.active = False
+        product.save()
+        update_total_sold_products.send(product.user, sold_product=product)
     return HttpResponseRedirect('/products/')
 
 def add_product(request):
