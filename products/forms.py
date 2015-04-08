@@ -1,6 +1,6 @@
 from django.forms import ModelForm
 
-from .models import Product, ProductImage, ProductComment
+from .models import Product, ProductImage, ProductComments
 
 class ProductForm(ModelForm):
 	class Meta:
@@ -12,13 +12,13 @@ class ProductImageForm(ModelForm):
 		model = ProductImage
 		fields = ('image', 'featured_image', 'title')
 
-class ProductCommentForm(ModelForm):
+class ProductCommentsForm(ModelForm):
 	class Meta:
-		model = ProductComment
+		model = ProductComments
 		fields = ( 'comment',)
 
-class UnRegUserProductCommentForm(ModelForm):
+class UnRegUserProductCommentsForm(ModelForm):
 	class Meta:
-		model = ProductComment
+		model = ProductComments
 		fields = ( 'commenter','comment',)
 

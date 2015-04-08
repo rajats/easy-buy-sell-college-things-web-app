@@ -134,11 +134,14 @@
 </div>
 <div class="row">
 	<h2>Comments</h2>
-    {% for comment in product.productcomment_set.all %}   
+    {% for comment in product.productcomments_set.all %}   
         <p>{{ comment.commenter }} : {{ comment.comment }}</p>  
         <hr>   
-    {% endfor %}
-    <p><a href="/products/{{ product.slug }}/addcomment" class="btn btn-primary"><span class="glyphicon glyphicon-comment" aria-hidden="true"></span>Add comment</a></p>   
+    {% endfor %} 
+    <form method='POST' action=''> {% csrf_token %}
+    	{{ cform.as_p }}
+		<button type="submit" class="btn btn-primary" ><span class="glyphicon glyphicon-comment" aria-hidden="true"></span>Post Comment</button>
+	</form>
 </div>
 <div class="modal fade" id="confirmsold" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog">

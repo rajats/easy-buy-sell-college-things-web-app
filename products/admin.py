@@ -3,17 +3,17 @@ import random
 from django.contrib import admin
 
 admin.autodiscover()
-from .models import Product, Category, ProductImage, ProductComment
+from .models import Product, Category, ProductImage, ProductComments
 
 class ProductImageInline(admin.TabularInline):    #so that u can add evrything related to product at one place
 	model = ProductImage
 
-class ProductCommentInline(admin.TabularInline):    #so that u can add evrything related to product at one place
-	model = ProductComment
+class ProductCommentsInline(admin.TabularInline):    #so that u can add evrything related to product at one place
+	model = ProductComments
 
 class ProductAdmin(admin.ModelAdmin):
 	list_display = ('__unicode__','description','current_price','order', 'categories', 'live_link')
-	inlines = [ProductImageInline, ProductCommentInline]      #so that u can add evrything related to product at one place
+	inlines = [ProductImageInline, ProductCommentsInline]      #so that u can add evrything related to product at one place
 	search_fields = ['title', 'description','price', 'category__title']    #you can search product by their these fileds
 	list_filter = ['price', 'sale_price']        #these will appear as box in right
 	prepopulated_fields = {"slug":('title','user')}          #it will prepopulate slug with text given in title

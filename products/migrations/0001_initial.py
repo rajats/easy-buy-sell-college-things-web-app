@@ -14,6 +14,7 @@ class Migration(SchemaMigration):
             ('user', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['auth.User'], null=True, blank=True)),
             ('title', self.gf('django.db.models.fields.CharField')(max_length=200)),
             ('description', self.gf('django.db.models.fields.CharField')(max_length=500)),
+            ('yearofpurchase', self.gf('django.db.models.fields.IntegerField')(default=0)),
             ('price', self.gf('django.db.models.fields.DecimalField')(max_digits=10, decimal_places=2)),
             ('sale_price', self.gf('django.db.models.fields.DecimalField')(null=True, max_digits=10, decimal_places=2)),
             ('slug', self.gf('django.db.models.fields.SlugField')(max_length=50)),
@@ -52,14 +53,15 @@ class Migration(SchemaMigration):
         ))
         db.create_unique(m2m_table_name, ['category_id', 'product_id'])
 
-        # Adding model 'ProductComment'
-        db.create_table(u'products_productcomment', (
+        # Adding model 'ProductComments'
+        db.create_table(u'products_productcomments', (
             (u'id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
             ('product', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['products.Product'])),
+            ('commenter', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['auth.User'], null=True, blank=True)),
             ('comment', self.gf('django.db.models.fields.TextField')(max_length=1000, null=True, blank=True)),
             ('pub_date', self.gf('django.db.models.fields.DateTimeField')()),
         ))
-        db.send_create_signal(u'products', ['ProductComment'])
+        db.send_create_signal(u'products', ['ProductComments'])
 
 
     def backwards(self, orm):
@@ -75,8 +77,8 @@ class Migration(SchemaMigration):
         # Removing M2M table for field product on 'Category'
         db.delete_table(db.shorten_name(u'products_category_product'))
 
-        # Deleting model 'ProductComment'
-        db.delete_table(u'products_productcomment')
+        # Deleting model 'ProductComments'
+        db.delete_table(u'products_productcomments')
 
 
     models = {
@@ -136,11 +138,13 @@ class Migration(SchemaMigration):
             'sale_price': ('django.db.models.fields.DecimalField', [], {'null': 'True', 'max_digits': '10', 'decimal_places': '2'}),
             'slug': ('django.db.models.fields.SlugField', [], {'max_length': '50'}),
             'title': ('django.db.models.fields.CharField', [], {'max_length': '200'}),
-            'user': ('django.db.models.fields.related.ForeignKey', [], {'to': u"orm['auth.User']", 'null': 'True', 'blank': 'True'})
+            'user': ('django.db.models.fields.related.ForeignKey', [], {'to': u"orm['auth.User']", 'null': 'True', 'blank': 'True'}),
+            'yearofpurchase': ('django.db.models.fields.IntegerField', [], {'default': '0'})
         },
-        u'products.productcomment': {
-            'Meta': {'object_name': 'ProductComment'},
+        u'products.productcomments': {
+            'Meta': {'object_name': 'ProductComments'},
             'comment': ('django.db.models.fields.TextField', [], {'max_length': '1000', 'null': 'True', 'blank': 'True'}),
+            'commenter': ('django.db.models.fields.related.ForeignKey', [], {'to': u"orm['auth.User']", 'null': 'True', 'blank': 'True'}),
             u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
             'product': ('django.db.models.fields.related.ForeignKey', [], {'to': u"orm['products.Product']"}),
             'pub_date': ('django.db.models.fields.DateTimeField', [], {})

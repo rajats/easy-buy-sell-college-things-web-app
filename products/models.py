@@ -61,19 +61,11 @@ class Category(models.Model):
 		verbose_name = "category"
 		verbose_name_plural = "categories"
 
-class ProductComment(models.Model):
+class ProductComments(models.Model):
 	product = models.ForeignKey(Product)
-	commenter = models.CharField(max_length=50, default='')
+	commenter = models.ForeignKey(User, null=True, blank=True)
 	comment = models.TextField(max_length=1000, null=True, blank=True)
 	pub_date = models.DateTimeField('published date')
 
 	def __unicode__(self):
 		return str(self.comment)
-
-
-
-
-
-
-
-

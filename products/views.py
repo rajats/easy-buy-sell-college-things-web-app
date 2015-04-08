@@ -16,8 +16,8 @@ from django.contrib import messages
 
 from endless_pagination.decorators import page_template   
 
-from .models import Product, Category, ProductImage, ProductComment
-from .forms import ProductForm, ProductImageForm, ProductCommentForm, UnRegUserProductCommentForm
+from .models import Product, Category, ProductImage, ProductComments
+from .forms import ProductForm, ProductImageForm, ProductCommentsForm, UnRegUserProductCommentsForm
 from cart.models import Cart
 from notifications.models import NotifyUsers, Notification
 from checkout.models import Orders
@@ -45,7 +45,6 @@ def list_all(request,template='products/all_index.html', extra_context=None):
     products = Product.objects.filter(active=True)
     if request.user.is_authenticated():
         products = Product.objects.filter(active=True).filter(~Q(user = request.user))
-
     context = {
         'products': products,
     }
@@ -62,6 +61,7 @@ def single(request, slug):
     categories = product.category_set.all()
     page_view.send(request.user, page_path = request.get_full_path(),primary_obj = product)
     categories = product.category_set.all()
+    cform=ProductCommentsForm()
     if request.user == product.user:
         edit = True
     else:
@@ -86,6 +86,31 @@ def single(request, slug):
                 in_cart = True
     except:
         in_cart = False
+    if request.method=='POST':
+        cform=ProductCommentsForm(request.POST)        
+        if cform.is_valid():
+            comment_text = cform.cleaned_data['comment']
+            if comment_text == '':
+                messages.error(request, "Empty comments are not allowed")
+                return HttpResponseRedirect('/products/%s/' %(product.slug)) 
+            new_comment = ProductComments.objects.create(product=product, commenter=request.user, comment=comment_text, pub_date=timezone.now())
+            messages.success(request, "Your comment was added")
+
+            sent_senders=[]
+            reqd_objs = ProductComments.objects.filter(product=product)
+            if reqd_objs:
+                for obj in reqd_objs:
+                    if request.user != obj.commenter and obj.commenter not in sent_senders:
+                        notify.send(request.user, action=new_comment, target=product, receiver_user=obj.commenter, msg='commented on', signal_sender=Product) 
+                        sent_senders.append(obj.commenter)
+            else:
+                if request.user != product.user:
+                    notify.send(request.user, action=new_comment, target=product, receiver_user=product.user, msg='commented on', signal_sender=Product)
+
+            return HttpResponseRedirect('/products/%s/' %(product.slug)) 
+        else:
+            messages.error(request, "There was an error with your comment")
+            return HttpResponseRedirect('/products/%s/' %(product.slug)) 
     return render_to_response("products/single.html", locals(), context_instance=RequestContext(request))
 
 def edit_product(request, slug):
@@ -168,30 +193,6 @@ def search(request):
 def user_products(request):
     products = Product.objects.filter(user = request.user)
     return render_to_response("products/all.html", locals(), context_instance=RequestContext(request))
-
-def add_comment(request, slug):
-    prod=Product.objects.get(slug=slug)    
-    if request.method=='POST':
-        cform=ProductCommentForm(request.POST)         #create commentform using POST
-        if cform.is_valid():
-            comment_text = cform.cleaned_data['comment']
-            new_comment = ProductComment.objects.create(product=prod, commenter=request.user, comment=comment_text, pub_date=timezone.now())
-            messages.success(request, "Your comment was added")
-            sent_senders=[]
-            if NotifyUsers.objects.filter(product = prod).exists():
-                for obj in NotifyUsers.objects.filter(product = prod):
-                    if request.user != obj.sender:
-                        if obj.sender not in sent_senders:
-                            notify.send(request.user, action=new_comment, target=prod, receiver_user=obj.sender, msg='commented on', signal_sender=Product) 
-                    sent_senders.append(obj.sender)
-            else:
-                notify.send(request.user, action=new_comment, target=prod, receiver_user=prod.user, msg='commented on', signal_sender=Product)
-        else:
-            messages.error(request, "There was an error with your comment")
-            return HttpResponseRedirect('/products/%s/' %(prod.slug)) 
-    else:
-        cform=ProductCommentForm()              
-    return render_to_response("products/add_comment.html", locals(), context_instance=RequestContext(request))
 
 @page_template('products/all_index_page.html')
 def category_products(request, catslug, template='products/all_index.html', extra_context=None):
