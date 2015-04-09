@@ -187,7 +187,8 @@ def search(request):
         Q(title__icontains = q)|
         Q(description__icontains=q)
     )
-    products = list(chain(products_set, category_set))
+    products = list(products_set)
+    categories = list(category_set)
     return render_to_response("products/search.html", locals(), context_instance=RequestContext(request))
 
 def user_products(request):

@@ -1,19 +1,31 @@
 {% extends "base.html" %}
 {% block content %}
 </br>
-<h3><p>searched results for</p> {{ query }}</h3>
+<h3><p>searched results for {{ query }}</p></h3>
 <ol>
 	{% for product in products %}
-		<li>
-			{% for image in product.productimage_set.all %}
-				{% if image.featured_image %}
-					<img src='{{ MEDIA_URL }}{{ image.image }}' width='300' />
-				{% endif %}
-			{% endfor %}
-		</br>
-			<h3>{{ product }}</h3>
-			<p><a href="{{ product.get_absolute_url }}" class="btn btn-primary" role="button">View Product</a> 
-		</li>    
+		{% if user != product.user %}
+			<li>
+				{% for image in product.productimage_set.all %}
+					{% if image.featured_image %}
+					<a href="{% url "single_product" product.slug %}">
+						<img src='{{ MEDIA_URL }}{{ image.image }}' style='max-height:200px; margin: 0 auto;' />
+					</a>
+					{% endif %}
+				{% endfor %}
+				</br>
+				<h3><a href="{% url "single_product" product.slug %}">{{ product }}</a></h3>
+				<hr/>
+			</li>    
+		{% endif %}
 	{% endfor %}
 </ol>
+	{% if categories|length > 1 %}
+		<h3>Matching categories</h3>
+	{% elif categories|length == 1 %}
+		<h3>Matching category</h3>
+	{% endif %}
+	{% for category in categories %}
+		<h3><a href='{% url "category_products" category %}'>{{ category }}</a></h3>   
+	{% endfor %}
 {% endblock %}
