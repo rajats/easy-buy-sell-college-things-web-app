@@ -62,3 +62,15 @@ body {
     text-align:right;
 }
 
+.products-slide {
+  height: 400px;
+}
+
+.product-title {
+ bottom: 70px;
+ color: black;
+}
+
+.show-categ{
+  font-size: 25px;
+}

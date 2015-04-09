@@ -5,17 +5,91 @@
 	<div class='col-sm-4 pull-left'>
 		<h1>{{ product }}
 		</h1>
-		{% for img in images %}
-			{% if img.title %}
-				<img src="{{ MEDIA_URL }}{{ img.image }}" width='300' />  
-				<hr>
-			{% endif %}
-		{% endfor %}
-		<ul>
+		<div id="myCarousel" class="carousel slide" data-ride="carousel">
+			<ol class="carousel-indicators">
+				{% for img in images %}
+					{% if forloop.counter == 1 %}
+			        	<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+			        {% endif %}
+			        {% if forloop.counter == 2 %}
+		        		<li data-target="#myCarousel" data-slide-to="1"></li>
+		        	{% endif %}
+		        	{% if forloop.counter == 3 %}
+		        		<li data-target="#myCarousel" data-slide-to="2"></li>
+		        	{% endif %}
+		        	{% if forloop.counter == 4 %}
+		        		<li data-target="#myCarousel" data-slide-to="3"></li>
+		        	{% endif %}
+		        {% endfor %}
+	      	</ol>
+	      	<div class="carousel-inner products-slide" role="listbox">
+				{% for img in images %}
+					{% if forloop.counter == 1 %}
+						<div class="item active">
+				          	<img class="first-slide img-responsive center-block" src="{{ MEDIA_URL }}{{ img.image }}" alt="First slide">
+				          	{% if img.title %}
+								<div class="container">
+			            			<div class="carousel-caption product-title">
+			              				<p>{{ img.title }}</p>
+			            			</div>
+			          			</div>
+		          			{% endif %}
+				        </div>
+				    {% endif %}
+				    {% if forloop.counter == 2 %}
+				        <div class="item">
+				          	<img class="second-slide img-responsive center-block" src="{{ MEDIA_URL }}{{ img.image }}" alt="Second slide">
+				          	{% if img.title %}
+								<div class="container">
+			            			<div class="carousel-caption product-title">
+			              				<p>{{ img.title }}</p>
+			            			</div>
+			          			</div>
+		          			{% endif %}
+				        </div>
+			        {% endif %}
+			        {% if forloop.counter == 3 %}
+				        <div class="item">
+				          	<img class="third-slide img-responsive center-block" src="{{ MEDIA_URL }}{{ img.image }}" alt="Third slide">
+				          	{% if img.title %}
+								<div class="container">
+			            			<div class="carousel-caption product-title">
+			              				<p>{{ img.title }}</p>
+			            			</div>
+			          			</div>
+		          			{% endif %}
+				        </div>
+				    {% endif %}
+				    {% if forloop.counter == 4 %}
+				        <div class="item">
+				          	<img class="fourth-slide img-responsive center-block" src="{{ MEDIA_URL }}{{ img.image }}" alt="Fourth slide">
+				          	{% if img.title %}
+								<div class="container">
+			            			<div class="carousel-caption product-title">
+			              				<p>{{ img.title }}</p>
+			            			</div>
+			          			</div>
+		          			{% endif %}
+				        </div>
+				    {% endif %}
+				{% endfor %}
+		    </div>
+	      	{% if images|length > 1 %}
+		      <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+		        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+		        <span class="sr-only">Previous</span>
+		      </a>
+		      <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+		        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+		        <span class="sr-only">Next</span>
+		      </a>
+		   	{% endif %}
+		</div>
+		<div class="show-categ">
 			{% for category in categories %}
-				<li>Category :{{ category }}</li>
+				<a href='{% url "category_products" category %}'>More {{ category }}</a>
 			{% endfor %}
-		</ul>
+		</div>
 		{% if related %}
 			<h1>Related Product{% if realted|length > 1 %}s{% endif %} </h1>
 			<ul>

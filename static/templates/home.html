@@ -3,58 +3,58 @@
 {% block jumbotron %}
 <div class="alert alert-success" role="alert"><b>Login with username:testuser password:test or username:abcd password:abcd to explore full features</b></div>
 <div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="3000">
-      <ol class="carousel-indicators">
-        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-        <li data-target="#myCarousel" data-slide-to="1"></li>
-        <li data-target="#myCarousel" data-slide-to="2"></li>
-      </ol>
-      <div class="carousel-inner" role="listbox">
-        <div class="item active">
-         <img src="{{ STATIC_URL }}images/ecomm.jpg" alt="First slide">
-          <div class="container">
-            <div class="carousel-caption">
-              <h1>Sell anything</h1>
-              <h4>
-                <p>This site is for college students to buy/sell their college realted things</br>
-                  (it can be anything from study related things such as books to non academic things like laptops, camera etc)
-                  </br>Finding buyers can never have been so easy..!!</br>
-                </p>
-              </h4>
-              {% if not user.is_authenticated %}
-                <p><a class="btn btn-lg btn-primary" href='{% url "login" %}' role="button">Sign up today</a></p>
-              {% endif %}
-            </div>
-          </div>
-        </div>
-        <div class="item">
-          <img src="{{ STATIC_URL }}images/ec2.jpg" alt="Second slide">
-          <div class="container">
-            <div class="carousel-caption">
-              <h1>Expanding Products Category.</h1>
-              <h4><p>Bikes, Laptops, Books, Gaming Accessories aready added.More is on it's way </p></h4>
-              <p><a class="btn btn-lg btn-primary" href='{% url "all_products" %}' role="button">Explore now!!</a></p>
-            </div>
-          </div>
-        </div>
-        <div class="item" >
-          <img src="{{ STATIC_URL }}images/github.jpg" alt="Third slide">
-          <div class="container">
-            <div class="carousel-caption">
-              <h1>Fork me on github.</h1>
-              <p><a class="btn btn-lg btn-primary" href="https://github.com/rajats/easy-buy-sell-college-things-web-app" role="button">Github</a></p>
-            </div>
-          </div>
+  <ol class="carousel-indicators">
+    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+    <li data-target="#myCarousel" data-slide-to="1"></li>
+    <li data-target="#myCarousel" data-slide-to="2"></li>
+  </ol>
+  <div class="carousel-inner" role="listbox">
+    <div class="item active">
+     <img src="{{ STATIC_URL }}images/ecomm.jpg" alt="First slide">
+      <div class="container">
+        <div class="carousel-caption">
+          <h1>Sell anything</h1>
+          <h4>
+            <p>This site is for college students to buy/sell their college realted things</br>
+              (it can be anything from study related things such as books to non academic things like laptops, camera etc)
+              </br>Finding buyers can never have been so easy..!!</br>
+            </p>
+          </h4>
+          {% if not user.is_authenticated %}
+            <p><a class="btn btn-lg btn-primary" href='{% url "login" %}' role="button">Sign up today</a></p>
+          {% endif %}
         </div>
       </div>
-      <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
-        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-        <span class="sr-only">Previous</span>
-      </a>
-      <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
-        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-        <span class="sr-only">Next</span>
-      </a>
     </div>
+    <div class="item">
+      <img src="{{ STATIC_URL }}images/ec2.jpg" alt="Second slide">
+      <div class="container">
+        <div class="carousel-caption">
+          <h1>Expanding Products Category.</h1>
+          <h4><p>Bikes, Laptops, Books, Gaming Accessories aready added.More is on it's way </p></h4>
+          <p><a class="btn btn-lg btn-primary" href='{% url "all_products" %}' role="button">Explore now!!</a></p>
+        </div>
+      </div>
+    </div>
+    <div class="item" >
+      <img src="{{ STATIC_URL }}images/github.jpg" alt="Third slide">
+      <div class="container">
+        <div class="carousel-caption">
+          <h1>Fork me on github.</h1>
+          <p><a class="btn btn-lg btn-primary" href="https://github.com/rajats/easy-buy-sell-college-things-web-app" role="button">Github</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div>
 {% endblock %}
 <div class="row">
   {% for product in products %}
