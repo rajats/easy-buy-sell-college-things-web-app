@@ -5,7 +5,7 @@
 	<div class='col-sm-4 pull-left'>
 		<h1>{{ product }}
 		</h1>
-		<div id="myCarousel" class="carousel slide" data-ride="carousel">
+		<div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="3000">
 			<ol class="carousel-indicators">
 				{% for img in images %}
 					{% if forloop.counter == 1 %}
@@ -90,16 +90,6 @@
 				<a href='{% url "category_products" category %}'>More {{ category }}</a>
 			{% endfor %}
 		</div>
-		{% if related %}
-			<h1>Related Product{% if realted|length > 1 %}s{% endif %} </h1>
-			<ul>
-			{% for item in related %}
-				<li>
-					<a href="{{ item.get_absolute_url }}">{{ item }}</a>
-				</li>
-			{% endfor %}
-			</ul>
-		{% endif %}
 	</div>
 	<div class='col-sm-4 pull-right'>
 		<div class="panel panel-default">
@@ -206,6 +196,34 @@
 		{% endif %}
 	</div>
 </div>
+<div class="row">
+    {% if related %}
+    	<h1>Related Product{% if related|length > 1 %}s{% endif %} </h1>
+      	{% for product in related %}
+      		{% if forloop.counter <= 3 and user != product.user %}
+	        	<div class="col-sm-4" style='text-align: center;'>
+		          	<div class="thumbnail">
+		            	{% for image in product.productimage_set.all %}
+		              		{% if image.featured_image %}
+		                  		<a href="{% url "single_product" product.slug %}">
+		                    		<img class="img-responsive" src='{{ MEDIA_URL }}{{ image.image }}' style='max-height:170px; margin: 0 auto;' />
+		                  		</a>
+		              		{% endif %}
+		            	{% endfor %}
+		            	<div class="caption">
+		                	<h3>{{ product }}</h3>
+		                	<p><a href="{% url "single_product" product.slug %}" class="btn btn-primary" role="button">View Product</a> 
+		                	</p>
+		            	</div>
+		          	</div>
+	        	</div>
+        	{% endif %}
+      	{% endfor %}
+    {% endif %}
+</div>
+{% if related|length > 3 %}
+	<a class="btn btn-primary pull-right" href='{% url "category_products" category %}'>View more</a>
+{% endif %}
 <div class="row">
 	<h2>Comments</h2>
     {% for comment in product.productcomments_set.all %}   
