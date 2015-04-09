@@ -161,7 +161,12 @@
 			  <div class="panel-body">
 			    {% if edit %}
 			    	<div class="text-center">
-				    	<div class="btn-group" role="group" aria-label="...">
+						{% if active %}
+							{% if user_orders|length == 0 %}
+								<div class="alert alert-info" role="alert">No buy requests yet!</div>
+			  				{% endif %}
+			  			{% endif %}
+						<div class="btn-group" role="group" aria-label="...">
 				    		{% if active %}
 				    			{% for order in user_orders %}
 				    				{% if not order.confirmed and not order.rejected %}
