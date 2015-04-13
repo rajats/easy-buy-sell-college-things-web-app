@@ -12,7 +12,7 @@ class Product(models.Model):
 														  #but if seller student is adding it can be null
 	title = models.CharField(max_length=200)
 	description = models.CharField(max_length=500)
-	yearofpurchase = models.IntegerField(default=0000)
+	yearofpurchase = models.IntegerField(default=2014)
 	price = models.DecimalField(max_digits=10, decimal_places=2)
 	sale_price = models.DecimalField(max_digits=10, decimal_places=2, null=True, blank=False)
 	slug = models.SlugField()

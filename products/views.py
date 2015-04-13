@@ -71,7 +71,8 @@ def single(request, slug):
         for category in categories:
             products_category = category.product.all()
             for item in products_category:
-                if not item == product:
+                #if not item == product:
+                if item.user != request.user:
                     related.append(item)
     try:
         ordered_products = []
@@ -95,18 +96,17 @@ def single(request, slug):
                 return HttpResponseRedirect('/products/%s/' %(product.slug)) 
             new_comment = ProductComments.objects.create(product=product, commenter=request.user, comment=comment_text, pub_date=timezone.now())
             messages.success(request, "Your comment was added")
-
-            sent_senders=[]
+            sent_senders = []
             reqd_objs = ProductComments.objects.filter(product=product)
-            if reqd_objs:
+            notified = False
+            if reqd_objs.count() >= 1:
                 for obj in reqd_objs:
                     if request.user != obj.commenter and obj.commenter not in sent_senders:
                         notify.send(request.user, action=new_comment, target=product, receiver_user=obj.commenter, msg='commented on', signal_sender=Product) 
                         sent_senders.append(obj.commenter)
-            else:
-                if request.user != product.user:
+                        notified = True
+            if request.user != product.user and not notified:
                     notify.send(request.user, action=new_comment, target=product, receiver_user=product.user, msg='commented on', signal_sender=Product)
-
             return HttpResponseRedirect('/products/%s/' %(product.slug)) 
         else:
             messages.error(request, "There was an error with your comment")

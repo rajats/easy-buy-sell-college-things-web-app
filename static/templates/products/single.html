@@ -7,20 +7,22 @@
 		</h1>
 		<div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="3000">
 			<ol class="carousel-indicators">
-				{% for img in images %}
-					{% if forloop.counter == 1 %}
-			        	<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-			        {% endif %}
-			        {% if forloop.counter == 2 %}
-		        		<li data-target="#myCarousel" data-slide-to="1"></li>
-		        	{% endif %}
-		        	{% if forloop.counter == 3 %}
-		        		<li data-target="#myCarousel" data-slide-to="2"></li>
-		        	{% endif %}
-		        	{% if forloop.counter == 4 %}
-		        		<li data-target="#myCarousel" data-slide-to="3"></li>
-		        	{% endif %}
-		        {% endfor %}
+				{% if images|length > 1 %}
+					{% for img in images %}
+						{% if forloop.counter == 1 %}
+				        	<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+				        {% endif %}
+				        {% if forloop.counter == 2 %}
+			        		<li data-target="#myCarousel" data-slide-to="1"></li>
+			        	{% endif %}
+			        	{% if forloop.counter == 3 %}
+			        		<li data-target="#myCarousel" data-slide-to="2"></li>
+			        	{% endif %}
+			        	{% if forloop.counter == 4 %}
+			        		<li data-target="#myCarousel" data-slide-to="3"></li>
+			        	{% endif %}
+			        {% endfor %}
+		        {% endif %}
 	      	</ol>
 	      	<div class="carousel-inner products-slide" role="listbox">
 				{% for img in images %}
@@ -205,7 +207,7 @@
     {% if related %}
     	<h1>Related Product{% if related|length > 1 %}s{% endif %} </h1>
       	{% for product in related %}
-      		{% if forloop.counter <= 3 and user != product.user %}
+      		{% if forloop.counter < 4 and user != product.user %}
 	        	<div class="col-sm-4" style='text-align: center;'>
 		          	<div class="thumbnail">
 		            	{% for image in product.productimage_set.all %}

@@ -1,25 +1,30 @@
 {% extends "base.html" %}
 {% block content %}
 </br>
-<h3><p>searched results for {{ query }}</p></h3>
-<ol>
-	{% for product in products %}
-		{% if user != product.user %}
-			<li>
-				{% for image in product.productimage_set.all %}
-					{% if image.featured_image %}
-					<a href="{% url "single_product" product.slug %}">
-						<img src='{{ MEDIA_URL }}{{ image.image }}' style='max-height:200px; margin: 0 auto;' />
-					</a>
-					{% endif %}
-				{% endfor %}
-				</br>
-				<h3><a href="{% url "single_product" product.slug %}">{{ product }}</a></h3>
-				<hr/>
-			</li>    
-		{% endif %}
-	{% endfor %}
-</ol>
+{% if products|length >= 1 %}
+	<h3><p>searched results for {{ query }}</p></h3>
+	<ol>
+		{% for product in products %}
+			{% if user != product.user %}
+				<li>
+					{% for image in product.productimage_set.all %}
+						{% if image.featured_image %}
+						<a href="{% url "single_product" product.slug %}">
+							<img src='{{ MEDIA_URL }}{{ image.image }}' style='max-height:200px; margin: 0 auto;' />
+						</a>
+						{% endif %}
+					{% endfor %}
+					</br>
+					<h3><a href="{% url "single_product" product.slug %}">{{ product }}</a></h3>
+					<hr/>
+				</li>    
+			{% endif %}
+		{% endfor %}
+	</ol>
+{% else %}
+	<h3><p>No matching products found!</p></h3>
+{% endif %}
+{% if categories|length >= 1 %}
 	{% if categories|length > 1 %}
 		<h3>Matching categories</h3>
 	{% elif categories|length == 1 %}
@@ -28,4 +33,7 @@
 	{% for category in categories %}
 		<h3><a href='{% url "category_products" category %}'>{{ category }}</a></h3>   
 	{% endfor %}
+{% else %}
+	<h3><p>No matching category found!</p></h3>
+{% endif %}
 {% endblock %}
