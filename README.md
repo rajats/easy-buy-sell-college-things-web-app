@@ -54,6 +54,10 @@ This app has functionality of confirming a order and rejecting a order for the s
 This app allows a user to register themselves at site.It has functionality of signing in a registered user, signing out a registered user and registering 
 a new user at site.
 
+##5) Profiles:
+This app contains user history.It contains number of orders that user has placed and also which products that they have ordered, number of products that user has 
+put for sale, number of products that the user has sold till now.
+
 ##6) Analysis:
 Here also we are using django signals for getting recently searched products.A custom signal pageview is used.Everytime when a product is viewed a 
 pageview signal is send from product app and this creates a pageview object which has path to viewed product.Every pageview has a user if the user is registered.
