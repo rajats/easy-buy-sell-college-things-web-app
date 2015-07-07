@@ -3,13 +3,18 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib import admin
 
+from rest_framework import routers
+
+from products.serializers import ProductViewSet
+from products.serializers import ProductCommentsViewSet
+
+router = routers.DefaultRouter()
+router.register(r"products", ProductViewSet)
+router.register(r"comments", ProductCommentsViewSet)
+
 admin.autodiscover()
 
 urlpatterns = patterns('',
-    # Examples:
-    # url(r'^$', 'esell.views.home', name='home'),
-    # url(r'^blog/', include('blog.urls')),
-    #without regular expression you cant use css,javascript..
     url(r'^$','easybuy.views.home', name="home"),           #this home page url
     url(r'^recent/','easybuy.views.morerecents', name="morerecents"),
     url(r'^lib/','profiles.views.library', name="library"),
@@ -23,4 +28,7 @@ urlpatterns = patterns('',
     (r'^static/(?P<path>.*)$','django.views.static.serve',{'document_root: settings.STATIC_ROOT'}),
     (r'^media/(?P<path>.*)$','django.views.static.serve',{'document_root: settings.MEDIA_ROOT'}),
     url(r'^admin/', include(admin.site.urls)),
+    url(r'^api/auth/token/$', 'rest_framework_jwt.views.obtain_jwt_token'),
+    url(r'^api/auth/', include('rest_framework.urls', namespace='rest_framework')),     #this enables login in rest framework
+    url(r'^api/', include(router.urls)),
 )

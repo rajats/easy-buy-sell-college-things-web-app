@@ -12,6 +12,4 @@ urlpatterns = patterns('products.views',
     url(r'^(?P<slug>.*)/edit/','edit_product', name="edit_product"),
     url(r'^(?P<slug>.*)/markitsold/','mark_product_as_sold', name="mark_product_as_sold"),
     url(r'^(?P<slug>.*)/$','single', name="single_product"),
-    #url(r'^(?P<slug>[\w-]+)/(?P<id>\d+)/$','single', name="single_product"),
-    #url(r'^(?P<slug>)/(?P<product_id>.*)/$','single', name="single_product"),
 )

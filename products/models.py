@@ -48,6 +48,9 @@ class ProductImage(models.Model):
 	def __unicode__(self):
 		return str(self.title)
 
+	def get_image_url(self):
+		return "%s%s" %(settings.MEDIA_URL, self.image)
+
 class Category(models.Model):
 	product = models.ManyToManyField(Product)
 	title = models.CharField(max_length=100)
