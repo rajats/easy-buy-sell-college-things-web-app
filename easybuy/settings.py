@@ -41,6 +41,7 @@ INSTALLED_APPS = (
     'rest_framework',
     'south',
     'endless_pagination',
+    'crispy_forms',
     'products',
     'profiles',
     'cart',
@@ -53,9 +54,9 @@ INSTALLED_APPS = (
     'allauth.socialaccount.providers.facebook',
 )
 
+CRISPY_TEMPLATE_PACK = "bootstrap3"
+
 SITE_ID = 1
-
-
 
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -65,7 +66,6 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
-
 
 TEMPLATE_CONTEXT_PROCESSORS =(
     "django.contrib.auth.context_processors.auth",
@@ -94,7 +94,6 @@ AUTHENTICATION_BACKENDS = (
 ROOT_URLCONF = 'easybuy.urls'
 
 WSGI_APPLICATION = 'easybuy.wsgi.application'
-
 
 # Database
 # https://docs.djangoproject.com/en/1.6/ref/settings/#databases
