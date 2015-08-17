@@ -126,7 +126,7 @@ USE_TZ = True
 
 # Absolute filesystem path to the directory that will hold user-uploaded files.
 # Example: "/home/media/media.lawrence.com/media/"
-MEDIA_ROOT = 'C:/Python27/django16/easybuy/static/media/'
+MEDIA_ROOT = os.path.join(os.path.dirname(os.path.dirname(__file__)), "static", "media") 
 
 # Examples: "http://media.lawrence.com/media/", "http://example.com/media/"
 
@@ -141,7 +141,7 @@ MEDIA_URL = '/static/media/'
 # Don't put anything in this directory yourself; store your static files
 # in apps' "static/" subdirectories and in STATICFILES_DIRS.
 # Example: "/home/C:/Python27/django16/easybuy/static/media/media.lawrence.com/static/"
-STATIC_ROOT = 'C:/Python27/django16/easybuy/static/static-files'
+STATIC_ROOT = os.path.join(os.path.dirname(os.path.dirname(__file__)), "static", "static-files") 
 
 # URL prefix for static files.
 # Example: "http://media.lawrence.com/static/"
@@ -149,7 +149,7 @@ STATIC_URL = '/static/'
 
 # Additional locations of static files
 STATICFILES_DIRS = (
-    ('C:/Python27/django16/easybuy/static/'),
+    os.path.join(os.path.dirname(os.path.dirname(__file__)), "static"),
     # Put strings here, like "/home/html/static" or "C:/www/django/static".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
@@ -162,7 +162,7 @@ STATICFILES_FINDERS = (
 )
 
 TEMPLATE_DIRS = (
-    'C:/Python27/django16/easybuy/static/templates/',
+    os.path.join(os.path.dirname(os.path.dirname(__file__)), "static", "templates"), 
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
