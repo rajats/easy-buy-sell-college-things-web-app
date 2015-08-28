@@ -1,4 +1,5 @@
 from django.shortcuts import render, HttpResponseRedirect
+from django.core.urlresolvers import reverse
 from django.contrib.auth import get_user_model, authenticate, login, logout
 from django.contrib.auth.hashers import make_password
 from django.contrib import messages
@@ -9,6 +10,8 @@ from profiles.signals import new_user_profile
 User = get_user_model()
 
 def signin(request):
+	if request.user.is_authenticated():
+		return HttpResponseRedirect(reverse('home'))
 	form = LoginForm(request.POST or None)
 	if form.is_valid():
 		username = form.cleaned_data['username']

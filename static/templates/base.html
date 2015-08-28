@@ -59,7 +59,7 @@
             </li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
-            <li><a href='{% url "cart" %}'><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>View Cart</a></li>
+            <li><a href='{% url "cart" %}'><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>Cart</a></li>
             {% if user.is_authenticated %}
               <li><a href='{% url "add_product" %}'><span class="glyphicon glyphicon-usd" aria-hidden="true"></span>Sell Product</a></li>
               <li><a href='{% url "user_products" %}'><span class="glyphicon glyphicon-briefcase" aria-hidden="true"></span>My Products</a></li>

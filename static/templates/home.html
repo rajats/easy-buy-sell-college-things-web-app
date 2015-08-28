@@ -1,7 +1,9 @@
 {% extends "base.html" %}
 {% block content %}
 {% block jumbotron %}
-<div class="alert alert-success" role="alert"><b>Login with username:testuser password:test or username:abcd password:abcd to explore full features</b></div>
+{% if not user.is_authenticated %}
+  <div class="alert alert-success" role="alert"><b>Login with username:testuser password:test or username:abcd password:abcd to explore full features</b></div>
+{% endif %}
 <div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="3000">
   <ol class="carousel-indicators">
     <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
